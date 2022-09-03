@@ -1,0 +1,12 @@
+/Users/rminafa/Projects/LeetCode/LeetCode/bin/Debug/net6.0/LeetCode.deps.json
+/Users/rminafa/Projects/LeetCode/LeetCode/bin/Debug/net6.0/LeetCode.dll
+/Users/rminafa/Projects/LeetCode/LeetCode/bin/Debug/net6.0/LeetCode.pdb
+/Users/rminafa/Projects/LeetCode/LeetCode/obj/Debug/net6.0/LeetCode.csproj.AssemblyReference.cache
+/Users/rminafa/Projects/LeetCode/LeetCode/obj/Debug/net6.0/LeetCode.GeneratedMSBuildEditorConfig.editorconfig
+/Users/rminafa/Projects/LeetCode/LeetCode/obj/Debug/net6.0/LeetCode.AssemblyInfoInputs.cache
+/Users/rminafa/Projects/LeetCode/LeetCode/obj/Debug/net6.0/LeetCode.AssemblyInfo.cs
+/Users/rminafa/Projects/LeetCode/LeetCode/obj/Debug/net6.0/LeetCode.csproj.CoreCompileInputs.cache
+/Users/rminafa/Projects/LeetCode/LeetCode/obj/Debug/net6.0/LeetCode.dll
+/Users/rminafa/Projects/LeetCode/LeetCode/obj/Debug/net6.0/refint/LeetCode.dll
+/Users/rminafa/Projects/LeetCode/LeetCode/obj/Debug/net6.0/LeetCode.pdb
+/Users/rminafa/Projects/LeetCode/LeetCode/obj/Debug/net6.0/ref/LeetCode.dll

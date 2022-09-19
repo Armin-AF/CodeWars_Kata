@@ -65,4 +65,25 @@ public class UnitTest1
     {
         Assert.Equal(25, Class1.FindNextSquare((16)));
     }
+    
+    [Fact]
+    public void camelCasing_should_return_camel_casing()
+    {
+        Assert.Equal("camel Casing", Class1.BreakCamelCase("camelCasing"));
+    }
+    
+    [Fact]
+    
+    public void Indivisibility_returns_1_In_Counting_Duplicates()
+    {
+        Assert.Equal(1, Class1.DuplicateCount("Indivisibility"));
+    }
+    
+    [Fact]
+    public void Indivisibility_returns_0_In_Counting_Duplicates()
+    {
+        Assert.Equal(0, Class1.DuplicateCount(""));
+    }
+    
+
 }

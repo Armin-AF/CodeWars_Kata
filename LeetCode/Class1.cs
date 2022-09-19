@@ -279,6 +279,77 @@ public static class Class1
     public static int Paperwork(int n, int m){
         return n <= 0 || m <= 0 ? 0 : m * n;
     }
+    
+    public static string BreakCamelCase(string str)
+    {
+        
+        // Make a break where there is a capital letter
+        var camelCase = new StringBuilder();
+        foreach (var c in str){
+            if (char.IsUpper(c)){
+                camelCase.Append(' ');
+            }
+            camelCase.Append(c);
+        }
+        return camelCase.ToString();
+    }
+    
+    public static IEnumerable<int> GetIntegersFromList(List<object> listOfItems)
+    {
+        //filter out strings from the list and return the integers
+        return listOfItems.OfType<int>();
+
+    }
+    
+    public static bool IsSquare(int n)  => (Math.Sqrt(n) % 1 == 0);
+    
+    public static string Rps(string p1, string p2)
+    {
+        //Rock paper scissors
+        if (p1 == p2) return "Draw!";
+        switch (p1)
+        {
+            case "rock" when p2 == "scissors":
+            case "scissors" when p2 == "paper":
+            case "paper" when p2 == "rock":
+                return "Player 1 won!";
+            default:
+                return "Player 2 won!";
+        }
+    }
+    
+    public static int SquareSum(int[] numbers)
+    { 
+        // Sum of squares
+        return numbers.Sum(n => n * n);
+    }
+    
+    public static int DuplicateCount(string str)
+    {
+        // Count the number of duplicate characters in a string
+        var duplicates = new HashSet<char>();
+        var unique = new HashSet<char>();
+        foreach (var c in str.ToLower())
+        {
+            if (!unique.Add(c)) duplicates.Add(c);
+        }
+        return duplicates.Count;
+    }
+    
+    public static List<string> Number(List<string> lines) 
+    {
+        // Number the lines
+        for (var i = 0; i < lines.Count; i++) lines[i] = $"{i + 1}: {lines[i]}";
+        return lines;
+    }
+    
+    public static int GetUnique(IEnumerable<int> numbers)
+    {
+        // Find the unique number
+        return numbers.GroupBy(n => n).First(g => g.Count() == 1).Key;
+        
+    }
+    
 }
 
 

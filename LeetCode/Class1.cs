@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace LeetCode;
 
@@ -350,6 +351,146 @@ public static class Class1
         
     }
     
+    public static string PigIt(string str)
+    {
+        var pigLatin = new StringBuilder();
+        foreach (var word in str.Split(' '))
+        {
+            if (word.Length == 1)
+            {
+                pigLatin.Append($"{word} ");
+                continue;
+            }
+            pigLatin.Append($"{word.Substring(1)}{word[0]}ay ");
+        }
+        return pigLatin.ToString().TrimEnd();
+    }
+    
+    public static string WordCount(string str) {
+
+        // Count the number of words in a string
+        return str.Split(' ').Length.ToString();
+    }
+    
+    public static string NumberAddition(string str) {
+
+        // Add the numbers in a string even if they are separated by letters
+        return Regex
+            .Matches(str, @"\d+")
+            .Sum(m => int.Parse(m.Value))
+            .ToString();
+    }
+    
+    public static int LargestPair(int num) {
+        
+        var ints = num
+            .ToString()
+            .Select(c => int.Parse(c.ToString()))
+            .ToList();
+        var largestPair = 0;
+        for (var i = 0; i < ints.Count - 1; i++)
+        {
+            var paiOfInts = int.Parse($"{ints[i]}{ints[i + 1]}");
+            if (paiOfInts > largestPair) largestPair = paiOfInts;
+        }
+        return largestPair;
+
+    }
+    
+    public static bool ValidateSolution(int[][] board)
+    {
+        //Sudoku validator
+        if (board.Length != 9) return false;
+        // check zero
+        foreach (var row in board)
+        {
+            if (row.Length != 9) return false;
+            if (row.Any(i => i < 0 || i > 9)) return false;
+        }
+        // check rows
+        foreach (var row in board)
+        {
+            if (row.Distinct().Count() != 9) return false;
+        }
+        // check columns
+        for (var i = 0; i < 9; i++)
+        {
+            var column = new List<int>();
+            for (var j = 0; j < 9; j++)
+            {
+                column.Add(board[j][i]);
+            }
+            if (column.Distinct().Count() != 9) return false;
+        }
+        // check squares
+        for (var i = 0; i < 9; i += 3)
+        {
+            for (var j = 0; j < 9; j += 3)
+            {
+                var square = new List<int>();
+                for (var k = 0; k < 3; k++)
+                {
+                    for (var l = 0; l < 3; l++)
+                    {
+                        square.Add(board[i + k][j + l]);
+                    }
+                }
+                if (square.Distinct().Count() != 9) return false;
+            }
+        }  
+        return true;
+    }
+    
+    public static string Maskify(string cc)
+    {
+        // Maskify a string except the last 4 characters
+        return cc.Length <= 4 ? cc : new string('#', cc.Length - 4) + cc.Substring(cc.Length - 4);
+    }
+    
+    public static string Disemvowel(string str)
+    {
+        // Remove all of the vowels from the string
+        return new string(str.Where(c => !"aeiou".Contains(char.ToLower(c))).ToArray());
+        
+        /*return Regex.Replace(str,"[aeiou]", "", RegexOptions.IgnoreCase);*/
+    }
+    
+    public static IEnumerable<T> UniqueInOrder<T>(IEnumerable<T> iterable) 
+    {
+        //returns a list of items without any elements with the same value next to each other and preserving the original order of elements
+        var unique = new List<T>();
+        foreach (var item in iterable)
+        {
+            if (unique.Count == 0 || !unique.Last()!.Equals(item)) unique.Add(item);
+        }
+        return unique;
+    }
+    
+    public static long RowSumOddNumbers(long n)
+    {
+        // sum of given row in triangle of consecutive odd numbers
+        var sum = 0L;
+        var start = n * (n - 1) + 1;
+        for (var i = 0; i < n; i++)
+        {
+            sum += start + 2 * i;
+        }
+        return sum;
+        
+        //return (long)Math.Pow(n, 3);
+    }
+    
+    public static bool IsTriangle(int a, int b, int c)
+    {
+        if (a <= 0 || b <= 0 || c <= 0) return false;
+        return a + b > c && a + c > b && b + c > a;
+    }
+    
+    public static int[] Arr(int N)
+    {
+        /* the numbers 0 to N-1 */ 
+        return Enumerable.Range(0, N).ToArray();
+    }
 }
 
 

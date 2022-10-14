@@ -491,6 +491,37 @@ public static class Class1
         /* the numbers 0 to N-1 */ 
         return Enumerable.Range(0, N).ToArray();
     }
+    
+    public static int Find(int[] integers)
+    {
+        //Write a method that takes the array as an argument and returns this "outlier" N.(odd or even)
+        var odd = integers.Where(i => i % 2 != 0).ToList();
+        var even = integers.Where(i => i % 2 == 0).ToList();
+        return odd.Count == 1 ? odd.First() : even.First();
+    }
+    
+    public static int SumIntervals((int, int)[] intervals)
+    {
+        // CODEWARS - accepts an array of intervals, and returns the sum of all the interval lengths. Overlapping intervals should only be counted once.
+        var sum = 0;
+        var intervalsList = intervals.ToList();
+        for (var i = 0; i < intervalsList.Count; i++)
+        {
+            var interval = intervalsList[i];
+            for (var j = i + 1; j < intervalsList.Count; j++)
+            {
+                var nextInterval = intervalsList[j];
+                if (interval.Item1 <= nextInterval.Item1 && interval.Item2 >= nextInterval.Item1)
+                {
+                    interval = (interval.Item1, nextInterval.Item2);
+                    intervalsList.RemoveAt(j);
+                    j--;
+                }
+            }
+            sum += interval.Item2 - interval.Item1;
+        }
+        return sum;
+    }
 }
 
 

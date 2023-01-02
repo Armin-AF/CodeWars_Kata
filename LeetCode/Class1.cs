@@ -522,6 +522,88 @@ public static class Class1
         }
         return sum;
     }
+    
+    public static string VowelCount(string str) {
+
+        // take the str string parameter being passed and return the number of vowels the string contains 
+        return str.Count(c => "aeiou".Contains(char.ToLower(c))).ToString();
+
+    }
+    
+    public static int ClosestEnemy(int[] arr) {
+
+        //take the array of numbers stored in arr and from the position in the array where a 1 is, return the number of spaces either left or right you must move to reach an enemy which is represented by a 2. For example: if arr is [0, 0, 1, 0, 0, 2, 0, 2] then your program should return 3 because the closest enemy (2) is 3 spaces away from the 1. The array will contain any number of 0's and 2's, but only a single 1. It may not contain any 2's at all as well, where in that case your program should return a 0.
+        var index = Array.IndexOf(arr, 1);
+        var left = index;
+        var right = index;
+        while (left >= 0 || right < arr.Length)
+        {
+            left--;
+            right++;
+            if (left >= 0 && arr[left] == 2) return index - left;
+            if (right < arr.Length && arr[right] == 2) return right - index;
+        }
+        return 0;
+        
+        
+
+    }
+    
+    
+    public static string EquivalentKeypresses(string[] strArr) {
+
+        //read the array of strings stored in strArr which will contain 2 strings representing two comma separated lists of keypresses. Your goal is to return the string true if the keypresses produce the same printable string and the string false if they do not. A keypress can be either a printable character or a backspace represented by -B. 
+        var first = new List<char>();
+        foreach (var key in strArr[0].Split(','))
+        {
+            if (key == "-B")
+            {
+                if (first.Count > 0) first.RemoveAt(first.Count - 1);
+            }
+            else
+            {
+                first.Add(key[0]);
+            }
+        }
+        var second = new List<char>();
+        foreach (var key in strArr[1].Split(','))
+        {
+            if (key == "-B")
+            {
+                if (second.Count > 0) second.RemoveAt(second.Count - 1);
+            }
+            else
+            {
+                second.Add(key[0]);
+            }
+        }
+        if (first.Count != second.Count) return "false";
+        if (first.Where((t, i) => t != second[i]).Any()){
+            return "false";
+        }
+        return first.SequenceEqual(second) ? "true" : "false";
+
+    }
+
+    public static bool ValidParentheses(string input)
+    {
+        // takes a string of parentheses, and determines if the order of the parentheses is valid where only ( and ) are valid parentheses and the brackets must close in the correct order.
+        
+        var stack = new Stack<char>();
+        foreach (var c in input)
+        {
+            if (c == '(')
+            {
+                stack.Push(c);
+            }
+            else if (c == ')')
+            {
+                if (stack.Count == 0 || stack.Pop() != '(') return false;
+            }
+        }
+        return stack.Count == 0;
+    }
+    
 }
 
 

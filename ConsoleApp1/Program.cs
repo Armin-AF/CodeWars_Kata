@@ -39,6 +39,10 @@ class Program
         
         var idk = Class1.PigIt("Pig latin is cool");
         Console.WriteLine(idk);
-
+        
+        
+        var testParnthesis = Class1.ValidParentheses("()[]{}");
+        Console.WriteLine(testParnthesis);
+        
     }
 }

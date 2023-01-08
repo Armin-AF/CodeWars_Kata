@@ -609,6 +609,12 @@ public static class Class1
         // takes a string and returns true if it's a valid pin or false if it's not. A valid pin has exactly 4 or 6 characters and only contains numerical characters (0-9).
         return pin.Length == 4 || pin.Length == 6 && pin.All(char.IsDigit);
     }
+    
+    public static bool IsIsogram(string str)
+    {
+        // takes a string and returns true if it is an isogram and false if not. An isogram is a word that has no repeating letters, consecutive or non-consecutive.
+        return str.ToLower().Distinct().Count() == str.Length;
+    }
 }
 
 

@@ -203,7 +203,7 @@ public static class Class1
         return (flower1 + flower2) % 2 == 1;
     }
     
-    public static bool XO (string input){
+    public static bool Xo (string input){
         var lowerInput = input.ToLower();
         var xCount = lowerInput.Count(c => c == 'x');
         var oCount = lowerInput.Count(c => c == 'o');
@@ -604,6 +604,11 @@ public static class Class1
         return stack.Count == 0;
     }
     
+    public static bool ValidatePin(string pin)
+    {
+        // takes a string and returns true if it's a valid pin or false if it's not. A valid pin has exactly 4 or 6 characters and only contains numerical characters (0-9).
+        return pin.Length == 4 || pin.Length == 6 && pin.All(char.IsDigit);
+    }
 }
 
 

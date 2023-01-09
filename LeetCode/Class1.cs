@@ -641,6 +641,12 @@ public static class Class1
         // takes an array of non-negative integers and returns an array consisting of all the even elements of the array, followed by all the odd elements of the array.
         return A.OrderBy(i => i % 2).ToArray();
     }
+    
+    public static string ReverseWordsAndRemoveVowels(string str)
+    {
+        // takes a string and returns a new string with all the vowels removed and the words in reverse order.
+        return string.Join(" ", str.Split(' ').Reverse().Select(s => new string(s.Where(c => !"aeiou".Contains(char.ToLower(c))).ToArray())));
+    }
 }
 
 

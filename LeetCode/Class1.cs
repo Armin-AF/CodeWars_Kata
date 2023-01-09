@@ -635,6 +635,12 @@ public static class Class1
         // takes an array containing integers and returns the average of the even numbers from the array. The array will never be empty and will only contain values that are greater than or equal to zero.
         return (float) array.Where(i => i % 2 == 0).Average();
     }
+    
+    public static int[] SortArrayByParity(int[] A)
+    {
+        // takes an array of non-negative integers and returns an array consisting of all the even elements of the array, followed by all the odd elements of the array.
+        return A.OrderBy(i => i % 2).ToArray();
+    }
 }
 
 

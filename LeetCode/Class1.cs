@@ -629,6 +629,12 @@ public static class Class1
         var even = array.Where(i => i % 2 == 0).OrderByDescending(i => i).ToList();
         return array.Select(i => i % 2 != 0 ? odd.First() : even.First()).ToArray();
     }
+    
+    public static float FindAverage(IEnumerable<int> array)
+    {
+        // takes an array containing integers and returns the average of the even numbers from the array. The array will never be empty and will only contain values that are greater than or equal to zero.
+        return (float) array.Where(i => i % 2 == 0).Average();
+    }
 }
 
 

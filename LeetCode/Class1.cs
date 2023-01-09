@@ -615,6 +615,20 @@ public static class Class1
         // takes a string and returns true if it is an isogram and false if not. An isogram is a word that has no repeating letters, consecutive or non-consecutive.
         return str.ToLower().Distinct().Count() == str.Length;
     }
+    
+    public static string[] GetStrings(string city)
+    {
+        // takes a city name and returns a string that shows how many times each letter shows up in the string by using an asterisk (*).
+        return city.ToLower().GroupBy(c => c).Select(g => $"{g.Key}:{new string('*', g.Count())}").ToArray();
+    }
+    
+    public static int[] SortArray(int[] array)
+    {
+        // takes an array of integers and returns a new array with the same numbers but in the following order: odd numbers sorted in ascending order, even numbers sorted in descending order.
+        var odd = array.Where(i => i % 2 != 0).OrderBy(i => i).ToList();
+        var even = array.Where(i => i % 2 == 0).OrderByDescending(i => i).ToList();
+        return array.Select(i => i % 2 != 0 ? odd.First() : even.First()).ToArray();
+    }
 }
 
 

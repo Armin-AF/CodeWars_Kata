@@ -647,6 +647,18 @@ public static class Class1
         // takes a string and returns a new string with all the vowels removed and the words in reverse order.
         return string.Join(" ", str.Split(' ').Reverse().Select(s => new string(s.Where(c => !"aeiou".Contains(char.ToLower(c))).ToArray())));
     }
+    
+    public static string CommonCharacterCount(string s1, string s2)
+    {
+        // takes two strings and returns the number of common characters between the two strings.
+        var count = 0;
+        var s2List = s2.ToList();
+        foreach (var c in s1.Where(c => s2List.Contains(c))){
+            count++;
+            s2List.Remove(c);
+        }
+        return count.ToString();
+    }
 }
 
 

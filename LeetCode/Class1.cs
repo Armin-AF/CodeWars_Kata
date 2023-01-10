@@ -659,6 +659,24 @@ public static class Class1
         }
         return count.ToString();
     }
+    
+    public static int[] ArrayReplace(IEnumerable<int> inputArray, int elemToReplace, int substitutionElem)
+    {
+        // takes an array of integers and replaces all the occurrences of elemToReplace with substitutionElem.
+        return inputArray.Select(i => i == elemToReplace ? substitutionElem : i).ToArray();
+    }
+    
+    public static int EvenNumbersBeforeFixed(IEnumerable<int> sequence, int fixedElement)
+    {
+        // takes an array of integers and returns the number of even integers that occur before the first occurrence of the number fixedElement in the array. If the sequence does not contain the number fixedElement, the function should return -1.
+        var count = 0;
+        foreach (var i in sequence)
+        {
+            if (i == fixedElement) return count;
+            if (i % 2 == 0) count++;
+        }
+        return -1;
+    }
 }
 
 

@@ -683,6 +683,12 @@ public static class Class1
         // takes two integers start and count and returns an array containing count numbers from start to start + count - 1.
         return Enumerable.Range(start, count);
     }
+    
+    public static int[] AlternatingSums(int[] a)
+    {
+        // takes an array of integers and returns an array of two integers, where the first element is the sum of all the even-indexed elements of the array, and the second element is the sum of all the odd-indexed elements of the array.
+        return new[] {a.Where((i, index) => index % 2 == 0).Sum(), a.Where((i, index) => index % 2 != 0).Sum()};
+    }
 }
 
 

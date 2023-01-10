@@ -677,6 +677,12 @@ public static class Class1
         }
         return -1;
     }
+    
+    public static IEnumerable<int> Range(int start, int count)
+    {
+        // takes two integers start and count and returns an array containing count numbers from start to start + count - 1.
+        return Enumerable.Range(start, count);
+    }
 }
 
 

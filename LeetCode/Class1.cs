@@ -714,6 +714,14 @@ public static class Class1
         return inputArray.Where((i, index) => (index + 1) % k != 0).ToArray();
     }
     
+    public static int[] FirstReverseTry(int[] arr)
+    {
+        // takes an array of integers and returns the same array with the first and last elements of the array swapped.
+        if (arr.Length == 0) return arr;
+        (arr[0], arr[^1]) = (arr[^1], arr[0]);
+        return arr;
+    }
+    
 }
 
 

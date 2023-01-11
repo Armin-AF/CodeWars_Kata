@@ -700,6 +700,12 @@ public static class Class1
         return result.Select(int.Parse).ToArray();
     }
     
+    public static string[] AllLongestStrings(string[] inputArray)
+    {
+        // takes an array of strings and returns another array containing all of its longest strings.
+        var maxLength = inputArray.Max(s => s.Length);
+        return inputArray.Where(s => s.Length == maxLength).ToArray();
+    }
     
 }
 

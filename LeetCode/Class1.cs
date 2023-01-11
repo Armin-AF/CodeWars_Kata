@@ -689,6 +689,18 @@ public static class Class1
         // takes an array of integers and returns an array of two integers, where the first element is the sum of all the even-indexed elements of the array, and the second element is the sum of all the odd-indexed elements of the array.
         return new[] {a.Where((i, index) => index % 2 == 0).Sum(), a.Where((i, index) => index % 2 != 0).Sum()};
     }
+    
+    public static int[] AddBorder(int[][] picture)
+    {
+        // takes a rectangular matrix of characters and adds a border of asterisks(*) to it.
+        var width = picture[0].Length + 2;
+        var result = new List<string> {new string('*', width)};
+        result.AddRange(picture.Select(row => "*" + string.Join("", row) + "*"));
+        result.Add(new string('*', width));
+        return result.Select(int.Parse).ToArray();
+    }
+    
+    
 }
 
 

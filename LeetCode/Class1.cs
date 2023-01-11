@@ -707,6 +707,13 @@ public static class Class1
         return inputArray.Where(s => s.Length == maxLength).ToArray();
     }
     
+    
+    public static int[] ExtractEachKth(IEnumerable<int> inputArray, int k)
+    {
+        // takes an array of integers and removes each kth element from it.
+        return inputArray.Where((i, index) => (index + 1) % k != 0).ToArray();
+    }
+    
 }
 
 

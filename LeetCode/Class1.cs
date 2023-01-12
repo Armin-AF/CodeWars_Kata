@@ -740,6 +740,12 @@ public static class Class1
         return inputArray.Where((i, index) => index < l || index > r).ToArray();
     }
     
+    public static string TakeParanthesesOut(string str)
+    {
+        // takes a string and returns a new string with all the parentheses removed.
+        return new string(str.Where(c => c != '(' && c != ')').ToArray());
+    }
+    
 }
 
 

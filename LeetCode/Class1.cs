@@ -722,6 +722,18 @@ public static class Class1
         return arr;
     }
     
+    public static string WordEnds(string str, string ending)
+    {
+        // takes a string and an ending and returns the sum of the number of times the ending appears in the string and the number of times the ending appears in the reverse of the string.
+        var count = 0;
+        for (var i = 0; i < str.Length - ending.Length + 1; i++){
+            if (str.Substring(i, ending.Length) != ending) continue;
+            count++;
+            i += ending.Length - 1;
+        }
+        return count.ToString();
+    }
+    
 }
 
 

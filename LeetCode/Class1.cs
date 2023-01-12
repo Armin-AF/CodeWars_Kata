@@ -734,6 +734,12 @@ public static class Class1
         return count.ToString();
     }
     
+    public static int[] RemoveArrayPart(IEnumerable<int> inputArray, int l, int r)
+    {
+        // takes an array of integers and removes each kth element from it.
+        return inputArray.Where((i, index) => index < l || index > r).ToArray();
+    }
+    
 }
 
 

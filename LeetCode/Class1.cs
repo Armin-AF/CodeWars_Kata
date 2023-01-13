@@ -746,6 +746,15 @@ public static class Class1
         return new string(str.Where(c => c != '(' && c != ')').ToArray());
     }
     
+    public static int[] ReplaceMiddle(int[] arr)
+    {
+        // takes an array of integers and replaces the middle element(s) with the product of their neighbors.
+        if (arr.Length % 2 != 0) return arr;
+        var middle = arr.Length / 2;
+        arr[middle - 1] *= arr[middle];
+        return arr.Take(middle).Concat(arr.Skip(middle + 1)).ToArray();
+    }
+    
 }
 
 

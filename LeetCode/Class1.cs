@@ -755,6 +755,12 @@ public static class Class1
         return arr.Take(middle).Concat(arr.Skip(middle + 1)).ToArray();
     }
     
+    public static string CountNumberOfGivenConsonants(string str)
+    {
+        // takes a string and returns the number of consonants in the string.
+        return str.Count(c => "bcdfghjklmnpqrstvwxyz".Contains(char.ToLower(c))).ToString();
+    }
+    
 }
 
 

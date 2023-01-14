@@ -761,6 +761,13 @@ public static class Class1
         return str.Count(c => "bcdfghjklmnpqrstvwxyz".Contains(char.ToLower(c))).ToString();
     }
     
+    public static Stack<int> ReverseStack(Stack<int> stack)
+    {
+        // takes a stack of integers and returns the same stack with the integers in reversed order.
+        var result = new Stack<int>();
+        while (stack.Count > 0) result.Push(stack.Pop());
+        return result;
+    }
 }
 
 

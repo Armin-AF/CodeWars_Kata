@@ -781,6 +781,25 @@ public static class Class1
         Array.Reverse(a);
         return a;
     }
+    
+    public static string MakeStringFromConsecutiveNumbers(int[] arr)
+    {
+        // takes an array of integers and returns a string that represents the numbers in the array as a range.
+        var result = new List<string>();
+        var start = arr[0];
+        var end = arr[0];
+        for (var i = 1; i < arr.Length; i++){
+            if (arr[i] == end + 1){
+                end = arr[i];
+                continue;
+            }
+            result.Add(start == end ? start.ToString() : $"{start}-{end}");
+            start = arr[i];
+            end = arr[i];
+        }
+        result.Add(start == end ? start.ToString() : $"{start}-{end}");
+        return string.Join(",", result);
+    }
 }
 
 

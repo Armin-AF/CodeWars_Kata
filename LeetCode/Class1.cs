@@ -808,6 +808,18 @@ public static class Class1
         var min = arr.Min();
         return arr.Where(i => i != min).ToArray();
     }
+    
+    public static Stack<int> RemoveSmallestFromStack(Stack<int> stack)
+    {
+        // takes a stack of integers and returns the same stack with the smallest integer removed.
+        var min = stack.Min();
+        var result = new Stack<int>();
+        while (stack.Count > 0){
+            var i = stack.Pop();
+            if (i != min) result.Push(i);
+        }
+        return result;
+    }
 }
 
 

@@ -800,6 +800,14 @@ public static class Class1
         result.Add(start == end ? start.ToString() : $"{start}-{end}");
         return string.Join(",", result);
     }
+    
+    public static int[] RemoveSmallest(int[] arr)
+    {
+        // takes an array of integers and returns the same array with the smallest integer removed.
+        if (arr.Length == 0) return arr;
+        var min = arr.Min();
+        return arr.Where(i => i != min).ToArray();
+    }
 }
 
 

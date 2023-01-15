@@ -820,6 +820,20 @@ public static class Class1
         }
         return result;
     }
+    
+    public static List<string> FindTheMirrorWords(string str)
+    {
+        // takes a string and returns a list of all the mirror words in the string.
+        var result = new List<string>();
+        var words = str.Split(" ");
+        for (var i = 0; i < words.Length - 1; i++){
+            var word = words[i];
+            var reversed = new string(word.Reverse().ToArray());
+            if (words[i + 1] == reversed) result.Add($"{word} <=> {reversed}");
+        }
+        return result;
+    }
+    
 }
 
 

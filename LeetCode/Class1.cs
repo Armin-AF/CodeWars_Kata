@@ -768,6 +768,19 @@ public static class Class1
         while (stack.Count > 0) result.Push(stack.Pop());
         return result;
     }
+    
+    public static int[] ReverseArray(int[] a)
+    {
+        // takes an array of integers and returns the same array with the integers in reversed order.
+        return a.Reverse().ToArray();
+    }
+    
+    public static int[] ReverseArrayInPlace(int[] a)
+    {
+        // takes an array of integers and returns the same array with the integers in reversed order.
+        Array.Reverse(a);
+        return a;
+    }
 }
 
 

@@ -834,6 +834,22 @@ public static class Class1
         return result;
     }
     
+    public static int[] SortByHeight(int[] a)
+    {
+        // takes an array of integers and returns the same array with the trees in their original positions and the people in ascending order.
+        var people = a.Where(i => i != -1).OrderBy(i => i).ToArray();
+        var result = new List<int>();
+        var j = 0;
+        foreach (var i in a){
+            if (i == -1) result.Add(-1);
+            else{
+                result.Add(people[j]);
+                j++;
+            }
+        }
+        return result.ToArray();
+    }
+    
 }
 
 

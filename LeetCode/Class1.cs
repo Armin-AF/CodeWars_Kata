@@ -891,6 +891,12 @@ public static class Class1
         return result;
     }
     
+    public static List<string> RemoveOddLengthStrings(List<string> list)
+    {
+        // takes a list of strings and returns the same list with all the strings of odd length removed.
+        return list.Where(s => s.Length % 2 == 0).ToList();
+    }
+
 }
 
 

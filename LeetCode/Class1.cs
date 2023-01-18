@@ -873,6 +873,24 @@ public static class Class1
         }
         return counts.Count(c => c.Value % 2 != 0) > 1 ? "NO" : "YES";
     }
+    
+    public static List<string> FindTheAnagrams(string str)
+    {
+        // takes a string and returns a list of all the anagrams in the string.
+        var result = new List<string>();
+        var words = str.Split(" ");
+        for (var i = 0; i < words.Length - 1; i++){
+            var word = words[i];
+            var sorted = new string(word.OrderBy(c => c).ToArray());
+            for (var j = i + 1; j < words.Length; j++){
+                var other = words[j];
+                var otherSorted = new string(other.OrderBy(c => c).ToArray());
+                if (sorted == otherSorted) result.Add($"{word} <=> {other}");
+            }
+        }
+        return result;
+    }
+    
 }
 
 

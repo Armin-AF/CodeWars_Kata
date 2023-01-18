@@ -862,6 +862,17 @@ public static class Class1
         }
         return a;
     }
+    
+    public static string GameOfThrones(string str)
+    {
+        // takes a string and returns "YES" if the string can be rearranged into a palindrome and "NO" if it cannot.
+        var counts = new Dictionary<char, int>();
+        foreach (var c in str){
+            if (counts.ContainsKey(c)) counts[c]++;
+            else counts[c] = 1;
+        }
+        return counts.Count(c => c.Value % 2 != 0) > 1 ? "NO" : "YES";
+    }
 }
 
 

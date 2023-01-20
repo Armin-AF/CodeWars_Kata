@@ -896,7 +896,19 @@ public static class Class1
         // takes a list of strings and returns the same list with all the strings of odd length removed.
         return list.Where(s => s.Length % 2 == 0).ToList();
     }
-
+    
+    public static List<int> AddTwoLists(List<int> list1, List<int> list2)
+    {
+        // takes two lists of integers and returns a list of integers where each integer is the sum of the integers at the same index in the two lists.
+        var result = new List<int>();
+        var max = Math.Max(list1.Count, list2.Count);
+        for (var i = 0; i < max; i++){
+            var a = i < list1.Count ? list1[i] : 0;
+            var b = i < list2.Count ? list2[i] : 0;
+            result.Add(a + b);
+        }
+        return result;
+    }
 }
 
 

@@ -926,6 +926,16 @@ public static class Class1
         }
         return result;
     }
+    
+    public static int UniqueSum(int a, int b, int c)
+    {
+        // takes three integers and returns the sum of the integers. If two values are the same, they do not count towards the sum.
+        var result = 0;
+        if (a != b && a != c) result += a;
+        if (b != a && b != c) result += b;
+        if (c != a && c != b) result += c;
+        return result;
+    }
 }
 
 

@@ -936,6 +936,18 @@ public static class Class1
         if (c != a && c != b) result += c;
         return result;
     }
+    
+    public static int MatrixSum(int[,] matrix)
+    {
+        // takes a 2D array of integers and returns the sum of all the integers in the array.
+        var result = 0;
+        for (var i = 0; i < matrix.GetLength(0); i++){
+            for (var j = 0; j < matrix.GetLength(1); j++){
+                result += matrix[i, j];
+            }
+        }
+        return result;
+    }
 }
 
 

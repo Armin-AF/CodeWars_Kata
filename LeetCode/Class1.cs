@@ -909,6 +909,12 @@ public static class Class1
         }
         return result;
     }
+    
+    public static List<double> AverageOfEachRow(IEnumerable<List<int>> list)
+    {
+        // takes a list of lists of integers and returns a list of floats where each float is the average of the integers in the list at the same index.
+        return list.Select(l => l.Average()).ToList();
+    }
 }
 
 

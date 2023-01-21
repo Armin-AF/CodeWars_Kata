@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Collections;
+using System.Text;
 using System.Linq;
 using System.Text.RegularExpressions;
 
@@ -914,6 +915,16 @@ public static class Class1
     {
         // takes a list of lists of integers and returns a list of floats where each float is the average of the integers in the list at the same index.
         return list.Select(l => l.Average()).ToList();
+    }
+    
+    public static ArrayList RemoveOddLengthStrings(ArrayList list)
+    {
+        // takes an ArrayList of strings and returns the same ArrayList with all the strings of odd length removed.
+        var result = new ArrayList();
+        foreach (var s in list){
+            if (s.ToString()!.Length % 2 == 0) result.Add(s);
+        }
+        return result;
     }
 }
 

@@ -948,6 +948,20 @@ public static class Class1
         }
         return result;
     }
+    
+    public static int[] Matrix2DTo1D(int[,] matrix)
+    {
+        // takes a 2D array of integers and returns a 1D array of integers where each integer is the sum of the integers in the row of the 2D array.
+        var result = new List<int>();
+        for (var i = 0; i < matrix.GetLength(0); i++){
+            var sum = 0;
+            for (var j = 0; j < matrix.GetLength(1); j++){
+                sum += matrix[i, j];
+            }
+            result.Add(sum);
+        }
+        return result.ToArray();
+    }
 }
 
 

@@ -914,48 +914,68 @@ public static class Class1
     public static int[] SnailSort(int[][] array){
         // Given an n x n array, return the array elements arranged from outermost elements to the middle element, traveling clockwise.
         int n = array.Length;
-            var result = new int[n * n];
-            int index = 0;
+        var result = new int[n * n];
+        int index = 0;
 
-            // Initialize boundaries for traversal
-            int top = 0;
-            int bottom = n - 1;
-            int left = 0;
-            int right = n - 1;
+        // Initialize boundaries for traversal
+        int top = 0;
+        int bottom = n - 1;
+        int left = 0;
+        int right = n - 1;
 
-            while (top <= bottom && left <= right) {
-                // Traverse top row from left to right
-                for (int i = left; i <= right; i++) {
-                    result[index++] = array[top][i];
-                }
-                top++;
-
-                // Traverse right column from top to bottom
-                for (int i = top; i <= bottom; i++) {
-                    result[index++] = array[i][right];
-                }
-                right--;
-
-                // Traverse bottom row from right to left (if top <= bottom)
-                if (top <= bottom) {
-                    for (int i = right; i >= left; i--) {
-                        result[index++] = array[bottom][i];
-                    }
-                    bottom--;
-                }
-
-                // Traverse left column from bottom to top (if left <= right)
-                if (left <= right) {
-                    for (int i = bottom; i >= top; i--) {
-                        result[index++] = array[i][left];
-                    }
-                    left++;
-                }
+        while (top <= bottom && left <= right){
+            // Traverse top row from left to right
+            for (int i = left; i <= right; i++){
+                result[index++] = array[top][i];
             }
 
-            return result;
+            top++;
+
+            // Traverse right column from top to bottom
+            for (int i = top; i <= bottom; i++){
+                result[index++] = array[i][right];
+            }
+
+            right--;
+
+            // Traverse bottom row from right to left (if top <= bottom)
+            if (top <= bottom){
+                for (int i = right; i >= left; i--){
+                    result[index++] = array[bottom][i];
+                }
+
+                bottom--;
+            }
+
+            // Traverse left column from bottom to top (if left <= right)
+            if (left <= right){
+                for (int i = bottom; i >= top; i--){
+                    result[index++] = array[i][left];
+                }
+
+                left++;
+            }
         }
+
+        return result;
     }
+
+    public static string[] FastestWayToFindAnagrams(string str){
+        // takes a string and returns an array of strings where each string is an anagram of the original string.
+        var result = new List<string>();
+        var words = str.Split(" ");
+        foreach (var word in words){
+            var sorted = new string(word.OrderBy(c => c).ToArray());
+            foreach (var other in words){
+                if (word == other) continue;
+                var otherSorted = new string(other.OrderBy(c => c).ToArray());
+                if (sorted == otherSorted) result.Add($"{word} <=> {other}");
+            }
+        }
+
+        return result.ToArray();
+    }
+}
 
 
 

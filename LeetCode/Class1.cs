@@ -962,18 +962,9 @@ public static class Class1
 
     public static string[] FastestWayToFindAnagrams(string str){
         // takes a string and returns an array of strings where each string is an anagram of the original string.
-        var result = new List<string>();
         var words = str.Split(" ");
-        foreach (var word in words){
-            var sorted = new string(word.OrderBy(c => c).ToArray());
-            foreach (var other in words){
-                if (word == other) continue;
-                var otherSorted = new string(other.OrderBy(c => c).ToArray());
-                if (sorted == otherSorted) result.Add($"{word} <=> {other}");
-            }
-        }
 
-        return result.ToArray();
+        return (from word in words let sorted = new string(word.OrderBy(c => c).ToArray()) from other in words where word != other let otherSorted = new string(other.OrderBy(c => c).ToArray()) where sorted == otherSorted select $"{word} <=> {other}").ToArray();
     }
 }
 

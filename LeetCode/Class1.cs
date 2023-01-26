@@ -966,6 +966,18 @@ public static class Class1
 
         return (from word in words let sorted = new string(word.OrderBy(c => c).ToArray()) from other in words where word != other let otherSorted = new string(other.OrderBy(c => c).ToArray()) where sorted == otherSorted select $"{word} <=> {other}").ToArray();
     }
+    
+    public static int[] FindTheMissingNumbers(int[] array){
+        // takes an array of integers and returns an array of integers where each integer is a number that is missing from the original array.
+        var result = new List<int>();
+        var max = array.Max();
+        for (var i = 1; i <= max; i++){
+            if (!array.Contains(i)) result.Add(i);
+        }
+
+        return result.ToArray();
+    }
+    
 }
 
 

@@ -1000,6 +1000,19 @@ public static class Class1
 
         return -1;
     }
+    
+    public static string FindTheThreeLongestWords(string str){
+        // takes a string and returns the three longest words in the string.
+        var words = str.Split(" ");
+        var result = new List<string>();
+        for (var i = 0; i < 3; i++){
+            var longest = words.OrderByDescending(w => w.Length).First();
+            result.Add(longest);
+            words = words.Where(w => w != longest).ToArray();
+        }
+
+        return string.Join(" ", result);
+    }
 
 }
 

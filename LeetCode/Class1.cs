@@ -978,6 +978,29 @@ public static class Class1
         return result.ToArray();
     }
     
+    public static int BreadthFirstSearch(int[,] graph, int start, int end){
+        // takes a graph and two integers and returns the shortest path between the two integers.
+        var queue = new Queue<int>();
+        var visited = new HashSet<int>();
+        var distances = new Dictionary<int, int>();
+        queue.Enqueue(start);
+        visited.Add(start);
+        distances[start] = 0;
+        while (queue.Count > 0){
+            var current = queue.Dequeue();
+            if (current == end) return distances[current];
+            for (var i = 0; i < graph.GetLength(0); i++){
+                if (graph[current, i] == 1 && !visited.Contains(i)){
+                    queue.Enqueue(i);
+                    visited.Add(i);
+                    distances[i] = distances[current] + 1;
+                }
+            }
+        }
+
+        return -1;
+    }
+
 }
 
 

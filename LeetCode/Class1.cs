@@ -1013,6 +1013,11 @@ public static class Class1
 
         return string.Join(" ", result);
     }
+    
+    public static IEnumerable<int> ShiftArray(int[] array, int shift){
+        // takes an array of integers and an integer and returns an array of integers where each integer is the original integer shifted by the integer.
+        return array.Select(i => i + shift);
+    }
 
 }
 

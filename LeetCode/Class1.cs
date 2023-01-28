@@ -1018,6 +1018,11 @@ public static class Class1
         // takes an array of integers and an integer and returns an array of integers where each integer is the original integer shifted by the integer.
         return array.Select(i => i + shift);
     }
+    
+    public static IEnumerable<int> SubArray(int[] array, int start, int end){
+        // takes an array of integers and two integers and returns an array of integers where each integer is an integer from the original array between the two integers.
+        return array.Skip(start).Take(end - start + 1);
+    }
 
 }
 

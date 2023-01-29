@@ -1023,6 +1023,13 @@ public static class Class1
         // takes an array of integers and two integers and returns an array of integers where each integer is an integer from the original array between the two integers.
         return array.Skip(start).Take(end - start + 1);
     }
+    
+    public static IEnumerable<string> FindTheLongestWords(string str){
+        // takes a string and returns an array of strings where each string is a word from the original string that is the longest word in the original string.
+        var words = str.Split(" ");
+        var longest = words.OrderByDescending(w => w.Length).First();
+        return words.Where(w => w.Length == longest.Length);
+    }
 
 }
 

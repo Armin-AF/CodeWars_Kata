@@ -1030,6 +1030,16 @@ public static class Class1
         var longest = words.OrderByDescending(w => w.Length).First();
         return words.Where(w => w.Length == longest.Length);
     }
+    
+    public static float PieNumberCalculation(int n){
+        // takes an integer and returns the value of pi using the Gregory-Leibniz series.
+        var result = 0f;
+        for (var i = 0; i < n; i++){
+            result += (float) Math.Pow(-1, i) / (2 * i + 1);
+        }
+
+        return result * 4;
+    }
 
 }
 

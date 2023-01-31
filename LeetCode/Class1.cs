@@ -1040,6 +1040,16 @@ public static class Class1
 
         return result * 4;
     }
+    
+    public static float DimensionalCalculation(int n){
+        // takes an integer and returns the value of pi using the Nilakantha series.
+        var result = 3f;
+        for (var i = 0; i < n; i++){
+            result += (float) Math.Pow(-1, i) * 4 / (2 * i + 2) / (2 * i + 3) / (2 * i + 4);
+        }
+
+        return result;
+    }
 
 }
 

@@ -1050,6 +1050,16 @@ public static class Class1
 
         return result;
     }
+    
+    public static float IntegralCalculation(int n){
+        // takes an integer and returns the value of pi using the Ramanujan series.
+        var result = 0f;
+        for (var i = 0; i < n; i++){
+            result += (float) (Math.Pow(4, i) * Math.Pow(1103 + 26390 * i, 1 / 4f) / (Math.Pow(99, 4 * i) * Math.Pow(396, i)));
+        }
+
+        return 1 / result;
+    }
 
 }
 

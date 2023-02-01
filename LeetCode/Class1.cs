@@ -1060,6 +1060,12 @@ public static class Class1
 
         return 1 / result;
     }
+    
+    public static string EmailValidation(string email){
+        // takes an email address and returns a string that indicates whether the email address is valid or invalid.
+        var regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+        return regex.IsMatch(email) ? "Valid" : "Invalid";
+    }
 
 }
 

@@ -1072,6 +1072,13 @@ public static class Class1
         var regex = new Regex(@"^(\d{3})\D*(\d{3})\D*(\d{4})\D*(\d*)$");
         return regex.IsMatch(phone) ? "Valid" : "Invalid";
     }
+    
+    public static int Febonacci(int n){
+        // takes an integer and returns the nth number in the Fibonacci sequence.
+        if (n == 0) return 0;
+        if (n == 1) return 1;
+        return Febonacci(n - 1) + Febonacci(n - 2);
+    }
 
 }
 

@@ -1066,6 +1066,12 @@ public static class Class1
         var regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
         return regex.IsMatch(email) ? "Valid" : "Invalid";
     }
+    
+    public static string PhoneValidation(string phone){
+        // takes a phone number and returns a string that indicates whether the phone number is valid or invalid.
+        var regex = new Regex(@"^(\d{3})\D*(\d{3})\D*(\d{4})\D*(\d*)$");
+        return regex.IsMatch(phone) ? "Valid" : "Invalid";
+    }
 
 }
 

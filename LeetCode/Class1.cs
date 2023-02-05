@@ -1101,6 +1101,11 @@ public static class Class1
         // takes an integer and returns the sum of the digits of the nth number in the Fibonacci sequence.
         return SumOfDigits(Febonacci(n));
     }
+    
+    public static int SumOfDigitsOfFebonacciFactorial(int n){
+        // takes an integer and returns the sum of the digits of the factorial of the nth number in the Fibonacci sequence.
+        return SumOfDigits(Factorial(Febonacci(n)));
+    }
 
 }
 

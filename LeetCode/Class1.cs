@@ -1091,6 +1091,11 @@ public static class Class1
         if (n == 0) return 0;
         return n % 10 + SumOfDigits(n / 10);
     }
+    
+    public static int SumOfDigitsOfFactorial(int n){
+        // takes an integer and returns the sum of the digits of the factorial of the integer.
+        return SumOfDigits(Factorial(n));
+    }
 
 }
 

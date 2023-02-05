@@ -1096,6 +1096,11 @@ public static class Class1
         // takes an integer and returns the sum of the digits of the factorial of the integer.
         return SumOfDigits(Factorial(n));
     }
+    
+    public static int SumOfDigitsOfFebonacci(int n){
+        // takes an integer and returns the sum of the digits of the nth number in the Fibonacci sequence.
+        return SumOfDigits(Febonacci(n));
+    }
 
 }
 

@@ -1079,6 +1079,18 @@ public static class Class1
         if (n == 1) return 1;
         return Febonacci(n - 1) + Febonacci(n - 2);
     }
+    
+    public static int Factorial(int n){
+        // takes an integer and returns the factorial of the integer.
+        if (n == 0) return 1;
+        return n * Factorial(n - 1);
+    }
+    
+    public static int SumOfDigits(int n){
+        // takes an integer and returns the sum of the digits of the integer.
+        if (n == 0) return 0;
+        return n % 10 + SumOfDigits(n / 10);
+    }
 
 }
 

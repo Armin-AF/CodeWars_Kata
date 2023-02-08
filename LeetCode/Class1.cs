@@ -1118,6 +1118,30 @@ public static class Class1
         result += n;
         return int.Parse(result);
     }
+    
+    public static int CreateCardNumberWithLuhn(int n){
+        // takes an integer and returns a credit card number with the integer as the last four digits and the credit card number passes the Luhn test.
+        var random = new Random();
+        var result = "";
+        for (var i = 0; i < 15; i++){
+            result += random.Next(0, 9);
+        }
+
+        result += n;
+        var sum = 0;
+        for (var i = 0; i < result.Length; i++){
+            var digit = int.Parse(result[i].ToString());
+            if (i % 2 == 0){
+                digit *= 2;
+                if (digit > 9) digit -= 9;
+            }
+
+            sum += digit;
+        }
+
+        var checkDigit = (10 - sum % 10) % 10;
+        return int.Parse(result + checkDigit);
+    }
 
 }
 

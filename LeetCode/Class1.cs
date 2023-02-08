@@ -1106,6 +1106,18 @@ public static class Class1
         // takes an integer and returns the sum of the digits of the factorial of the nth number in the Fibonacci sequence.
         return SumOfDigits(Factorial(Febonacci(n)));
     }
+    
+    public static int CreateCardNumber(int n){
+        // takes an integer and returns a credit card number with the integer as the last four digits.
+        var random = new Random();
+        var result = "";
+        for (var i = 0; i < 15; i++){
+            result += random.Next(0, 9);
+        }
+
+        result += n;
+        return int.Parse(result);
+    }
 
 }
 

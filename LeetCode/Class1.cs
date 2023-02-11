@@ -1190,6 +1190,30 @@ public static class Class1
         var checkDigit = (10 - sum % 10) % 10;
         return int.Parse(result + checkDigit);
     }
+    
+    public static int CreateCardNumberWithLuhnAndPrefixAndLengthAndCount(int n, int prefix, int length, int count){
+        // takes an integer, a prefix, a length, and a count and returns a credit card number with the integer as the last four digits, the credit card number passes the Luhn test, the credit card number starts with the prefix, the credit card number has the length, and the credit card number has the count.
+        var random = new Random();
+        var result = prefix.ToString();
+        for (var i = 0; i < length - prefix.ToString().Length - 1 - count.ToString().Length; i++){
+            result += random.Next(0, 9);
+        }
+
+        result += count + n;
+        var sum = 0;
+        for (var i = 0; i < result.Length; i++){
+            var digit = int.Parse(result[i].ToString());
+            if (i % 2 == 0){
+                digit *= 2;
+                if (digit > 9) digit -= 9;
+            }
+
+            sum += digit;
+        }
+
+        var checkDigit = (10 - sum % 10) % 10;
+        return int.Parse(result + checkDigit);
+    }
 
 }
 

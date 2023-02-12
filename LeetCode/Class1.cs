@@ -1263,6 +1263,42 @@ public static class Class1
 
         return result;
     }
+    
+    public static string PokerHand(){
+        // returns a string that represents a random poker hand.
+        var random = new Random();
+        var result = "";
+        for (var i = 0; i < 5; i++){
+            var number = random.Next(0, 13);
+            result += number switch{
+                0 => "A",
+                1 => "2",
+                2 => "3",
+                3 => "4",
+                4 => "5",
+                5 => "6",
+                6 => "7",
+                7 => "8",
+                8 => "9",
+                9 => "10",
+                10 => "J",
+                11 => "Q",
+                12 => "K",
+                _ => ""
+            };
+
+            number = random.Next(0, 4);
+            result += number switch{
+                0 => "♠",
+                1 => "♥",
+                2 => "♦",
+                3 => "♣",
+                _ => ""
+            };
+        }
+
+        return result;
+    }
 
 }
 

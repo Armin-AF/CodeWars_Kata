@@ -1214,6 +1214,20 @@ public static class Class1
         var checkDigit = (10 - sum % 10) % 10;
         return int.Parse(result + checkDigit);
     }
+    
+    public static string TicTacToe(){
+        // returns a string that represents a random tic-tac-toe board.
+        var random = new Random();
+        var result = "";
+        for (var i = 0; i < 9; i++){
+            var number = random.Next(0, 3);
+            if (number == 0) result += "X";
+            else if (number == 1) result += "O";
+            else result += " ";
+        }
+
+        return result;
+    }
 
 }
 

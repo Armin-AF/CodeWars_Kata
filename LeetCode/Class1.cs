@@ -2,6 +2,7 @@
 using System.Text;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System;
 
 namespace LeetCode;
 
@@ -1224,6 +1225,40 @@ public static class Class1
             if (number == 0) result += "X";
             else if (number == 1) result += "O";
             else result += " ";
+        }
+
+        return result;
+    }
+    
+    public static string TicTacToeWithWinner(){
+        // returns a string that represents a random tic-tac-toe board with a winner.
+        var random = new Random();
+        var result = "";
+        for (var i = 0; i < 9; i++){
+            var number = random.Next(0, 3);
+            result += number switch{
+                0 => "X",
+                1 => "O",
+                _ => " "
+            };
+        }
+
+        var winner = random.Next(0, 2);
+        if (winner == 0){
+            var number = random.Next(0, 3);
+            result = number switch{
+                0 => string.Concat("XXX", result.AsSpan(3)),
+                1 => string.Concat(result.AsSpan(0, 3), "XXX", result.AsSpan(6)),
+                _ => string.Concat(result.AsSpan(0, 6), "XXX")
+            };
+        }
+        else{
+            var number = random.Next(0, 3);
+            result = number switch{
+                0 => string.Concat("OOO", result.AsSpan(3)),
+                1 => string.Concat(result.AsSpan(0, 3), "OOO", result.AsSpan(6)),
+                _ => string.Concat(result.AsSpan(0, 6), "OOO")
+            };
         }
 
         return result;

@@ -1299,6 +1299,16 @@ public static class Class1
 
         return result;
     }
+    
+    public static int[] ArrayOfMultiples(int number, int length){
+        // takes a number and a length and returns an array of multiples of the number up to the specified length.
+        var result = new int[length];
+        for (var i = 0; i < length; i++){
+            result[i] = number * (i + 1);
+        }
+
+        return result;
+    }
 
 }
 

@@ -1361,6 +1361,25 @@ public static class Class1
 
         return result;
     }
+    
+    public static string[] PossibleTextCombinations(string[] array){
+        // takes an array of strings and returns an array of strings with all possible combinations of the strings in the array.
+        var result = new string[(int)Math.Pow(2, array.Length)];
+        for (var i = 0; i < result.Length; i++){
+            var number = i;
+            var index = 0;
+            while (number > 0){
+                if (number % 2 == 1){
+                    result[i] += array[index];
+                }
+
+                number /= 2;
+                index++;
+            }
+        }
+
+        return result;
+    }
 
 }
 

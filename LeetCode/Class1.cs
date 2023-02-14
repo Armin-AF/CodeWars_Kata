@@ -1349,6 +1349,18 @@ public static class Class1
 
         return result;
     }
+    
+    public static string[] TranslateToPigLatin(string[] array){
+        // takes an array of strings and returns an array of strings with each string translated to pig latin.
+        var result = new string[array.Length];
+        for (var i = 0; i < array.Length; i++){
+            var first = array[i][0];
+            var last = array[i][array[i].Length - 1];
+            result[i] = last + array[i].Substring(1, array[i].Length - 2) + first + "ay";
+        }
+
+        return result;
+    }
 
 }
 

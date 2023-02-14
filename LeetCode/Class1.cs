@@ -1309,6 +1309,34 @@ public static class Class1
 
         return result;
     }
+    
+    public static string[] ArticleMaker(){
+        // returns an array of strings that represents a random article.
+        var random = new Random();
+        var result = new string[3];
+        var number = random.Next(0, 3);
+        result[0] = number switch{
+            0 => "a",
+            1 => "an",
+            _ => "the"
+        };
+
+        number = random.Next(0, 3);
+        result[1] = number switch{
+            0 => "big",
+            1 => "small",
+            _ => "medium"
+        };
+
+        number = random.Next(0, 3);
+        result[2] = number switch{
+            0 => "dog",
+            1 => "cat",
+            _ => "mouse"
+        };
+
+        return result;
+    }
 
 }
 

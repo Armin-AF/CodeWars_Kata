@@ -1406,9 +1406,7 @@ public static class Class1
             }
         }
 
-        var temp = result[0];
-        result[0] = result[^1];
-        result[^1] = temp;
+        (result[0], result[^1]) = (result[^1], result[0]);
 
         return result;
     }

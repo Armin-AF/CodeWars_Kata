@@ -1395,6 +1395,23 @@ public static class Class1
 
         return result;
     }
+    
+    public static int[][] SwapTwoRows(int[][] array){
+        // takes a 2D array of integers and returns a 2D array of integers with the first and last rows swapped.
+        var result = new int[array.Length][];
+        for (var i = 0; i < array.Length; i++){
+            result[i] = new int[array[i].Length];
+            for (var j = 0; j < array[i].Length; j++){
+                result[i][j] = array[i][j];
+            }
+        }
+
+        var temp = result[0];
+        result[0] = result[^1];
+        result[^1] = temp;
+
+        return result;
+    }
 
 }
 

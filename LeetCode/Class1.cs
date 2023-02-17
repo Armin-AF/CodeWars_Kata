@@ -1410,6 +1410,28 @@ public static class Class1
 
         return result;
     }
+    
+    public static Stack<string> StackOfPossibilities(string[] array){
+        // takes an array of strings and returns a stack of strings with all possible combinations of the strings in the array.
+        var result = new Stack<string>();
+        for (var i = 0; i < (int)Math.Pow(2, array.Length); i++){
+            var number = i;
+            var index = 0;
+            var temp = "";
+            while (number > 0){
+                if (number % 2 == 1){
+                    temp += array[index];
+                }
+
+                number /= 2;
+                index++;
+            }
+
+            result.Push(temp);
+        }
+
+        return result;
+    }
 
 }
 

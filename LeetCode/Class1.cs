@@ -1454,6 +1454,16 @@ public static class Class1
 
         return result;
     }
+    
+    public static Dictionary<string, int> DictionaryOfMultiples(int number, int length){
+        // takes a number and a length and returns a dictionary of multiples of the number up to the specified length.
+        var result = new Dictionary<string, int>();
+        for (var i = 0; i < length; i++){
+            result.Add((i + 1).ToString(), number * (i + 1));
+        }
+
+        return result;
+    }
 
 }
 

@@ -1432,6 +1432,28 @@ public static class Class1
 
         return result;
     }
+    
+    public static Queue<string> QueueOfPossibilities(string[] array){
+        // takes an array of strings and returns a queue of strings with all possible combinations of the strings in the array.
+        var result = new Queue<string>();
+        for (var i = 0; i < (int)Math.Pow(2, array.Length); i++){
+            var number = i;
+            var index = 0;
+            var temp = "";
+            while (number > 0){
+                if (number % 2 == 1){
+                    temp += array[index];
+                }
+
+                number /= 2;
+                index++;
+            }
+
+            result.Enqueue(temp);
+        }
+
+        return result;
+    }
 
 }
 

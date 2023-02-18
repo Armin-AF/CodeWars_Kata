@@ -1464,6 +1464,21 @@ public static class Class1
 
         return result;
     }
+    
+    public static float[] HecksMethod(int[][] array){
+        // takes a 2D array of integers and returns an array of floats with the average of each row.
+        var result = new float[array.Length];
+        for (var i = 0; i < array.Length; i++){
+            var sum = 0;
+            for (var j = 0; j < array[i].Length; j++){
+                sum += array[i][j];
+            }
+
+            result[i] = (float)sum / array[i].Length;
+        }
+
+        return result;
+    }
 
 }
 

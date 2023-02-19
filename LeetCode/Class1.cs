@@ -1479,6 +1479,21 @@ public static class Class1
 
         return result;
     }
+    
+    public static string GuessTheNumber(int number){
+        // takes a number and returns a string that represents the number guessed by the computer.
+        var random = new Random();
+        var result = "";
+        var guess = random.Next(0, 100);
+        while (guess != number){
+            result += guess + ", ";
+            guess = random.Next(0, 100);
+        }
+
+        result += guess;
+
+        return result;
+    }
 
 }
 

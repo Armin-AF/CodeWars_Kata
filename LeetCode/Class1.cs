@@ -1494,6 +1494,16 @@ public static class Class1
 
         return result;
     }
+    
+    public static string[] SwapTWithD(string[] array){
+        // takes an array of strings and returns an array of strings with all instances of the letter t swapped with the letter d.
+        var result = new string[array.Length];
+        for (var i = 0; i < array.Length; i++){
+            result[i] = array[i].Replace('t', 'd');
+        }
+
+        return result;
+    }
 
 }
 

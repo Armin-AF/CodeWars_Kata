@@ -1504,6 +1504,16 @@ public static class Class1
 
         return result;
     }
+    
+    public static string[] SwapNumbersWithWords(string[] array){
+        // takes an array of strings and returns an array of strings with all instances of numbers swapped with the corresponding word.
+        var result = new string[array.Length];
+        for (var i = 0; i < array.Length; i++){
+            result[i] = array[i].Replace('0', 'o').Replace('1', 'i').Replace('2', 't').Replace('3', 'e').Replace('4', 'a').Replace('5', 's').Replace('6', 'g').Replace('7', 't').Replace('8', 'b').Replace('9', 'g');
+        }
+
+        return result;
+    }
 
 }
 

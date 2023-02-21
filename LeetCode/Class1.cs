@@ -1514,6 +1514,32 @@ public static class Class1
 
         return result;
     }
+    
+    public static int PasswordStrength(string password){
+        // takes a string and returns an integer that represents the strength of the password.
+        var result = 0;
+        if (password.Length >= 8){
+            result++;
+        }
+
+        if (password.Any(char.IsUpper)){
+            result++;
+        }
+
+        if (password.Any(char.IsLower)){
+            result++;
+        }
+
+        if (password.Any(char.IsDigit)){
+            result++;
+        }
+
+        if (password.Any(char.IsSymbol)){
+            result++;
+        }
+
+        return result;
+    }
 
 }
 

@@ -1543,14 +1543,15 @@ public static class Class1
     
     public static int DataBank(string[] array){
         // takes an array of strings and returns an integer that represents the number of times the string "data" appears in the array.
-        var result = 0;
-        for (var i = 0; i < array.Length; i++){
-            if (array[i].Contains("data")){
-                result++;
-            }
-        }
 
-        return result;
+        return array.Count(t => t.Contains("data"));
+    }
+    
+    public static List<int> TelephoneNumbers(string[] array){
+        // takes an array of strings and returns a list of integers that represents the telephone numbers in the array.
+
+        return (from t in array select t.Where(char.IsDigit).Aggregate("", (current, c) 
+            => current + c) into temp where temp.Length == 10 select int.Parse(temp)).ToList();
     }
 
 }

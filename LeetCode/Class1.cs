@@ -1540,6 +1540,18 @@ public static class Class1
 
         return result;
     }
+    
+    public static int DataBank(string[] array){
+        // takes an array of strings and returns an integer that represents the number of times the string "data" appears in the array.
+        var result = 0;
+        for (var i = 0; i < array.Length; i++){
+            if (array[i].Contains("data")){
+                result++;
+            }
+        }
+
+        return result;
+    }
 
 }
 

@@ -1553,6 +1553,21 @@ public static class Class1
         return (from t in array select t.Where(char.IsDigit).Aggregate("", (current, c) 
             => current + c) into temp where temp.Length == 10 select int.Parse(temp)).ToList();
     }
+    
+    public static ArrayList[] SortByColumn(int[][] array, int column){
+        // takes a 2D array of integers and a column number and returns an array of array lists with the rows sorted by the specified column.
+        var result = new ArrayList[array.Length];
+        for (var i = 0; i < array.Length; i++){
+            result[i] = new ArrayList();
+            for (var j = 0; j < array[i].Length; j++){
+                result[i].Add(array[i][j]);
+            }
+        }
+
+        Array.Sort(result, (a, b) => (int)a[column] - (int)b[column]);
+
+        return result;
+    }
 
 }
 

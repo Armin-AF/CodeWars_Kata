@@ -1587,6 +1587,18 @@ public static class Class1
 
         return result;
     }
+    
+    public static int BreakTheCode(string code){
+        // takes a string and returns an integer that represents the number of times the string "code" appears in the string.
+        var result = 0;
+        for (var i = 0; i < code.Length - 3; i++){
+            if (code.Substring(i, 4) == "code"){
+                result++;
+            }
+        }
+
+        return result;
+    }
 
 }
 

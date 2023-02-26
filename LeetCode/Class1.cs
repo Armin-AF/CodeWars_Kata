@@ -1599,6 +1599,17 @@ public static class Class1
 
         return result;
     }
+    
+    public static int CustomIndexOf(string[] array, string value){
+        // takes an array of strings and a string and returns an integer that represents the index of the string in the array.
+        for (var i = 0; i < array.Length; i++){
+            if (array[i] == value){
+                return i;
+            }
+        }
+
+        return -1;
+    }
 
 }
 

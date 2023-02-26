@@ -1568,6 +1568,25 @@ public static class Class1
 
         return result;
     }
+    
+    public static ArrayList[] Shuffle(int[][] array){
+        // takes a 2D array of integers and returns an array of array lists with the rows shuffled.
+        var result = new ArrayList[array.Length];
+        for (var i = 0; i < array.Length; i++){
+            result[i] = new ArrayList();
+            for (var j = 0; j < array[i].Length; j++){
+                result[i].Add(array[i][j]);
+            }
+        }
+
+        var random = new Random();
+        for (var i = 0; i < result.Length; i++){
+            var index = random.Next(0, result.Length);
+            (result[i], result[index]) = (result[index], result[i]);
+        }
+
+        return result;
+    }
 
 }
 

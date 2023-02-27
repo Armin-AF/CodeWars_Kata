@@ -1622,6 +1622,12 @@ public static class Class1
 
         return result.ToArray();
     }
+    
+    public static float OctalToDecimal(string octal){
+        // takes a string and returns a float that represents the decimal value of the octal number.
+
+        return octal.Select((t, i) => (float) char.GetNumericValue(t) * (float) Math.Pow(8, octal.Length - i - 1)).Sum();
+    }
 
 }
 

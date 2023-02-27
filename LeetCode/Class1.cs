@@ -1628,6 +1628,17 @@ public static class Class1
 
         return octal.Select((t, i) => (float) char.GetNumericValue(t) * (float) Math.Pow(8, octal.Length - i - 1)).Sum();
     }
+    
+    public static string DecimalToOctal(float number){
+        // takes a float and returns a string that represents the octal value of the decimal number.
+        var result = "";
+        while (number > 0){
+            result = (number % 8) + result;
+            number /= 8;
+        }
+
+        return result;
+    }
 
 }
 

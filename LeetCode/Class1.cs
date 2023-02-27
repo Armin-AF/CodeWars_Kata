@@ -1610,6 +1610,18 @@ public static class Class1
 
         return -1;
     }
+    
+    public static int[] CustomIndexOfAll(string[] array, string value){
+        // takes an array of strings and a string and returns an array of integers that represents the indexes of the string in the array.
+        var result = new List<int>();
+        for (var i = 0; i < array.Length; i++){
+            if (array[i] == value){
+                result.Add(i);
+            }
+        }
+
+        return result.ToArray();
+    }
 
 }
 

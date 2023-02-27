@@ -1639,6 +1639,25 @@ public static class Class1
 
         return result;
     }
+    
+    public static string[] CustomSplit(string text, char separator){
+        // takes a string and a character and returns an array of strings that represents the string split by the character.
+        var result = new List<string>();
+        var temp = "";
+        foreach (var t in text){
+            if (t == separator){
+                result.Add(temp);
+                temp = "";
+            }
+            else{
+                temp += t;
+            }
+        }
+
+        result.Add(temp);
+
+        return result.ToArray();
+    }
 
 }
 

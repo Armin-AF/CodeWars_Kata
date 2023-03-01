@@ -1658,6 +1658,19 @@ public static class Class1
 
         return result.ToArray();
     }
+    
+    public static char[][] DrawTriangle(int size){
+        // takes an integer and returns a 2D array of characters that represents a triangle with the specified size.
+        var result = new char[size][];
+        for (var i = 0; i < size; i++){
+            result[i] = new char[i + 1];
+            for (var j = 0; j < i + 1; j++){
+                result[i][j] = '*';
+            }
+        }
+
+        return result;
+    }
 
 }
 

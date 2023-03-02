@@ -1671,6 +1671,19 @@ public static class Class1
 
         return result;
     }
+    
+    public static char[][] DrawSquare(int size){
+        // takes an integer and returns a 2D array of characters that represents a square with the specified size.
+        var result = new char[size][];
+        for (var i = 0; i < size; i++){
+            result[i] = new char[size];
+            for (var j = 0; j < size; j++){
+                result[i][j] = '*';
+            }
+        }
+
+        return result;
+    }
 
 }
 

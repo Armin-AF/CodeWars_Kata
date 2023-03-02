@@ -1684,6 +1684,12 @@ public static class Class1
 
         return result;
     }
+    
+    public static int[] BinaryTreeBottom(int[] array){
+        // takes an array of integers and returns an array of integers that represents the bottom row of a binary tree with the specified values.
+
+        return array.Where((t, i) => i * 2 + 1 >= array.Length).ToArray();
+    }
 
 }
 

@@ -1690,6 +1690,24 @@ public static class Class1
 
         return array.Where((t, i) => i * 2 + 1 >= array.Length).ToArray();
     }
+    
+    public static int[] BinaryTreeTop(int[] array){
+        // takes an array of integers and returns an array of integers that represents the top row of a binary tree with the specified values.
+
+        return array.Where((t, i) => i == 0 || i % 2 == 0).ToArray();
+    }
+    
+    public static int[] BinaryTreeLeft(int[] array){
+        // takes an array of integers and returns an array of integers that represents the left column of a binary tree with the specified values.
+
+        return array.Where((t, i) => i % 2 == 0).ToArray();
+    }
+    
+    public static int[] BinaryTreeRight(int[] array){
+        // takes an array of integers and returns an array of integers that represents the right column of a binary tree with the specified values.
+
+        return array.Where((t, i) => i % 2 == 1).ToArray();
+    }
 
 }
 

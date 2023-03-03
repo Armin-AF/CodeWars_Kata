@@ -1708,6 +1708,24 @@ public static class Class1
 
         return array.Where((t, i) => i % 2 == 1).ToArray();
     }
+    
+    public static int[] BinaryTreeLeftDiagonal(int[] array){
+        // takes an array of integers and returns an array of integers that represents the left diagonal of a binary tree with the specified values.
+
+        return array.Where((t, i) => i % 2 == 0 && i * 2 + 1 < array.Length).ToArray();
+    }
+    
+    public static int[] BinaryTreeRightDiagonal(int[] array){
+        // takes an array of integers and returns an array of integers that represents the right diagonal of a binary tree with the specified values.
+
+        return array.Where((t, i) => i % 2 == 1 && i * 2 + 2 < array.Length).ToArray();
+    }
+    
+    public static int[] BinaryTreeDiagonal(int[] array){
+        // takes an array of integers and returns an array of integers that represents the diagonal of a binary tree with the specified values.
+
+        return array.Where((t, i) => i * 2 + 1 < array.Length).ToArray();
+    }
 
 }
 

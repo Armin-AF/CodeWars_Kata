@@ -1726,6 +1726,19 @@ public static class Class1
 
         return array.Where((t, i) => i * 2 + 1 < array.Length).ToArray();
     }
+    
+    public static int[] BinaryTreeOptimal(int[] array){
+        // takes an array of integers and returns an array of integers that represents the optimal path of a binary tree with the specified values.
+
+        var result = new List<int>();
+        var index = 0;
+        while (index < array.Length){
+            result.Add(array[index]);
+            index = array[index * 2 + 1] > array[index * 2 + 2] ? index * 2 + 1 : index * 2 + 2;
+        }
+
+        return result.ToArray();
+    }
 
 }
 

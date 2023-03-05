@@ -1744,6 +1744,31 @@ public static class Class1
         // takes an array of integers and returns an integer that represents the sum of all the even numbers in the array.
         return array.Where(t => t % 2 == 0).Sum();
     }
+    
+    public static bool IsPalindrome(string text){
+        // takes a string and returns a boolean that represents whether the string is a palindrome or not.
+        return text == new string(text.Reverse().ToArray());
+    }
+    
+    public static int LargestMultipleOfThree(int[] nums){
+        // takes an array of integers and returns an integer that represents the largest multiple of three that can be made from the array.
+        var largestProduct = 0;
+
+        // Sort the array in descending order
+        Array.Sort(nums);
+        Array.Reverse(nums);
+
+        // Check the largest product of the first three numbers and the largest and smallest numbers with the second largest number
+        largestProduct = Math.Max(nums[0] * nums[1] * nums[2], nums[0] * nums[^1] * nums[^2]);
+
+        return largestProduct;
+    }
+    
+    //Write a function that takes a string as input and returns the number of words in the string.
+    
+    public static int CountWords(string text){
+        return text.Split(' ').Length;
+    }
 
 }
 

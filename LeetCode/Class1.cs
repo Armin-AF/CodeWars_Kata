@@ -1739,6 +1739,11 @@ public static class Class1
 
         return result.ToArray();
     }
+    
+    public static int SumOfEven(int[] array){
+        // takes an array of integers and returns an integer that represents the sum of all the even numbers in the array.
+        return array.Where(t => t % 2 == 0).Sum();
+    }
 
 }
 

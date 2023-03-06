@@ -1769,6 +1769,12 @@ public static class Class1
     public static int CountWords(string text){
         return text.Split(' ').Length;
     }
+    
+    //Given a list of integers, write a function that returns the second largest number in the list.
+    
+    public static int SecondLargest(int[] array){
+        return array.OrderByDescending(t => t).Skip(1).First();
+    }
 
 }
 

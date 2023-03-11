@@ -1819,6 +1819,31 @@ public static class Class1
 
         return result.ToArray();
     }
+    
+    public static int[] ShortestConsecutiveSequenceArray(int[] array){
+        // takes an array of integers and returns an array of integers that represents the shortest consecutive sequence in the array.
+        var result = new List<int>();
+        var temp = new List<int>();
+        var sorted = array.OrderBy(t => t).ToArray();
+        for (var i = 0; i < sorted.Length; i++){
+            if (i == 0 || sorted[i] == sorted[i - 1] + 1){
+                temp.Add(sorted[i]);
+            }
+            else{
+                if (temp.Count < result.Count || result.Count == 0){
+                    result = temp;
+                }
+
+                temp = new List<int>{sorted[i]};
+            }
+        }
+
+        if (temp.Count < result.Count || result.Count == 0){
+            result = temp;
+        }
+
+        return result.ToArray();
+    }
 
 }
 

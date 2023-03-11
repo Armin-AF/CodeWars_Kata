@@ -1775,6 +1775,50 @@ public static class Class1
     public static int SecondLargest(int[] array){
         return array.OrderByDescending(t => t).Skip(1).First();
     }
+    
+    public static int LongestConsecutiveSequence(int[] array){
+        // takes an array of integers and returns an integer that represents the length of the longest consecutive sequence in the array.
+        var result = 0;
+        var temp = 0;
+        var sorted = array.OrderBy(t => t).ToArray();
+        for (var i = 0; i < sorted.Length; i++){
+            if (i == 0 || sorted[i] == sorted[i - 1] + 1){
+                temp++;
+            }
+            else{
+                temp = 1;
+            }
+
+            result = Math.Max(result, temp);
+        }
+
+        return result;
+    }
+    
+    public static int[] LongestConsecutiveSequenceArray(int[] array){
+        // takes an array of integers and returns an array of integers that represents the longest consecutive sequence in the array.
+        var result = new List<int>();
+        var temp = new List<int>();
+        var sorted = array.OrderBy(t => t).ToArray();
+        for (var i = 0; i < sorted.Length; i++){
+            if (i == 0 || sorted[i] == sorted[i - 1] + 1){
+                temp.Add(sorted[i]);
+            }
+            else{
+                if (temp.Count > result.Count){
+                    result = temp;
+                }
+
+                temp = new List<int>{sorted[i]};
+            }
+        }
+
+        if (temp.Count > result.Count){
+            result = temp;
+        }
+
+        return result.ToArray();
+    }
 
 }
 

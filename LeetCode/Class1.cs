@@ -1864,6 +1864,26 @@ public static class Class1
 
         return result.Select(t => t.ToArray()).ToArray();
     }
+    
+    public static string[][] CreateAnagramGroups(string[] array){
+        // takes an array of strings and returns an array of arrays of strings that represents the anagram groups in the array.
+        var result = new List<List<string>>();
+        var temp = new List<string>();
+        var sorted = array.OrderBy(t => t).ToArray();
+        for (var i = 0; i < sorted.Length; i++){
+            if (i == 0 || new string(sorted[i].OrderBy(t => t).ToArray()) == new string(sorted[i - 1].OrderBy(t => t).ToArray())){
+                temp.Add(sorted[i]);
+            }
+            else{
+                result.Add(temp);
+                temp = new List<string>{sorted[i]};
+            }
+        }
+
+        result.Add(temp);
+
+        return result.Select(t => t.ToArray()).ToArray();
+    }
 
 }
 

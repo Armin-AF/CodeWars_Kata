@@ -1904,6 +1904,29 @@ public static class Class1
 
         return result.Select(t => t.ToArray()).ToArray();
     }
+    
+    public static string AlgorithmicCrush(int n, int[][] queries){
+        // takes an integer n and an array of arrays of integers and returns a string that represents the maximum value in the resulting array.
+        var result = new long[n];
+        var max = 0L;
+        foreach (var query in queries){
+            var a = query[0] - 1;
+            var b = query[1] - 1;
+            var k = query[2];
+            result[a] += k;
+            if (b + 1 < n){
+                result[b + 1] -= k;
+            }
+        }
+
+        var temp = 0L;
+        for (var i = 0; i < n; i++){
+            temp += result[i];
+            max = Math.Max(max, temp);
+        }
+
+        return max.ToString();
+    }
 
 }
 

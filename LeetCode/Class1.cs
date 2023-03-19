@@ -1927,6 +1927,29 @@ public static class Class1
 
         return max.ToString();
     }
+    
+    public static int[] ArrayManipulation(int n, int[][] queries){
+        // takes an integer n and an array of arrays of integers and returns an array of integers that represents the resulting array.
+        var result = new long[n];
+        var max = 0L;
+        foreach (var query in queries){
+            var a = query[0] - 1;
+            var b = query[1] - 1;
+            var k = query[2];
+            result[a] += k;
+            if (b + 1 < n){
+                result[b + 1] -= k;
+            }
+        }
+
+        var temp = 0L;
+        for (var i = 0; i < n; i++){
+            temp += result[i];
+            max = Math.Max(max, temp);
+        }
+
+        return new[]{(int)max};
+    }
 
 }
 

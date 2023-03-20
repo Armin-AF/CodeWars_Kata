@@ -1950,6 +1950,19 @@ public static class Class1
 
         return new[]{(int)max};
     }
+    
+    public static float[][] DistanceMatrix(float[][] array){
+        // takes an array of arrays of floats and returns an array of arrays of floats that represents the distance matrix of the array.
+        var result = new float[array.Length][];
+        for (var i = 0; i < array.Length; i++){
+            result[i] = new float[array.Length];
+            for (var j = 0; j < array.Length; j++){
+                result[i][j] = (float)Math.Sqrt(Math.Pow(array[i][0] - array[j][0], 2) + Math.Pow(array[i][1] - array[j][1], 2));
+            }
+        }
+
+        return result;
+    }
 
 }
 

@@ -1963,6 +1963,20 @@ public static class Class1
 
         return result;
     }
+    
+    public static float[] GravityCenter(float[][] array){
+        // takes an array of arrays of floats and returns an array of floats that represents the gravity center of the array.
+        var result = new float[2];
+        for (var i = 0; i < array.Length; i++){
+            result[0] += array[i][0];
+            result[1] += array[i][1];
+        }
+
+        result[0] /= array.Length;
+        result[1] /= array.Length;
+
+        return result;
+    }
 
 }
 

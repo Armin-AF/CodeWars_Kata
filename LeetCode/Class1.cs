@@ -1997,6 +1997,26 @@ public static class Class1
 
         return result;
     }
+    
+    public static float[] FarthestPair(float[][] array){
+        // takes an array of arrays of floats and returns an array of floats that represents the farthest pair of the array.
+        var result = new float[4];
+        var max = float.MinValue;
+        for (var i = 0; i < array.Length; i++){
+            for (var j = i + 1; j < array.Length; j++){
+                var distance = (float)Math.Sqrt(Math.Pow(array[i][0] - array[j][0], 2) + Math.Pow(array[i][1] - array[j][1], 2));
+                if (distance > max){
+                    max = distance;
+                    result[0] = array[i][0];
+                    result[1] = array[i][1];
+                    result[2] = array[j][0];
+                    result[3] = array[j][1];
+                }
+            }
+        }
+
+        return result;
+    }
 
 }
 

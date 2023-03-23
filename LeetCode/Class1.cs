@@ -2017,6 +2017,20 @@ public static class Class1
 
         return result;
     }
+    
+    public static string PyramidOfNumbers(int n){
+        // takes an integer n and returns a string that represents the pyramid of numbers of n.
+        var result = new StringBuilder();
+        for (var i = 1; i <= n; i++){
+            for (var j = 1; j <= i; j++){
+                result.Append(j);
+            }
+
+            result.AppendLine();
+        }
+
+        return result.ToString();
+    }
 
 }
 

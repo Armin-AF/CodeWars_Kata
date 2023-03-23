@@ -2031,6 +2031,28 @@ public static class Class1
 
         return result.ToString();
     }
+    
+    public static string EmainMaelc(int n){
+        // takes an integer n and returns a string that represents the emain maelc of n.
+        var result = new StringBuilder();
+        for (var i = 1; i <= n; i++){
+            for (var j = 1; j <= i; j++){
+                result.Append(j);
+            }
+
+            result.AppendLine();
+        }
+
+        for (var i = n - 1; i >= 1; i--){
+            for (var j = 1; j <= i; j++){
+                result.Append(j);
+            }
+
+            result.AppendLine();
+        }
+
+        return result.ToString();
+    }
 
 }
 

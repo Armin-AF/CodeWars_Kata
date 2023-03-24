@@ -2053,6 +2053,32 @@ public static class Class1
 
         return result.ToString();
     }
+    
+    public static string[] SpiralMatrix(int n){
+        // takes an integer n and returns an array of strings that represents the spiral matrix of n.
+        var result = new string[n];
+        for (var i = 0; i < n; i++){
+            result[i] = new string(' ', n);
+        }
+
+        var x = 0;
+        var y = 0;
+        var dx = 1;
+        var dy = 0;
+        for (var i = 1; i <= n * n; i++){
+            result[y] = result[y].Substring(0, x) + i + result[y].Substring(x + 1);
+            if (x + dx >= n || x + dx < 0 || y + dy >= n || y + dy < 0 || result[y + dy][x + dx] != ' '){
+                var temp = dx;
+                dx = -dy;
+                dy = temp;
+            }
+
+            x += dx;
+            y += dy;
+        }
+
+        return result;
+    }
 
 }
 

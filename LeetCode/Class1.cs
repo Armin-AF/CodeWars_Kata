@@ -2079,6 +2079,37 @@ public static class Class1
 
         return result;
     }
+    
+    public static string[] Minesweeper(int[][] array){
+        // takes an array of arrays of integers and returns an array of strings that represents the minesweeper of the array.
+        var result = new string[array.Length];
+        for (var i = 0; i < array.Length; i++){
+            result[i] = new string(' ', array[i].Length);
+        }
+
+        for (var i = 0; i < array.Length; i++){
+            for (var j = 0; j < array[i].Length; j++){
+                if (array[i][j] == 1){
+                    result[i] = result[i].Substring(0, j) + '*' + result[i].Substring(j + 1);
+                    if (i - 1 >= 0){
+                        result[i - 1] = result[i - 1].Substring(0, j) + (result[i - 1][j] == '*' ? '*' : '1') + result[i - 1].Substring(j + 1);
+                        if (j - 1 >= 0){
+                            result[i - 1] = result[i - 1].Substring(0, j - 1) + (result[i - 1][j - 1] == '*' ? '*' : '1') + result[i - 1].Substring(j);
+                        }
+
+                        if (j + 1 < array[i].Length){
+                            result[i - 1] = result[i - 1].Substring(0, j + 1) + (result[i - 1][j + 1] == '*' ? '*' : '1') + result[i - 1].Substring(j + 2);
+                        }
+                    }
+
+                    if (i + 1 < array.Length){
+                        result[i + 1] = result[i + 1].Substring(0, j) + (result[i + 1][j] == '*' ? '*' : '1') + result[i + 1].Substring(j + 1);
+                        if (j - 1 >= 0){
+                            result[i + 1] = result[i + 1].Substring(0, j - 1) + (result[i + 1][j - 1] == '*' ? '*' : '1') + result[i + 1].Substring(j);
+                        }
+
+                        if (j + 1 < array[i].Length){
+                            result[i + 1] = result[i
 
 }
 

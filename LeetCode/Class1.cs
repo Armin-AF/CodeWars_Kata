@@ -965,9 +965,15 @@ public static class Class1
         // takes a string and returns an array of strings where each string is an anagram of the original string.
         var words = str.Split(" ");
 
-        return (from word in words let sorted = new string(word.OrderBy(c => c).ToArray()) from other in words where word != other let otherSorted = new string(other.OrderBy(c => c).ToArray()) where sorted == otherSorted select $"{word} <=> {other}").ToArray();
+        return (from word in words
+            let sorted = new string(word.OrderBy(c => c).ToArray())
+            from other in words
+            where word != other
+            let otherSorted = new string(other.OrderBy(c => c).ToArray())
+            where sorted == otherSorted
+            select $"{word} <=> {other}").ToArray();
     }
-    
+
     public static int[] FindTheMissingNumbers(int[] array){
         // takes an array of integers and returns an array of integers where each integer is a number that is missing from the original array.
         var result = new List<int>();
@@ -978,7 +984,7 @@ public static class Class1
 
         return result.ToArray();
     }
-    
+
     public static int BreadthFirstSearch(int[,] graph, int start, int end){
         // takes a graph and two integers and returns the shortest path between the two integers.
         var queue = new Queue<int>();
@@ -1001,7 +1007,7 @@ public static class Class1
 
         return -1;
     }
-    
+
     public static string FindTheThreeLongestWords(string str){
         // takes a string and returns the three longest words in the string.
         var words = str.Split(" ");
@@ -1014,24 +1020,24 @@ public static class Class1
 
         return string.Join(" ", result);
     }
-    
+
     public static IEnumerable<int> ShiftArray(int[] array, int shift){
         // takes an array of integers and an integer and returns an array of integers where each integer is the original integer shifted by the integer.
         return array.Select(i => i + shift);
     }
-    
+
     public static IEnumerable<int> SubArray(int[] array, int start, int end){
         // takes an array of integers and two integers and returns an array of integers where each integer is an integer from the original array between the two integers.
         return array.Skip(start).Take(end - start + 1);
     }
-    
+
     public static IEnumerable<string> FindTheLongestWords(string str){
         // takes a string and returns an array of strings where each string is a word from the original string that is the longest word in the original string.
         var words = str.Split(" ");
         var longest = words.OrderByDescending(w => w.Length).First();
         return words.Where(w => w.Length == longest.Length);
     }
-    
+
     public static float PieNumberCalculation(int n){
         // takes an integer and returns the value of pi using the Gregory-Leibniz series.
         var result = 0f;
@@ -1041,7 +1047,7 @@ public static class Class1
 
         return result * 4;
     }
-    
+
     public static float DimensionalCalculation(int n){
         // takes an integer and returns the value of pi using the Nilakantha series.
         var result = 3f;
@@ -1051,63 +1057,64 @@ public static class Class1
 
         return result;
     }
-    
+
     public static float IntegralCalculation(int n){
         // takes an integer and returns the value of pi using the Ramanujan series.
         var result = 0f;
         for (var i = 0; i < n; i++){
-            result += (float) (Math.Pow(4, i) * Math.Pow(1103 + 26390 * i, 1 / 4f) / (Math.Pow(99, 4 * i) * Math.Pow(396, i)));
+            result += (float) (Math.Pow(4, i) * Math.Pow(1103 + 26390 * i, 1 / 4f) /
+                               (Math.Pow(99, 4 * i) * Math.Pow(396, i)));
         }
 
         return 1 / result;
     }
-    
+
     public static string EmailValidation(string email){
         // takes an email address and returns a string that indicates whether the email address is valid or invalid.
         var regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
         return regex.IsMatch(email) ? "Valid" : "Invalid";
     }
-    
+
     public static string PhoneValidation(string phone){
         // takes a phone number and returns a string that indicates whether the phone number is valid or invalid.
         var regex = new Regex(@"^(\d{3})\D*(\d{3})\D*(\d{4})\D*(\d*)$");
         return regex.IsMatch(phone) ? "Valid" : "Invalid";
     }
-    
+
     public static int Febonacci(int n){
         // takes an integer and returns the nth number in the Fibonacci sequence.
         if (n == 0) return 0;
         if (n == 1) return 1;
         return Febonacci(n - 1) + Febonacci(n - 2);
     }
-    
+
     public static int Factorial(int n){
         // takes an integer and returns the factorial of the integer.
         if (n == 0) return 1;
         return n * Factorial(n - 1);
     }
-    
+
     public static int SumOfDigits(int n){
         // takes an integer and returns the sum of the digits of the integer.
         if (n == 0) return 0;
         return n % 10 + SumOfDigits(n / 10);
     }
-    
+
     public static int SumOfDigitsOfFactorial(int n){
         // takes an integer and returns the sum of the digits of the factorial of the integer.
         return SumOfDigits(Factorial(n));
     }
-    
+
     public static int SumOfDigitsOfFebonacci(int n){
         // takes an integer and returns the sum of the digits of the nth number in the Fibonacci sequence.
         return SumOfDigits(Febonacci(n));
     }
-    
+
     public static int SumOfDigitsOfFebonacciFactorial(int n){
         // takes an integer and returns the sum of the digits of the factorial of the nth number in the Fibonacci sequence.
         return SumOfDigits(Factorial(Febonacci(n)));
     }
-    
+
     public static int CreateCardNumber(int n){
         // takes an integer and returns a credit card number with the integer as the last four digits.
         var random = new Random();
@@ -1119,7 +1126,7 @@ public static class Class1
         result += n;
         return int.Parse(result);
     }
-    
+
     public static int CreateCardNumberWithLuhn(int n){
         // takes an integer and returns a credit card number with the integer as the last four digits and the credit card number passes the Luhn test.
         var random = new Random();
@@ -1143,7 +1150,7 @@ public static class Class1
         var checkDigit = (10 - sum % 10) % 10;
         return int.Parse(result + checkDigit);
     }
-    
+
     public static int CreateCardNumberWithLuhnAndPrefix(int n, int prefix){
         // takes an integer and a prefix and returns a credit card number with the integer as the last four digits, the credit card number passes the Luhn test, and the credit card number starts with the prefix.
         var random = new Random();
@@ -1167,7 +1174,7 @@ public static class Class1
         var checkDigit = (10 - sum % 10) % 10;
         return int.Parse(result + checkDigit);
     }
-    
+
     public static int CreateCardNumberWithLuhnAndPrefixAndLength(int n, int prefix, int length){
         // takes an integer, a prefix, and a length and returns a credit card number with the integer as the last four digits, the credit card number passes the Luhn test, the credit card number starts with the prefix, and the credit card number has the length.
         var random = new Random();
@@ -1191,7 +1198,7 @@ public static class Class1
         var checkDigit = (10 - sum % 10) % 10;
         return int.Parse(result + checkDigit);
     }
-    
+
     public static int CreateCardNumberWithLuhnAndPrefixAndLengthAndCount(int n, int prefix, int length, int count){
         // takes an integer, a prefix, a length, and a count and returns a credit card number with the integer as the last four digits, the credit card number passes the Luhn test, the credit card number starts with the prefix, the credit card number has the length, and the credit card number has the count.
         var random = new Random();
@@ -1215,7 +1222,7 @@ public static class Class1
         var checkDigit = (10 - sum % 10) % 10;
         return int.Parse(result + checkDigit);
     }
-    
+
     public static string TicTacToe(){
         // returns a string that represents a random tic-tac-toe board.
         var random = new Random();
@@ -1229,7 +1236,7 @@ public static class Class1
 
         return result;
     }
-    
+
     public static string TicTacToeWithWinner(){
         // returns a string that represents a random tic-tac-toe board with a winner.
         var random = new Random();
@@ -1263,7 +1270,7 @@ public static class Class1
 
         return result;
     }
-    
+
     public static string PokerHand(){
         // returns a string that represents a random poker hand.
         var random = new Random();
@@ -1299,7 +1306,7 @@ public static class Class1
 
         return result;
     }
-    
+
     public static int[] ArrayOfMultiples(int number, int length){
         // takes a number and a length and returns an array of multiples of the number up to the specified length.
         var result = new int[length];
@@ -1309,7 +1316,7 @@ public static class Class1
 
         return result;
     }
-    
+
     public static string[] ArticleMaker(){
         // returns an array of strings that represents a random article.
         var random = new Random();
@@ -1337,7 +1344,7 @@ public static class Class1
 
         return result;
     }
-    
+
     public static string[] StringManipulator(string[] array){
         // takes an array of strings and returns an array of strings with the first and last letters of each string swapped.
         var result = new string[array.Length];
@@ -1349,7 +1356,7 @@ public static class Class1
 
         return result;
     }
-    
+
     public static string[] TranslateToPigLatin(string[] array){
         // takes an array of strings and returns an array of strings with each string translated to pig latin.
         var result = new string[array.Length];
@@ -1361,10 +1368,10 @@ public static class Class1
 
         return result;
     }
-    
+
     public static string[] PossibleTextCombinations(string[] array){
         // takes an array of strings and returns an array of strings with all possible combinations of the strings in the array.
-        var result = new string[(int)Math.Pow(2, array.Length)];
+        var result = new string[(int) Math.Pow(2, array.Length)];
         for (var i = 0; i < result.Length; i++){
             var number = i;
             var index = 0;
@@ -1380,7 +1387,7 @@ public static class Class1
 
         return result;
     }
-    
+
     public static float[] CalculateAverage(int[][] array){
         // takes a 2D array of integers and returns an array of floats with the average of each row.
         var result = new float[array.Length];
@@ -1390,12 +1397,12 @@ public static class Class1
                 sum += array[i][j];
             }
 
-            result[i] = (float)sum / array[i].Length;
+            result[i] = (float) sum / array[i].Length;
         }
 
         return result;
     }
-    
+
     public static int[][] SwapTwoRows(int[][] array){
         // takes a 2D array of integers and returns a 2D array of integers with the first and last rows swapped.
         var result = new int[array.Length][];
@@ -1410,11 +1417,11 @@ public static class Class1
 
         return result;
     }
-    
+
     public static Stack<string> StackOfPossibilities(string[] array){
         // takes an array of strings and returns a stack of strings with all possible combinations of the strings in the array.
         var result = new Stack<string>();
-        for (var i = 0; i < (int)Math.Pow(2, array.Length); i++){
+        for (var i = 0; i < (int) Math.Pow(2, array.Length); i++){
             var number = i;
             var index = 0;
             var temp = "";
@@ -1432,11 +1439,11 @@ public static class Class1
 
         return result;
     }
-    
+
     public static Queue<string> QueueOfPossibilities(string[] array){
         // takes an array of strings and returns a queue of strings with all possible combinations of the strings in the array.
         var result = new Queue<string>();
-        for (var i = 0; i < (int)Math.Pow(2, array.Length); i++){
+        for (var i = 0; i < (int) Math.Pow(2, array.Length); i++){
             var number = i;
             var index = 0;
             var temp = "";
@@ -1454,7 +1461,7 @@ public static class Class1
 
         return result;
     }
-    
+
     public static Dictionary<string, int> DictionaryOfMultiples(int number, int length){
         // takes a number and a length and returns a dictionary of multiples of the number up to the specified length.
         var result = new Dictionary<string, int>();
@@ -1464,7 +1471,7 @@ public static class Class1
 
         return result;
     }
-    
+
     public static float[] HecksMethod(int[][] array){
         // takes a 2D array of integers and returns an array of floats with the average of each row.
         var result = new float[array.Length];
@@ -1474,12 +1481,12 @@ public static class Class1
                 sum += array[i][j];
             }
 
-            result[i] = (float)sum / array[i].Length;
+            result[i] = (float) sum / array[i].Length;
         }
 
         return result;
     }
-    
+
     public static string GuessTheNumber(int number){
         // takes a number and returns a string that represents the number guessed by the computer.
         var random = new Random();
@@ -1494,7 +1501,7 @@ public static class Class1
 
         return result;
     }
-    
+
     public static string[] SwapTWithD(string[] array){
         // takes an array of strings and returns an array of strings with all instances of the letter t swapped with the letter d.
         var result = new string[array.Length];
@@ -1504,17 +1511,19 @@ public static class Class1
 
         return result;
     }
-    
+
     public static string[] SwapNumbersWithWords(string[] array){
         // takes an array of strings and returns an array of strings with all instances of numbers swapped with the corresponding word.
         var result = new string[array.Length];
         for (var i = 0; i < array.Length; i++){
-            result[i] = array[i].Replace('0', 'o').Replace('1', 'i').Replace('2', 't').Replace('3', 'e').Replace('4', 'a').Replace('5', 's').Replace('6', 'g').Replace('7', 't').Replace('8', 'b').Replace('9', 'g');
+            result[i] = array[i].Replace('0', 'o').Replace('1', 'i').Replace('2', 't').Replace('3', 'e')
+                .Replace('4', 'a').Replace('5', 's').Replace('6', 'g').Replace('7', 't').Replace('8', 'b')
+                .Replace('9', 'g');
         }
 
         return result;
     }
-    
+
     public static int PasswordStrength(string password){
         // takes a string and returns an integer that represents the strength of the password.
         var result = 0;
@@ -1540,20 +1549,24 @@ public static class Class1
 
         return result;
     }
-    
+
     public static int DataBank(string[] array){
         // takes an array of strings and returns an integer that represents the number of times the string "data" appears in the array.
 
         return array.Count(t => t.Contains("data"));
     }
-    
+
     public static List<int> TelephoneNumbers(string[] array){
         // takes an array of strings and returns a list of integers that represents the telephone numbers in the array.
 
-        return (from t in array select t.Where(char.IsDigit).Aggregate("", (current, c) 
-            => current + c) into temp where temp.Length == 10 select int.Parse(temp)).ToList();
+        return (from t in array
+            select t.Where(char.IsDigit).Aggregate("", (current, c)
+                => current + c)
+            into temp
+            where temp.Length == 10
+            select int.Parse(temp)).ToList();
     }
-    
+
     public static ArrayList[] SortByColumn(int[][] array, int column){
         // takes a 2D array of integers and a column number and returns an array of array lists with the rows sorted by the specified column.
         var result = new ArrayList[array.Length];
@@ -1564,11 +1577,11 @@ public static class Class1
             }
         }
 
-        Array.Sort(result, (a, b) => (int)a[column] - (int)b[column]);
+        Array.Sort(result, (a, b) => (int) a[column] - (int) b[column]);
 
         return result;
     }
-    
+
     public static ArrayList[] Shuffle(int[][] array){
         // takes a 2D array of integers and returns an array of array lists with the rows shuffled.
         var result = new ArrayList[array.Length];
@@ -1587,7 +1600,7 @@ public static class Class1
 
         return result;
     }
-    
+
     public static int BreakTheCode(string code){
         // takes a string and returns an integer that represents the number of times the string "code" appears in the string.
         var result = 0;
@@ -1599,7 +1612,7 @@ public static class Class1
 
         return result;
     }
-    
+
     public static int CustomIndexOf(string[] array, string value){
         // takes an array of strings and a string and returns an integer that represents the index of the string in the array.
         for (var i = 0; i < array.Length; i++){
@@ -1610,7 +1623,7 @@ public static class Class1
 
         return -1;
     }
-    
+
     public static int[] CustomIndexOfAll(string[] array, string value){
         // takes an array of strings and a string and returns an array of integers that represents the indexes of the string in the array.
         var result = new List<int>();
@@ -1622,13 +1635,14 @@ public static class Class1
 
         return result.ToArray();
     }
-    
+
     public static float OctalToDecimal(string octal){
         // takes a string and returns a float that represents the decimal value of the octal number.
 
-        return octal.Select((t, i) => (float) char.GetNumericValue(t) * (float) Math.Pow(8, octal.Length - i - 1)).Sum();
+        return octal.Select((t, i) => (float) char.GetNumericValue(t) * (float) Math.Pow(8, octal.Length - i - 1))
+            .Sum();
     }
-    
+
     public static string DecimalToOctal(float number){
         // takes a float and returns a string that represents the octal value of the decimal number.
         var result = "";
@@ -1639,7 +1653,7 @@ public static class Class1
 
         return result;
     }
-    
+
     public static string[] CustomSplit(string text, char separator){
         // takes a string and a character and returns an array of strings that represents the string split by the character.
         var result = new List<string>();
@@ -1658,7 +1672,7 @@ public static class Class1
 
         return result.ToArray();
     }
-    
+
     public static char[][] DrawTriangle(int size){
         // takes an integer and returns a 2D array of characters that represents a triangle with the specified size.
         var result = new char[size][];
@@ -1671,7 +1685,7 @@ public static class Class1
 
         return result;
     }
-    
+
     public static char[][] DrawSquare(int size){
         // takes an integer and returns a 2D array of characters that represents a square with the specified size.
         var result = new char[size][];
@@ -1684,49 +1698,49 @@ public static class Class1
 
         return result;
     }
-    
+
     public static int[] BinaryTreeBottom(int[] array){
         // takes an array of integers and returns an array of integers that represents the bottom row of a binary tree with the specified values.
 
         return array.Where((t, i) => i * 2 + 1 >= array.Length).ToArray();
     }
-    
+
     public static int[] BinaryTreeTop(int[] array){
         // takes an array of integers and returns an array of integers that represents the top row of a binary tree with the specified values.
 
         return array.Where((t, i) => i == 0 || i % 2 == 0).ToArray();
     }
-    
+
     public static int[] BinaryTreeLeft(int[] array){
         // takes an array of integers and returns an array of integers that represents the left column of a binary tree with the specified values.
 
         return array.Where((t, i) => i % 2 == 0).ToArray();
     }
-    
+
     public static int[] BinaryTreeRight(int[] array){
         // takes an array of integers and returns an array of integers that represents the right column of a binary tree with the specified values.
 
         return array.Where((t, i) => i % 2 == 1).ToArray();
     }
-    
+
     public static int[] BinaryTreeLeftDiagonal(int[] array){
         // takes an array of integers and returns an array of integers that represents the left diagonal of a binary tree with the specified values.
 
         return array.Where((t, i) => i % 2 == 0 && i * 2 + 1 < array.Length).ToArray();
     }
-    
+
     public static int[] BinaryTreeRightDiagonal(int[] array){
         // takes an array of integers and returns an array of integers that represents the right diagonal of a binary tree with the specified values.
 
         return array.Where((t, i) => i % 2 == 1 && i * 2 + 2 < array.Length).ToArray();
     }
-    
+
     public static int[] BinaryTreeDiagonal(int[] array){
         // takes an array of integers and returns an array of integers that represents the diagonal of a binary tree with the specified values.
 
         return array.Where((t, i) => i * 2 + 1 < array.Length).ToArray();
     }
-    
+
     public static int[] BinaryTreeOptimal(int[] array){
         // takes an array of integers and returns an array of integers that represents the optimal path of a binary tree with the specified values.
 
@@ -1739,17 +1753,17 @@ public static class Class1
 
         return result.ToArray();
     }
-    
+
     public static int SumOfEven(int[] array){
         // takes an array of integers and returns an integer that represents the sum of all the even numbers in the array.
         return array.Where(t => t % 2 == 0).Sum();
     }
-    
+
     public static bool IsPalindrome(string text){
         // takes a string and returns a boolean that represents whether the string is a palindrome or not.
         return text == new string(text.Reverse().ToArray());
     }
-    
+
     public static int LargestMultipleOfThree(int[] nums){
         // takes an array of integers and returns an integer that represents the largest multiple of three that can be made from the array.
         var largestProduct = 0;
@@ -1763,19 +1777,19 @@ public static class Class1
 
         return largestProduct;
     }
-    
+
     //Write a function that takes a string as input and returns the number of words in the string.
-    
+
     public static int CountWords(string text){
         return text.Split(' ').Length;
     }
-    
+
     //Given a list of integers, write a function that returns the second largest number in the list.
-    
+
     public static int SecondLargest(int[] array){
         return array.OrderByDescending(t => t).Skip(1).First();
     }
-    
+
     public static int LongestConsecutiveSequence(int[] array){
         // takes an array of integers and returns an integer that represents the length of the longest consecutive sequence in the array.
         var result = 0;
@@ -1794,7 +1808,7 @@ public static class Class1
 
         return result;
     }
-    
+
     public static int[] LongestConsecutiveSequenceArray(int[] array){
         // takes an array of integers and returns an array of integers that represents the longest consecutive sequence in the array.
         var result = new List<int>();
@@ -1819,7 +1833,7 @@ public static class Class1
 
         return result.ToArray();
     }
-    
+
     public static int[] ShortestConsecutiveSequenceArray(int[] array){
         // takes an array of integers and returns an array of integers that represents the shortest consecutive sequence in the array.
         var result = new List<int>();
@@ -1844,7 +1858,7 @@ public static class Class1
 
         return result.ToArray();
     }
-    
+
     public static int[][] GroupByConsecutive(int[] array){
         // takes an array of integers and returns an array of arrays of integers that represents the consecutive sequences in the array.
         var result = new List<List<int>>();
@@ -1864,14 +1878,15 @@ public static class Class1
 
         return result.Select(t => t.ToArray()).ToArray();
     }
-    
+
     public static string[][] CreateAnagramGroups(string[] array){
         // takes an array of strings and returns an array of arrays of strings that represents the anagram groups in the array.
         var result = new List<List<string>>();
         var temp = new List<string>();
         var sorted = array.OrderBy(t => t).ToArray();
         for (var i = 0; i < sorted.Length; i++){
-            if (i == 0 || new string(sorted[i].OrderBy(t => t).ToArray()) == new string(sorted[i - 1].OrderBy(t => t).ToArray())){
+            if (i == 0 || new string(sorted[i].OrderBy(t => t).ToArray()) ==
+                new string(sorted[i - 1].OrderBy(t => t).ToArray())){
                 temp.Add(sorted[i]);
             }
             else{
@@ -1884,14 +1899,15 @@ public static class Class1
 
         return result.Select(t => t.ToArray()).ToArray();
     }
-    
+
     public static string[][] BuildPyramid(string[] array){
         // takes an array of strings and returns an array of arrays of strings that represents the pyramid of the array.
         var result = new List<List<string>>();
         var temp = new List<string>();
         var sorted = array.OrderBy(t => t).ToArray();
         for (var i = 0; i < sorted.Length; i++){
-            if (i == 0 || new string(sorted[i].OrderBy(t => t).ToArray()) == new string(sorted[i - 1].OrderBy(t => t).ToArray())){
+            if (i == 0 || new string(sorted[i].OrderBy(t => t).ToArray()) ==
+                new string(sorted[i - 1].OrderBy(t => t).ToArray())){
                 temp.Add(sorted[i]);
             }
             else{
@@ -1904,7 +1920,7 @@ public static class Class1
 
         return result.Select(t => t.ToArray()).ToArray();
     }
-    
+
     public static string AlgorithmicCrush(int n, int[][] queries){
         // takes an integer n and an array of arrays of integers and returns a string that represents the maximum value in the resulting array.
         var result = new long[n];
@@ -1927,7 +1943,7 @@ public static class Class1
 
         return max.ToString();
     }
-    
+
     public static int[] ArrayManipulation(int n, int[][] queries){
         // takes an integer n and an array of arrays of integers and returns an array of integers that represents the resulting array.
         var result = new long[n];
@@ -1948,22 +1964,23 @@ public static class Class1
             max = Math.Max(max, temp);
         }
 
-        return new[]{(int)max};
+        return new[]{(int) max};
     }
-    
+
     public static float[][] DistanceMatrix(float[][] array){
         // takes an array of arrays of floats and returns an array of arrays of floats that represents the distance matrix of the array.
         var result = new float[array.Length][];
         for (var i = 0; i < array.Length; i++){
             result[i] = new float[array.Length];
             for (var j = 0; j < array.Length; j++){
-                result[i][j] = (float)Math.Sqrt(Math.Pow(array[i][0] - array[j][0], 2) + Math.Pow(array[i][1] - array[j][1], 2));
+                result[i][j] =
+                    (float) Math.Sqrt(Math.Pow(array[i][0] - array[j][0], 2) + Math.Pow(array[i][1] - array[j][1], 2));
             }
         }
 
         return result;
     }
-    
+
     public static float[] GravityCenter(float[][] array){
         // takes an array of arrays of floats and returns an array of floats that represents the gravity center of the array.
         var result = new float[2];
@@ -1977,14 +1994,15 @@ public static class Class1
 
         return result;
     }
-    
+
     public static float[] ClosestPair(float[][] array){
         // takes an array of arrays of floats and returns an array of floats that represents the closest pair of the array.
         var result = new float[4];
         var min = float.MaxValue;
         for (var i = 0; i < array.Length; i++){
             for (var j = i + 1; j < array.Length; j++){
-                var distance = (float)Math.Sqrt(Math.Pow(array[i][0] - array[j][0], 2) + Math.Pow(array[i][1] - array[j][1], 2));
+                var distance =
+                    (float) Math.Sqrt(Math.Pow(array[i][0] - array[j][0], 2) + Math.Pow(array[i][1] - array[j][1], 2));
                 if (distance < min){
                     min = distance;
                     result[0] = array[i][0];
@@ -1997,14 +2015,15 @@ public static class Class1
 
         return result;
     }
-    
+
     public static float[] FarthestPair(float[][] array){
         // takes an array of arrays of floats and returns an array of floats that represents the farthest pair of the array.
         var result = new float[4];
         var max = float.MinValue;
         for (var i = 0; i < array.Length; i++){
             for (var j = i + 1; j < array.Length; j++){
-                var distance = (float)Math.Sqrt(Math.Pow(array[i][0] - array[j][0], 2) + Math.Pow(array[i][1] - array[j][1], 2));
+                var distance =
+                    (float) Math.Sqrt(Math.Pow(array[i][0] - array[j][0], 2) + Math.Pow(array[i][1] - array[j][1], 2));
                 if (distance > max){
                     max = distance;
                     result[0] = array[i][0];
@@ -2017,7 +2036,7 @@ public static class Class1
 
         return result;
     }
-    
+
     public static string PyramidOfNumbers(int n){
         // takes an integer n and returns a string that represents the pyramid of numbers of n.
         var result = new StringBuilder();
@@ -2031,7 +2050,7 @@ public static class Class1
 
         return result.ToString();
     }
-    
+
     public static string EmainMaelc(int n){
         // takes an integer n and returns a string that represents the emain maelc of n.
         var result = new StringBuilder();
@@ -2053,7 +2072,7 @@ public static class Class1
 
         return result.ToString();
     }
-    
+
     public static string[] SpiralMatrix(int n){
         // takes an integer n and returns an array of strings that represents the spiral matrix of n.
         var result = new string[n];
@@ -2079,7 +2098,7 @@ public static class Class1
 
         return result;
     }
-    
+
     public static string[] Minesweeper(int[][] array){
         // takes an array of arrays of integers and returns an array of strings that represents the minesweeper of the array.
         var result = new string[array.Length];
@@ -2092,24 +2111,55 @@ public static class Class1
                 if (array[i][j] == 1){
                     result[i] = result[i].Substring(0, j) + '*' + result[i].Substring(j + 1);
                     if (i - 1 >= 0){
-                        result[i - 1] = result[i - 1].Substring(0, j) + (result[i - 1][j] == '*' ? '*' : '1') + result[i - 1].Substring(j + 1);
+                        result[i - 1] = result[i - 1].Substring(0, j) + (result[i - 1][j] == '*' ? '*' : '1') +
+                                        result[i - 1].Substring(j + 1);
                         if (j - 1 >= 0){
-                            result[i - 1] = result[i - 1].Substring(0, j - 1) + (result[i - 1][j - 1] == '*' ? '*' : '1') + result[i - 1].Substring(j);
+                            result[i - 1] = result[i - 1].Substring(0, j - 1) +
+                                            (result[i - 1][j - 1] == '*' ? '*' : '1') + result[i - 1].Substring(j);
                         }
 
                         if (j + 1 < array[i].Length){
-                            result[i - 1] = result[i - 1].Substring(0, j + 1) + (result[i - 1][j + 1] == '*' ? '*' : '1') + result[i - 1].Substring(j + 2);
+                            result[i - 1] = result[i - 1].Substring(0, j + 1) +
+                                            (result[i - 1][j + 1] == '*' ? '*' : '1') + result[i - 1].Substring(j + 2);
                         }
                     }
 
                     if (i + 1 < array.Length){
-                        result[i + 1] = result[i + 1].Substring(0, j) + (result[i + 1][j] == '*' ? '*' : '1') + result[i + 1].Substring(j + 1);
+                        result[i + 1] = result[i + 1].Substring(0, j) + (result[i + 1][j] == '*' ? '*' : '1') +
+                                        result[i + 1].Substring(j + 1);
                         if (j - 1 >= 0){
-                            result[i + 1] = result[i + 1].Substring(0, j - 1) + (result[i + 1][j - 1] == '*' ? '*' : '1') + result[i + 1].Substring(j);
+                            result[i + 1] = result[i + 1].Substring(0, j - 1) +
+                                            (result[i + 1][j - 1] == '*' ? '*' : '1') + result[i + 1].Substring(j);
                         }
 
                         if (j + 1 < array[i].Length){
-                            result[i + 1] = result[i
+                            result[i + 1] = result[i + 1].Substring(0, j + 1) +
+                                            (result[i + 1][j + 1] == '*' ? '*' : '1') + result[i + 1].Substring(j + 2);
+                        }
+
+                    }
+
+
+                    if (j - 1 >= 0){
+                        result[i] = result[i].Substring(0, j - 1) + (result[i][j - 1] == '*' ? '*' : '1') +
+                                    result[i].Substring(j);
+                    }
+
+                    if (j + 1 < array[i].Length){
+                        result[i] = result[i].Substring(0, j + 1) + (result[i][j + 1] == '*' ? '*' : '1') +
+                                    result[i].Substring(j + 2);
+                    }
+
+                }
+
+            }
+
+        }
+
+        return result;
+
+    }
+
 
 }
 

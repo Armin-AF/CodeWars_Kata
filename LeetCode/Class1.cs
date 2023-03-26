@@ -2160,8 +2160,29 @@ public static class Class1
 
     }
 
+    public static string Letterbox(int[][] array){
+        // takes an array of arrays of integers and returns a string that represents the letterbox of the array.
+        var result = new StringBuilder();
+        var count = new int[10];
+        foreach (var t in array){
+            foreach (var t1 in t){
+                count[t1]++;
+            }
+        }
 
+        for (var i = 9; i >= 0; i--){
+            result.Append(i + ": " + count[i] + "\n");
+        }
+
+        return result.ToString();
+
+    }
 }
+
+
+
+
+    
 
 
 

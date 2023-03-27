@@ -2194,6 +2194,29 @@ public static class Class1
 
         return result.ToString().Trim();
     }
+    
+    public static Stack<string> DuplicateEncoder(string s){
+        // takes a string s and returns a stack of strings that represents the duplicate encoder of s.
+        var result = new Stack<string>();
+        var words = s.Split(' ');
+        foreach (var word in words){
+            var temp = new StringBuilder();
+            for (var i = 0; i < word.Length; i++){
+                var count = 0;
+                for (var j = 0; j < word.Length; j++){
+                    if (word[i] == word[j]){
+                        count++;
+                    }
+                }
+
+                temp.Append(count > 1 ? ')' : '(');
+            }
+
+            result.Push(temp.ToString());
+        }
+
+        return result;
+    }
 }
 
 

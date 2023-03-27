@@ -2177,6 +2177,23 @@ public static class Class1
         return result.ToString();
 
     }
+    
+    public static string InsideOut(string s){
+        // takes a string s and returns a string that represents the inside out of s.
+        var result = new StringBuilder();
+        var words = s.Split(' ');
+        foreach (var word in words){
+            if (word.Length % 2 == 0){
+                result.Append(word.Substring(word.Length / 2) + word.Substring(0, word.Length / 2) + " ");
+            }
+            else{
+                result.Append(word.Substring(word.Length / 2 + 1) + word[word.Length / 2] +
+                              word.Substring(0, word.Length / 2) + " ");
+            }
+        }
+
+        return result.ToString().Trim();
+    }
 }
 
 

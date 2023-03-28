@@ -329,6 +329,20 @@ public static class Class1
 
         return duplicates.Count;
     }
+    
+    public static int FindLongestWithDistinctChars(string str){
+        // Find the longest substring with distinct characters
+        var longest = 0;
+        for (var i = 0; i < str.Length; i++){
+            var distinct = new HashSet<char>();
+            for (var j = i; j < str.Length; j++){
+                if (!distinct.Add(str[j])) break;
+                longest = Math.Max(longest, distinct.Count);
+            }
+        }
+
+        return longest;
+    }
 
     public static List<string> Number(List<string> lines){
         // Number the lines

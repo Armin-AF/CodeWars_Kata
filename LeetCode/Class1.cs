@@ -2231,6 +2231,20 @@ public static class Class1
 
         return result;
     }
+    
+    public static int CountTrailingZerosInFactorial(int n)
+    {
+        // Write a program that will calculate the number of trailing zeros in a factorial of a given number.
+
+        // N! = 1 * 2 * 3 *  ... * N
+        
+        var count = 0;
+
+        for (var i = 5; n / i >= 1; i *= 5) count += n / i;
+
+        return count;
+    }
+    
 }
 
 

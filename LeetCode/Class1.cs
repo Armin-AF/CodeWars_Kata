@@ -2282,6 +2282,50 @@ public static class Class1
         return numberOfBounces;
     }
     
+    public static string buildString(string[] args)
+    {
+        // Oh no! Timmy hasn't followed instructions very carefully and forgot how to use the new String Template feature, Help Timmy with his string template so it works as he expects!
+        
+        return String.Format("I like {1}!", String.Join(",", args));
+    }
+    
+    public static string[] FindDuplicatePhoneNumbers(string[] phoneNumbers)
+    {
+        Dictionary<string, int> phoneCount = new Dictionary<string, int>();
+        string[] mapping = { "", "", "ABC", "DEF", "GHI", "JKL", "MNO", "PRS", "TUV", "WXY" };
+
+        foreach (var phoneNumber in phoneNumbers)
+        {
+            var standardForm = "";
+            foreach (char c in phoneNumber.ToUpper())
+            {
+                if (char.IsDigit(c)) standardForm += c;
+                else if (char.IsLetter(c))
+                {
+                    for (int i = 0; i < mapping.Length; i++){
+                        if (!mapping[i].Contains(c)) continue;
+                        standardForm += i;
+                        break;
+                    }
+                }
+            }
+            standardForm = standardForm.Insert(3, "-");
+
+            if (phoneCount.ContainsKey(standardForm)){
+                phoneCount[standardForm]++;
+            }
+            else{
+                phoneCount[standardForm] = 1;
+            }
+        }
+
+        var duplicates = (from kvp in phoneCount where kvp.Value > 1 select kvp.Key + ":" + kvp.Value).ToList();
+
+        duplicates.Sort();
+
+        return duplicates.ToArray();
+    }
+    
 }
 
 

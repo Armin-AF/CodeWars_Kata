@@ -2325,7 +2325,43 @@ public static class Class1
 
         return duplicates.ToArray();
     }
-    
+
+    static int SumOfDigitsFor(int number)
+    {
+        var sum = 0;
+        while (number > 0)
+        {
+            sum += number % 10;
+            number /= 10;
+        }
+        return sum;
+    }
+
+    static bool IsComfortable(int a, int b)
+    {
+        int s_a = SumOfDigitsFor(a);
+        int s_b = SumOfDigitsFor(b);
+        return a != b && a >= b - s_b && a <= b + s_b;
+    }
+
+    public static int ComfortablePairs(int L, int R)
+    {
+        var count = 0;
+        for (var a = L; a <= R; a++)
+        {
+            for (var b = a + 1; b <= R; b++)
+            {
+                if (IsComfortable(a, b) && IsComfortable(b, a))
+                {
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+
+
+
 }
 
 

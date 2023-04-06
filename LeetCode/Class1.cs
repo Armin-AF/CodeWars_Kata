@@ -2359,8 +2359,28 @@ public static class Class1
         }
         return count;
     }
+    
+    public static int[] Divisors(int n)
+    {
+        //Create a function named divisors/Divisors that takes an integer n > 1 and returns an array with all of the integer's divisors(except for 1 and the number itself), from smallest to largest. If the number is prime return the string '(integer) is prime' (null in C#) (use Either String a in Haskell and Result<Vec<u32>, String> in Rust).
+        
+        var divisors = new List<int>();
 
+        for (var i = 2; i <= Math.Sqrt(n); i++){
+            if (n % i != 0) continue;
+            divisors.Add(i);
+            if (i != n / i)
+            {
+                divisors.Add(n / i);
+            }
+        }
 
+        if (divisors.Count == 0) return null;
+
+        divisors.Sort();
+
+        return divisors.ToArray();
+    }
 
 }
 

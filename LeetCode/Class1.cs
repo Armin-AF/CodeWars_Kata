@@ -2381,6 +2381,54 @@ public static class Class1
 
         return divisors.ToArray();
     }
+    
+    
+    // Decode the Morse code, for real kata
+    public static string decodeBitsAdvanced(string bits)
+    {
+        bits = bits.Trim('0');
+        if (bits.Length == 0)
+        {
+            return "";
+        }
+
+        var ones = Regex.Matches(bits, "1+").Cast<Match>().Select(m => m.Length);
+        var zeros = Regex.Matches(bits, "0+").Cast<Match>().Select(m => m.Length);
+
+        int rate = Math.Min(ones.Min(), zeros.Min());
+
+        var morse = bits.Replace(new string('1', 3 * rate), "-")
+            .Replace(new string('0', 7 * rate), "   ")
+            .Replace(new string('1', rate), ".")
+            .Replace(new string('0', 3 * rate), " ")
+            .Replace(new string('0', rate), "");
+
+        return morse;
+    }
+
+    public static string decodeMorse(string morseCode)
+    {
+        if (string.IsNullOrWhiteSpace(morseCode))
+        {
+            return "";
+        }
+
+        Dictionary<string, string> morseCodeDictionary = new Dictionary<string, string>
+        {
+            {".-", "A"}, {"-...", "B"}, {"-.-.", "C"}, {"-..", "D"}, {".", "E"},
+            {"..-.", "F"}, {"--.", "G"}, {"....", "H"}, {"..", "I"}, {".---", "J"},
+            {"-.-", "K"}, {".-..", "L"}, {"--", "M"}, {"-.", "N"}, {"---", "O"},
+            {".--.", "P"}, {"--.-", "Q"}, {".-.", "R"}, {"...", "S"}, {"-", "T"},
+            {"..-", "U"}, {"...-", "V"}, {".--", "W"}, {"-..-", "X"}, {"-.--", "Y"},
+            {"--..", "Z"}, {"-----", "0"}, {".----", "1"}, {"..---", "2"}, {"...--", "3"},
+            {"....-", "4"}, {".....", "5"}, {"-....", "6"}, {"--...", "7"}, {"---..", "8"},
+            {"----.", "9"}, {"...---...", "SOS"}
+        };
+
+        return string.Join(" ", morseCode.Trim().Split("   ").Select(word =>
+            string.Join("", word.Split(' ').Select(letter =>
+                morseCodeDictionary[letter]))));
+    }
 
 }
 

@@ -2488,11 +2488,11 @@ public static class Class1
         }
 
         // Initialize a stack to keep track of the visited cells
-        Stack<int> stack = new Stack<int>();
+        var stack = new Stack<int>();
         stack.Push(startIndex);
 
         // Initialize an array to keep track of the previous cell for each cell
-        int[] prev = new int[size * size];
+        var prev = new int[size * size];
         for (int i = 0; i < prev.Length; i++)
         {
             prev[i] = -1;
@@ -2502,46 +2502,48 @@ public static class Class1
         // Perform a modified version of Depth First Search (DFS) to find the path
         while (stack.Count > 0)
         {
-            int current = stack.Pop();
-            if (current == goalIndex)
-            {
-                // Reconstruct the path from the goal to the start by following the previous cells
-                List<int> path = new List<int>();
-                int index = current;
-                while (index != startIndex)
+            var current = stack.Pop();
+            if (current != goalIndex){
+                var x = current / size;
+                var y = current % size;
+                if (x > 0 && matrix[x - 1, y] && prev[current - size] == -1) // Check top cell
                 {
+                    stack.Push(current - size);
+                    prev[current - size] = current;
+                }
+
+                if (x < size - 1 && matrix[x + 1, y] && prev[current + size] == -1) // Check bottom cell
+                {
+                    stack.Push(current + size);
+                    prev[current + size] = current;
+                }
+
+                if (y > 0 && matrix[x, y - 1] && prev[current - 1] == -1) // Check left cell
+                {
+                    stack.Push(current - 1);
+                    prev[current - 1] = current;
+                }
+
+                if (y >= size - 1 || !matrix[x, y + 1] || prev[current + 1] != -1) continue; // Check right cell
+                stack.Push(current + 1);
+                prev[current + 1] = current;
+            }
+            else{
+                // Reconstruct the path from the goal to the start by following the previous cells
+                var path = new List<int>();
+                var index = current;
+                while (index != startIndex){
                     path.Add(index);
                     index = prev[index];
                 }
+
                 path.Add(startIndex);
                 path.Reverse();
                 return path.ToArray();
             }
-            int x = current / size;
-            int y = current % size;
-            if (x > 0 && matrix[x-1, y] && prev[current - size] == -1) // Check top cell
-            {
-                stack.Push(current - size);
-                prev[current - size] = current;
-            }
-            if (x < size - 1 && matrix[x+1, y] && prev[current + size] == -1) // Check bottom cell
-            {
-                stack.Push(current + size);
-                prev[current + size] = current;
-            }
-            if (y > 0 && matrix[x, y-1] && prev[current - 1] == -1) // Check left cell
-            {
-                stack.Push(current - 1);
-                prev[current - 1] = current;
-            }
-            if (y < size - 1 && matrix[x, y+1] && prev[current + 1] == -1) // Check right cell
-            {
-                stack.Push(current + 1);
-                prev[current + 1] = current;
-            }
         }
         // No path found
-        return null;
+        return null!;
     }
 
 }

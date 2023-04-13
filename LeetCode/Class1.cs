@@ -2454,6 +2454,26 @@ public static class Class1
         }
         return result.ToString();
     }
+    
+    public static int Persistence(long n) 
+    {
+        //Write a function, persistence, that takes in a positive parameter num and returns its multiplicative persistence, which is the number of times you must multiply the digits in num until you reach a single digit.
+        
+        var count = 0;
+        while (n > 9) // Keep looping until we get a single-digit number
+        {
+            long product = 1;
+            while (n > 0) // Calculate the product of the digits
+            {
+                var digit = (int)(n % 10);
+                product *= digit;
+                n /= 10;
+            }
+            n = product;
+            count++; // Increment the persistence count
+        }
+        return count;
+    }
 
 }
 

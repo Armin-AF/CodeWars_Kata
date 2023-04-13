@@ -2545,6 +2545,36 @@ public static class Class1
         // No path found
         return null!;
     }
+    
+    public static int[] VideoPart(string part, string total)
+    {
+        int[] partTime = ParseTime(part);
+        int[] totalTime = ParseTime(total);
+        int partSeconds = partTime[0] * 3600 + partTime[1] * 60 + partTime[2];
+        int totalSeconds = totalTime[0] * 3600 + totalTime[1] * 60 + totalTime[2];
+        int gcd = Gcd(partSeconds, totalSeconds);
+        return new int[] { partSeconds / gcd, totalSeconds / gcd };
+    }
+    
+    private static int[] ParseTime(string timeString)
+    {
+        string[] parts = timeString.Split(':');
+        int[] result = new int[3];
+        for (int i = 0; i < 3; i++)
+        {
+            result[i] = int.Parse(parts[i]);
+        }
+        return result;
+    }
+    
+    private static int Gcd(int a, int b)
+    {
+        if (b == 0)
+        {
+            return a;
+        }
+        return Gcd(b, a % b);
+    }
 
 }
 

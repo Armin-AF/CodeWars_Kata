@@ -2429,6 +2429,39 @@ public static class Class1
             string.Join("", word.Split(' ').Select(letter =>
                 morseCodeDictionary[letter]))));
     }
+    
+    public static string DuplicateEncode(string word)
+    {
+        // Convert the word to lowercase for case-insensitivity
+        word = word.ToLower();
+        // Create a dictionary to store the count of each character
+        Dictionary<char, int> charCount = new Dictionary<char, int>();
+        foreach (char c in word)
+        {
+            if (charCount.ContainsKey(c))
+            {
+                charCount[c]++;
+            }
+            else
+            {
+                charCount[c] = 1;
+            }
+        }
+        // Create a new string with parentheses based on the character count
+        StringBuilder result = new StringBuilder();
+        foreach (char c in word)
+        {
+            if (charCount[c] > 1)
+            {
+                result.Append(')');
+            }
+            else
+            {
+                result.Append('(');
+            }
+        }
+        return result.ToString();
+    }
 
 }
 

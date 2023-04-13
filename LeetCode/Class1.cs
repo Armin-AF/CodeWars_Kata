@@ -2548,6 +2548,9 @@ public static class Class1
     
     public static int[] VideoPart(string part, string total)
     {
+        //Task
+        //You have been watching a video for some time. Knowing the total video duration find out what portion of the video you have already watched.
+        
         var partTime = ParseTime(part);
         var totalTime = ParseTime(total);
         var partSeconds = partTime[0] * 3600 + partTime[1] * 60 + partTime[2];

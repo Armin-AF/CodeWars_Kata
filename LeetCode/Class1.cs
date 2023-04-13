@@ -2548,32 +2548,32 @@ public static class Class1
     
     public static int[] VideoPart(string part, string total)
     {
-        int[] partTime = ParseTime(part);
-        int[] totalTime = ParseTime(total);
-        int partSeconds = partTime[0] * 3600 + partTime[1] * 60 + partTime[2];
-        int totalSeconds = totalTime[0] * 3600 + totalTime[1] * 60 + totalTime[2];
-        int gcd = Gcd(partSeconds, totalSeconds);
+        var partTime = ParseTime(part);
+        var totalTime = ParseTime(total);
+        var partSeconds = partTime[0] * 3600 + partTime[1] * 60 + partTime[2];
+        var totalSeconds = totalTime[0] * 3600 + totalTime[1] * 60 + totalTime[2];
+        var gcd = Gcd(partSeconds, totalSeconds);
         return new int[] { partSeconds / gcd, totalSeconds / gcd };
     }
-    
-    private static int[] ParseTime(string timeString)
+
+    static int[] ParseTime(string timeString)
     {
-        string[] parts = timeString.Split(':');
-        int[] result = new int[3];
-        for (int i = 0; i < 3; i++)
+        var parts = timeString.Split(':');
+        var result = new int[3];
+        for (var i = 0; i < 3; i++)
         {
             result[i] = int.Parse(parts[i]);
         }
         return result;
     }
-    
-    private static int Gcd(int a, int b)
-    {
-        if (b == 0)
-        {
-            return a;
+
+    static int Gcd(int a, int b){
+        while (true){
+            if (b == 0) return a;
+            var a1 = a;
+            a = b;
+            b = a1 % b;
         }
-        return Gcd(b, a % b);
     }
 
 }

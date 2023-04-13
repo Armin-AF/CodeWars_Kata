@@ -2435,8 +2435,8 @@ public static class Class1
         // Convert the word to lowercase for case-insensitivity
         word = word.ToLower();
         // Create a dictionary to store the count of each character
-        Dictionary<char, int> charCount = new Dictionary<char, int>();
-        foreach (char c in word)
+        var charCount = new Dictionary<char, int>();
+        foreach (var c in word)
         {
             if (charCount.ContainsKey(c))
             {
@@ -2448,17 +2448,9 @@ public static class Class1
             }
         }
         // Create a new string with parentheses based on the character count
-        StringBuilder result = new StringBuilder();
-        foreach (char c in word)
-        {
-            if (charCount[c] > 1)
-            {
-                result.Append(')');
-            }
-            else
-            {
-                result.Append('(');
-            }
+        var result = new StringBuilder();
+        foreach (var c in word){
+            result.Append(charCount[c] > 1 ? ')' : '(');
         }
         return result.ToString();
     }

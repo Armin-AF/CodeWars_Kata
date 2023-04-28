@@ -2578,6 +2578,35 @@ public static class Class1
             b = a1 % b;
         }
     }
+    
+    public static string[] DirReduc(string[] arr)
+    {
+        //Task
+        //Write a function dirReduc which will take an array of strings and returns an array of strings with the needless directions removed (W<->E or S<->N side by side).
+        
+        var stack = new Stack<string>();
+        foreach (var direction in arr)
+        {
+            if (stack.Count > 0 && AreOpposite(stack.Peek(), direction))
+            {
+                stack.Pop();
+            }
+            else
+            {
+                stack.Push(direction);
+            }
+        }
+        var result = stack.ToArray();
+        Array.Reverse(result);
+        return result;
+    }
+
+    static bool AreOpposite(string peek, string direction){
+        return peek == "NORTH" && direction == "SOUTH" ||
+               peek == "SOUTH" && direction == "NORTH" ||
+               peek == "EAST" && direction == "WEST" ||
+               peek == "WEST" && direction == "EAST";
+    }
 
 }
 

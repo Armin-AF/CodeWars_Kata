@@ -2607,6 +2607,49 @@ public static class Class1
                peek == "EAST" && direction == "WEST" ||
                peek == "WEST" && direction == "EAST";
     }
+    
+    public static int[] Snail(int[][] array)
+    {
+        //Task
+        //Given an n x n array, return the array elements arranged from outermost elements to the middle element, traveling clockwise.
+        
+        var n = array.Length;
+        var result = new int[n * n];
+        var index = 0;
+        for (var i = 0; i < n / 2; i++)
+        {
+            // Top row
+            for (var j = i; j < n - i; j++)
+            {
+                result[index++] = array[i][j];
+            }
+
+            // Right column
+            for (var j = i + 1; j < n - i; j++)
+            {
+                result[index++] = array[j][n - i - 1];
+            }
+
+            // Bottom row
+            for (var j = i + 1; j < n - i; j++)
+            {
+                result[index++] = array[n - i - 1][n - j - 1];
+            }
+
+            // Left column
+            for (var j = i + 1; j < n - i - 1; j++)
+            {
+                result[index++] = array[n - j - 1][i];
+            }
+        }
+
+        if (n % 2 == 1)
+        {
+            result[index] = array[n / 2][n / 2];
+        }
+
+        return result;
+    }
 
 }
 

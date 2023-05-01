@@ -2650,6 +2650,21 @@ public static class Class1
 
         return result;
     }
+    
+    public static string[][] Partlist(string[] arr)
+    {
+        //Task
+        //Write a function partlist that gives all the ways to divide a list (an array) of at least two elements into two non-empty parts.
+        
+        var result = new string[arr.Length - 1][];
+        for (var i = 0; i < arr.Length - 1; i++)
+        {
+            result[i] = new string[2];
+            result[i][0] = string.Join(" ", arr.Take(i + 1));
+            result[i][1] = string.Join(" ", arr.Skip(i + 1));
+        }
+        return result;
+    }
 
 }
 

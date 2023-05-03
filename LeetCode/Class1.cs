@@ -2698,15 +2698,7 @@ public static class Class1
         //Given a list of users and a list of connections, find the number of connections of the given user.
         
         var userIndex = Array.IndexOf(users, user);
-        var connectionsCount = 0;
-        foreach (var connection in connections)
-        {
-            if (connection[0] == user || connection[1] == user)
-            {
-                connectionsCount++;
-            }
-        }
-        return connectionsCount;
+        return connections.Count(connection => connection[0] == user || connection[1] == user);
     }
 
 }

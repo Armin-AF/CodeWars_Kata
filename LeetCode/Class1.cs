@@ -2700,6 +2700,14 @@ public static class Class1
         var userIndex = Array.IndexOf(users, user);
         return connections.Count(connection => connection[0] == user || connection[1] == user);
     }
+    
+    public static int CountSmileys(string[] smileys)
+    {
+        //Task
+        //Given an array (arr) as an argument complete the function countSmileys that should return the total number of smiling faces.
+        
+        return smileys.Count(smiley => Regex.IsMatch(smiley, @"^[:;][-~]?[)D]$"));
+    }
 
 }
 

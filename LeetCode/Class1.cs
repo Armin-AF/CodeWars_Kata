@@ -2665,6 +2665,15 @@ public static class Class1
         }
         return result;
     }
+    
+    public static int[] ArrayDiff(int[] a, int[] b)
+    {
+        //Task
+        //Your goal in this kata is to implement a difference function, which subtracts one list from another and returns the result.
+        
+        var set = new HashSet<int>(b);
+        return a.Where(x => !set.Contains(x)).ToArray();
+    }
 
 }
 

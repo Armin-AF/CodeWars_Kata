@@ -2716,6 +2716,14 @@ public static class Class1
         
         return Regex.Replace(text, @"(shit|crap|damn)", "***", RegexOptions.IgnoreCase);
     }
+    
+    public static string AnswerToGreetings(string name)
+    {
+        //Task
+        //Write a function that takes in a string and replaces all curse words with three asterisks.
+        
+        return Regex.Replace(name, @"(hello|ciao|salut|hallo|hola|ahoj|czesc)", "Hi!", RegexOptions.IgnoreCase);
+    }
 
 }
 

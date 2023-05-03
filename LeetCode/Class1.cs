@@ -2708,6 +2708,14 @@ public static class Class1
         
         return smileys.Count(smiley => Regex.IsMatch(smiley, @"^[:;][-~]?[)D]$"));
     }
+    
+    public static string ChangeCurseWorldWithThreeStars(string text)
+    {
+        //Task
+        //Write a function that takes in a string and replaces all curse words with three asterisks.
+        
+        return Regex.Replace(text, @"(shit|crap|damn)", "***", RegexOptions.IgnoreCase);
+    }
 
 }
 

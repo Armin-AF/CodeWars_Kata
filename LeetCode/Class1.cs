@@ -2691,6 +2691,23 @@ public static class Class1
         }
         return -1;
     }
+    
+    public static int UserConnections(string[][] users, string[][] connections, string user)
+    {
+        //Task
+        //Given a list of users and a list of connections, find the number of connections of the given user.
+        
+        var userIndex = Array.IndexOf(users, user);
+        var connectionsCount = 0;
+        foreach (var connection in connections)
+        {
+            if (connection[0] == user || connection[1] == user)
+            {
+                connectionsCount++;
+            }
+        }
+        return connectionsCount;
+    }
 
 }
 

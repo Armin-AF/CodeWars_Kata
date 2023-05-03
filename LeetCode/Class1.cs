@@ -2724,6 +2724,14 @@ public static class Class1
         
         return Regex.Replace(name, @"(hello|ciao|salut|hallo|hola|ahoj|czesc)", "Hi!", RegexOptions.IgnoreCase);
     }
+    
+    public static string RemoveExclamationMarks(string s)
+    {
+        //Task
+        //Write function RemoveExclamationMarks which removes all exclamation marks from a given string.
+        
+        return Regex.Replace(s, @"!", "");
+    }
 
 }
 

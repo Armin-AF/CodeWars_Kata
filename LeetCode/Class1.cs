@@ -2674,6 +2674,23 @@ public static class Class1
         var set = new HashSet<int>(b);
         return a.Where(x => !set.Contains(x)).ToArray();
     }
+    
+    public static int HashCracker(string[][] hashes, string[] dictionary)
+    {
+        //Task
+        //Given a list of hashes and a dictionary, find the password.
+        
+        var dictionarySet = new HashSet<string>(dictionary);
+        foreach (var hash in hashes)
+        {
+            var password = string.Join("", hash.Select(word => dictionarySet.Contains(word) ? word[0].ToString() : ""));
+            if (password.Length == hash.Length)
+            {
+                return int.Parse(password);
+            }
+        }
+        return -1;
+    }
 
 }
 

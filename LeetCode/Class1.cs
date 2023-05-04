@@ -2740,6 +2740,14 @@ public static class Class1
         
         return emails.Where(email => Regex.IsMatch(email, @"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$")).ToArray();
     }
+    
+    public static string RemoveUrlAnchor(string url)
+    {
+        //Task
+        //Complete the function/method so that it returns the url with anything after the anchor (#) removed.
+        
+        return Regex.Replace(url, @"#.*$", "");
+    }
 
 }
 

@@ -2732,6 +2732,14 @@ public static class Class1
         
         return Regex.Replace(s, @"!", "");
     }
+    
+    public static string[] EmailSorter(string[] emails)
+    {
+        //Task
+        //Given an array of email addresses, return an array of only the email addresses that are considered "valid".
+        
+        return emails.Where(email => Regex.IsMatch(email, @"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$")).ToArray();
+    }
 
 }
 

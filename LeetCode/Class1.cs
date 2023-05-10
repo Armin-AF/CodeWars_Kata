@@ -2748,6 +2748,14 @@ public static class Class1
         
         return Regex.Replace(url, @"#.*$", "");
     }
+    
+    public static int ArchiveNumberOfFiles(string[] files)
+    {
+        //Task
+        //Given an array of file names, return the number of files that are archives.
+        
+        return files.Count(file => Regex.IsMatch(file, @"\.zip$"));
+    }
 
 }
 

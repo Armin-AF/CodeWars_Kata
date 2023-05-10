@@ -2756,6 +2756,19 @@ public static class Class1
         
         return files.Count(file => Regex.IsMatch(file, @"\.zip$"));
     }
+    
+    public static int[] StringLetterCount(string str)
+    {
+        //Task
+        //Take a string str and return an array of length 26 with the count of each letter in str.
+        
+        var result = new int[26];
+        foreach (var c in str)
+        {
+            result[c - 'a']++;
+        }
+        return result;
+    }
 
 }
 

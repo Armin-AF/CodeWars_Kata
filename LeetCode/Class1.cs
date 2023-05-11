@@ -2769,6 +2769,28 @@ public static class Class1
         }
         return result;
     }
+    
+    public static int DepthFirstSearch(int[][] graph, int[] values, int node)
+    {
+        //Task
+        //Given a graph (represented as an adjacency matrix) and an array of values, return the index of the deepest value in the graph.
+        
+        var max = values[node];
+        var maxIndex = node;
+        for (var i = 0; i < graph.Length; i++)
+        {
+            if (graph[node][i] == 1)
+            {
+                var index = DepthFirstSearch(graph, values, i);
+                if (values[index] > max)
+                {
+                    max = values[index];
+                    maxIndex = index;
+                }
+            }
+        }
+        return maxIndex;
+    }
 
 }
 

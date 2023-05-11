@@ -2791,6 +2791,29 @@ public static class Class1
         }
         return maxIndex;
     }
+    
+    public static int BreadthFirstSearch(int[][] graph, int[] values, int node)
+    {
+        //Task
+        //Given a graph (represented as an adjacency matrix) and an array of values, return the index of the deepest value in the graph.
+        
+        var queue = new Queue<int>();
+        queue.Enqueue(node);
+        var max = values[node];
+        var maxIndex = node;
+        while (queue.Count > 0)
+        {
+            var current = queue.Dequeue();
+            for (var i = 0; i < graph.Length; i++){
+                if (graph[current][i] != 1) continue;
+                queue.Enqueue(i);
+                if (values[i] <= max) continue;
+                max = values[i];
+                maxIndex = i;
+            }
+        }
+        return maxIndex;
+    }
 
 }
 

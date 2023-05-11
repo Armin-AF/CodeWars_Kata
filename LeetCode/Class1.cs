@@ -2814,6 +2814,14 @@ public static class Class1
         }
         return maxIndex;
     }
+    
+    public static int[] FindTheOddInt(int[] seq)
+    {
+        //Task
+        //Given an array, find the int that appears an odd number of times.
+        
+        return seq.GroupBy(x => x).Single(g => g.Count() % 2 == 1).ToArray();
+    }
 
 }
 

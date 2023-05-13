@@ -2822,6 +2822,27 @@ public static class Class1
         
         return seq.GroupBy(x => x).Single(g => g.Count() % 2 == 1).ToArray();
     }
+    
+    public static int[] BucketSort(int[] arr)
+    {
+        //Task
+        //Given an array of integers, sort the array in ascending order using the Bucket Sort algorithm.
+        
+        var buckets = new List<int>[arr.Length];
+        foreach (var t in arr){
+            var index = t / 10;
+            buckets[index] ??= new List<int>();
+            buckets[index].Add(t);
+        }
+        var result = new List<int>();
+        foreach (var bucket in buckets)
+        {
+            if (bucket == null) continue;
+            bucket.Sort();
+            result.AddRange(bucket);
+        }
+        return result.ToArray();
+    }
 
 }
 

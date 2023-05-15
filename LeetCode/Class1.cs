@@ -2879,7 +2879,22 @@ public static class Class1
         }
         return arr;
     }
-
+    
+    public static int[] BubbleSort(int[] arr)
+    {
+        //Task
+        //Given an array of integers, sort the array in ascending order using the Bubble Sort algorithm.
+        
+        for (var i = 0; i < arr.Length - 1; i++)
+        {
+            for (var j = 0; j < arr.Length - i - 1; j++)
+            {
+                if (arr[j] <= arr[j + 1]) continue;
+                (arr[j], arr[j + 1]) = (arr[j + 1], arr[j]);
+            }
+        }
+        return arr;
+    }
 }
 
 

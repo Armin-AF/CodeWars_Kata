@@ -2843,6 +2843,23 @@ public static class Class1
         }
         return result.ToArray();
     }
+    
+    public static int[] InsertionSort(int[] arr)
+    {
+        //Task
+        //Given an array of integers, sort the array in ascending order using the Insertion Sort algorithm.
+        
+        for (var i = 1; i < arr.Length; i++)
+        {
+            var j = i;
+            while (j > 0 && arr[j - 1] > arr[j])
+            {
+                (arr[j], arr[j - 1]) = (arr[j - 1], arr[j]);
+                j--;
+            }
+        }
+        return arr;
+    }
 
 }
 

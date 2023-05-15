@@ -2860,6 +2860,25 @@ public static class Class1
         }
         return arr;
     }
+    
+    public static int[] SelectionSort(int[] arr)
+    {
+        //Task
+        //Given an array of integers, sort the array in ascending order using the Selection Sort algorithm.
+        
+        for (var i = 0; i < arr.Length - 1; i++)
+        {
+            var minIndex = i;
+            for (var j = i + 1; j < arr.Length; j++)
+            {
+                if (arr[j] >= arr[minIndex]) continue;
+                minIndex = j;
+            }
+            if (minIndex == i) continue;
+            (arr[i], arr[minIndex]) = (arr[minIndex], arr[i]);
+        }
+        return arr;
+    }
 
 }
 

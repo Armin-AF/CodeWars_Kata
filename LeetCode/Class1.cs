@@ -2934,6 +2934,45 @@ public static class Class1
         result[1] = -1;
         return result;
     }
+    
+    public static int[] SearchInSortedArray(int[] nums, int target)
+    {
+        //Task
+        //Given an array of integers nums sorted in ascending order, find the starting and ending position of a given target value.
+        
+        var result = new int[2];
+        var left = 0;
+        var right = nums.Length - 1;
+        while (left <= right)
+        {
+            var mid = (left + right) / 2;
+            if (nums[mid] == target)
+            {
+                result[0] = mid;
+                result[1] = mid;
+                while (result[0] > 0 && nums[result[0] - 1] == target)
+                {
+                    result[0]--;
+                }
+                while (result[1] < nums.Length - 1 && nums[result[1] + 1] == target)
+                {
+                    result[1]++;
+                }
+                return result;
+            }
+            if (nums[mid] < target)
+            {
+                left = mid + 1;
+            }
+            else
+            {
+                right = mid - 1;
+            }
+        }
+        result[0] = -1;
+        result[1] = -1;
+        return result;
+    }
 }
 
 

@@ -2973,6 +2973,32 @@ public static class Class1
         result[1] = -1;
         return result;
     }
+    
+    public static int[] LinearSearch(int[] nums, int target)
+    {
+        //Task
+        //Given an array of integers nums sorted in ascending order, find the starting and ending position of a given target value.
+        
+        var result = new int[2];
+        for (var i = 0; i < nums.Length; i++)
+        {
+            if (nums[i] != target) continue;
+            result[0] = i;
+            result[1] = i;
+            while (result[0] > 0 && nums[result[0] - 1] == target)
+            {
+                result[0]--;
+            }
+            while (result[1] < nums.Length - 1 && nums[result[1] + 1] == target)
+            {
+                result[1]++;
+            }
+            return result;
+        }
+        result[0] = -1;
+        result[1] = -1;
+        return result;
+    }
 }
 
 

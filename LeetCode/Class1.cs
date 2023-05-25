@@ -3029,6 +3029,31 @@ public static class Class1
         }
         return result;
     }
+    
+    public static int[] BellmanFordAlgorithm(int[,] graph, int source)
+    {
+        //Task
+        //Given an array of integers nums sorted in ascending order, find the starting and ending position of a given target value.
+        
+        var result = new int[graph.GetLength(0)];
+        for (var i = 0; i < result.Length; i++)
+        {
+            result[i] = int.MaxValue;
+        }
+        result[source] = 0;
+        for (var i = 0; i < result.Length - 1; i++)
+        {
+            for (var j = 0; j < graph.GetLength(0); j++)
+            {
+                for (var k = 0; k < graph.GetLength(0); k++)
+                {
+                    if (graph[j, k] == 0 || result[j] == int.MaxValue || result[j] + graph[j, k] >= result[k]) continue;
+                    result[k] = result[j] + graph[j, k];
+                }
+            }
+        }
+        return result;
+    }
 }
 
 

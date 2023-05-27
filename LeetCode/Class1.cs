@@ -3054,6 +3054,33 @@ public static class Class1
         }
         return result;
     }
+    
+    public static int[] FloydWarshallAlgorithm(int[,] graph)
+    {
+        //Task
+        //Given an array of integers nums sorted in ascending order, find the starting and ending position of a given target value.
+        
+        var result = new int[graph.GetLength(0), graph.GetLength(0)];
+        for (var i = 0; i < result.GetLength(0); i++)
+        {
+            for (var j = 0; j < result.GetLength(0); j++)
+            {
+                result[i, j] = graph[i, j];
+            }
+        }
+        for (var i = 0; i < result.GetLength(0); i++)
+        {
+            for (var j = 0; j < result.GetLength(0); j++)
+            {
+                for (var k = 0; k < result.GetLength(0); k++)
+                {
+                    if (result[j, i] == int.MaxValue || result[i, k] == int.MaxValue || result[j, i] + result[i, k] >= result[j, k]) continue;
+                    result[j, k] = result[j, i] + result[i, k];
+                }
+            }
+        }
+        return result.Cast<int>().ToArray();
+    }
 }
 
 

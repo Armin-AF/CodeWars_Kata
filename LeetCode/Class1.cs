@@ -3288,6 +3288,36 @@ public static class Class1
         }
         return result;
     }
+    
+    public static int[] LeakyBucketAlgorithm(int[,] graph)
+    {
+        //Task
+        //Given an array of integers nums sorted in ascending order, find the starting and ending position of a given target value.
+        
+        var result = new int[graph.GetLength(0)];
+        var visited = new bool[graph.GetLength(0)];
+        for (var i = 0; i < result.Length; i++)
+        {
+            result[i] = int.MaxValue;
+        }
+        result[0] = 0;
+        for (var i = 0; i < result.Length; i++)
+        {
+            var minIndex = -1;
+            for (var j = 0; j < result.Length; j++)
+            {
+                if (visited[j] || (minIndex != -1 && result[j] >= result[minIndex])) continue;
+                minIndex = j;
+            }
+            visited[minIndex] = true;
+            for (var j = 0; j < result.Length; j++)
+            {
+                if (graph[minIndex, j] == 0 || visited[j] || result[j] <= graph[minIndex, j]) continue;
+                result[j] = graph[minIndex, j];
+            }
+        }
+        return result;
+    }
 }
 
 

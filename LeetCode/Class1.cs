@@ -329,7 +329,7 @@ public static class Class1
 
         return duplicates.Count;
     }
-    
+
     public static int FindLongestWithDistinctChars(string str){
         // Find the longest substring with distinct characters
         var longest = 0;
@@ -2191,7 +2191,7 @@ public static class Class1
         return result.ToString();
 
     }
-    
+
     public static string InsideOut(string s){
         // takes a string s and returns a string that represents the inside out of s.
         var result = new StringBuilder();
@@ -2208,7 +2208,7 @@ public static class Class1
 
         return result.ToString().Trim();
     }
-    
+
     public static Stack<string> DuplicateEncoder(string s){
         // takes a string s and returns a stack of strings that represents the duplicate encoder of s.
         var result = new Stack<string>();
@@ -2231,22 +2231,20 @@ public static class Class1
 
         return result;
     }
-    
-    public static int CountTrailingZerosInFactorial(int n)
-    {
+
+    public static int CountTrailingZerosInFactorial(int n){
         // Write a program that will calculate the number of trailing zeros in a factorial of a given number.
 
         // N! = 1 * 2 * 3 *  ... * N
-        
+
         var count = 0;
 
         for (var i = 5; n / i >= 1; i *= 5) count += n / i;
 
         return count;
     }
-    
-    public static int BouncingBall(double h, double bounce, double window)
-    {
+
+    public static int BouncingBall(double h, double bounce, double window){
         /*A child is playing with a ball on the nth floor of a tall building. The height of this floor above ground level, h, is known.
 
             He drops the ball out of the window. The ball bounces (for example), to two-thirds of its height (a bounce of 0.66).
@@ -2260,48 +2258,40 @@ public static class Class1
         Float parameter "bounce" must be greater than 0 and less than 1
         Float parameter "window" must be less than h.
             If all three conditions above are fulfilled, return a positive integer, otherwise return -1.*/
-        
-        if (h <= 0 || bounce <= 0 || bounce >= 1 || window >= h)
-        {
+
+        if (h <= 0 || bounce <= 0 || bounce >= 1 || window >= h){
             return -1;
         }
 
         var numberOfBounces = 0;
 
-        while (h > window)
-        {
+        while (h > window){
             numberOfBounces++; // Ball is falling
             h *= bounce;
 
-            if (h > window)
-            {
+            if (h > window){
                 numberOfBounces++; // Ball is bouncing up
             }
         }
 
         return numberOfBounces;
     }
-    
-    public static string buildString(string[] args)
-    {
+
+    public static string buildString(string[] args){
         // Oh no! Timmy hasn't followed instructions very carefully and forgot how to use the new String Template feature, Help Timmy with his string template so it works as he expects!
-        
+
         return String.Format("I like {1}!", String.Join(",", args));
     }
-    
-    public static string[] FindDuplicatePhoneNumbers(string[] phoneNumbers)
-    {
-        Dictionary<string, int> phoneCount = new Dictionary<string, int>();
-        string[] mapping = { "", "", "ABC", "DEF", "GHI", "JKL", "MNO", "PRS", "TUV", "WXY" };
 
-        foreach (var phoneNumber in phoneNumbers)
-        {
+    public static string[] FindDuplicatePhoneNumbers(string[] phoneNumbers){
+        Dictionary<string, int> phoneCount = new Dictionary<string, int>();
+        string[] mapping ={"", "", "ABC", "DEF", "GHI", "JKL", "MNO", "PRS", "TUV", "WXY"};
+
+        foreach (var phoneNumber in phoneNumbers){
             var standardForm = "";
-            foreach (char c in phoneNumber.ToUpper())
-            {
+            foreach (char c in phoneNumber.ToUpper()){
                 if (char.IsDigit(c)) standardForm += c;
-                else if (char.IsLetter(c))
-                {
+                else if (char.IsLetter(c)){
                     for (int i = 0; i < mapping.Length; i++){
                         if (!mapping[i].Contains(c)) continue;
                         standardForm += i;
@@ -2309,6 +2299,7 @@ public static class Class1
                     }
                 }
             }
+
             standardForm = standardForm.Insert(3, "-");
 
             if (phoneCount.ContainsKey(standardForm)){
@@ -2326,51 +2317,44 @@ public static class Class1
         return duplicates.ToArray();
     }
 
-    static int SumOfDigitsFor(int number)
-    {
+    static int SumOfDigitsFor(int number){
         var sum = 0;
-        while (number > 0)
-        {
+        while (number > 0){
             sum += number % 10;
             number /= 10;
         }
+
         return sum;
     }
 
-    static bool IsComfortable(int a, int b)
-    {
+    static bool IsComfortable(int a, int b){
         int s_a = SumOfDigitsFor(a);
         int s_b = SumOfDigitsFor(b);
         return a != b && a >= b - s_b && a <= b + s_b;
     }
 
-    public static int ComfortablePairs(int L, int R)
-    {
+    public static int ComfortablePairs(int L, int R){
         var count = 0;
-        for (var a = L; a <= R; a++)
-        {
-            for (var b = a + 1; b <= R; b++)
-            {
-                if (IsComfortable(a, b) && IsComfortable(b, a))
-                {
+        for (var a = L; a <= R; a++){
+            for (var b = a + 1; b <= R; b++){
+                if (IsComfortable(a, b) && IsComfortable(b, a)){
                     count++;
                 }
             }
         }
+
         return count;
     }
-    
-    public static int[] Divisors(int n)
-    {
+
+    public static int[] Divisors(int n){
         //Create a function named divisors/Divisors that takes an integer n > 1 and returns an array with all of the integer's divisors(except for 1 and the number itself), from smallest to largest. If the number is prime return the string '(integer) is prime' (null in C#) (use Either String a in Haskell and Result<Vec<u32>, String> in Rust).
-        
+
         var divisors = new List<int>();
 
         for (var i = 2; i <= Math.Sqrt(n); i++){
             if (n % i != 0) continue;
             divisors.Add(i);
-            if (i != n / i)
-            {
+            if (i != n / i){
                 divisors.Add(n / i);
             }
         }
@@ -2381,14 +2365,12 @@ public static class Class1
 
         return divisors.ToArray();
     }
-    
-    
+
+
     // Decode the Morse code, for real kata
-    public static string decodeBitsAdvanced(string bits)
-    {
+    public static string decodeBitsAdvanced(string bits){
         bits = bits.Trim('0');
-        if (bits.Length == 0)
-        {
+        if (bits.Length == 0){
             return "";
         }
 
@@ -2406,83 +2388,76 @@ public static class Class1
         return morse;
     }
 
-    public static string decodeMorse(string morseCode)
-    {
-        if (string.IsNullOrWhiteSpace(morseCode))
-        {
+    public static string decodeMorse(string morseCode){
+        if (string.IsNullOrWhiteSpace(morseCode)){
             return "";
         }
 
-        Dictionary<string, string> morseCodeDictionary = new Dictionary<string, string>
-        {
-            {".-", "A"}, {"-...", "B"}, {"-.-.", "C"}, {"-..", "D"}, {".", "E"},
-            {"..-.", "F"}, {"--.", "G"}, {"....", "H"}, {"..", "I"}, {".---", "J"},
-            {"-.-", "K"}, {".-..", "L"}, {"--", "M"}, {"-.", "N"}, {"---", "O"},
-            {".--.", "P"}, {"--.-", "Q"}, {".-.", "R"}, {"...", "S"}, {"-", "T"},
-            {"..-", "U"}, {"...-", "V"}, {".--", "W"}, {"-..-", "X"}, {"-.--", "Y"},
-            {"--..", "Z"}, {"-----", "0"}, {".----", "1"}, {"..---", "2"}, {"...--", "3"},
-            {"....-", "4"}, {".....", "5"}, {"-....", "6"}, {"--...", "7"}, {"---..", "8"},
-            {"----.", "9"}, {"...---...", "SOS"}
+        Dictionary<string, string> morseCodeDictionary = new Dictionary<string, string>{
+            {".-", "A"},{"-...", "B"},{"-.-.", "C"},{"-..", "D"},{".", "E"},
+            {"..-.", "F"},{"--.", "G"},{"....", "H"},{"..", "I"},{".---", "J"},
+            {"-.-", "K"},{".-..", "L"},{"--", "M"},{"-.", "N"},{"---", "O"},
+            {".--.", "P"},{"--.-", "Q"},{".-.", "R"},{"...", "S"},{"-", "T"},
+            {"..-", "U"},{"...-", "V"},{".--", "W"},{"-..-", "X"},{"-.--", "Y"},
+            {"--..", "Z"},{"-----", "0"},{".----", "1"},{"..---", "2"},{"...--", "3"},
+            {"....-", "4"},{".....", "5"},{"-....", "6"},{"--...", "7"},{"---..", "8"},
+            {"----.", "9"},{"...---...", "SOS"}
         };
 
         return string.Join(" ", morseCode.Trim().Split("   ").Select(word =>
             string.Join("", word.Split(' ').Select(letter =>
                 morseCodeDictionary[letter]))));
     }
-    
-    public static string DuplicateEncode(string word)
-    {
+
+    public static string DuplicateEncode(string word){
         // Convert the word to lowercase for case-insensitivity
         word = word.ToLower();
         // Create a dictionary to store the count of each character
         var charCount = new Dictionary<char, int>();
-        foreach (var c in word)
-        {
-            if (charCount.ContainsKey(c))
-            {
+        foreach (var c in word){
+            if (charCount.ContainsKey(c)){
                 charCount[c]++;
             }
-            else
-            {
+            else{
                 charCount[c] = 1;
             }
         }
+
         // Create a new string with parentheses based on the character count
         var result = new StringBuilder();
         foreach (var c in word){
             result.Append(charCount[c] > 1 ? ')' : '(');
         }
+
         return result.ToString();
     }
-    
-    public static int Persistence(long n) 
-    {
+
+    public static int Persistence(long n){
         //Write a function, persistence, that takes in a positive parameter num and returns its multiplicative persistence, which is the number of times you must multiply the digits in num until you reach a single digit.
-        
+
         var count = 0;
         while (n > 9) // Keep looping until we get a single-digit number
         {
             long product = 1;
             while (n > 0) // Calculate the product of the digits
             {
-                var digit = (int)(n % 10);
+                var digit = (int) (n % 10);
                 product *= digit;
                 n /= 10;
             }
+
             n = product;
             count++; // Increment the persistence count
         }
+
         return count;
     }
-    
-    public static int[] FindPath(bool[] maze, int size, int startIndex, int goalIndex)
-    {
+
+    public static int[] FindPath(bool[] maze, int size, int startIndex, int goalIndex){
         // Convert the 1D maze array to a 2D matrix for easier indexing
         bool[,] matrix = new bool[size, size];
-        for (int i = 0; i < size; i++)
-        {
-            for (int j = 0; j < size; j++)
-            {
+        for (int i = 0; i < size; i++){
+            for (int j = 0; j < size; j++){
                 matrix[i, j] = maze[i * size + j];
             }
         }
@@ -2493,15 +2468,14 @@ public static class Class1
 
         // Initialize an array to keep track of the previous cell for each cell
         var prev = new int[size * size];
-        for (int i = 0; i < prev.Length; i++)
-        {
+        for (int i = 0; i < prev.Length; i++){
             prev[i] = -1;
         }
+
         prev[startIndex] = startIndex;
 
         // Perform a modified version of Depth First Search (DFS) to find the path
-        while (stack.Count > 0)
-        {
+        while (stack.Count > 0){
             var current = stack.Pop();
             if (current != goalIndex){
                 var x = current / size;
@@ -2542,31 +2516,30 @@ public static class Class1
                 return path.ToArray();
             }
         }
+
         // No path found
         return null!;
     }
-    
-    public static int[] VideoPart(string part, string total)
-    {
+
+    public static int[] VideoPart(string part, string total){
         //Task
         //You have been watching a video for some time. Knowing the total video duration find out what portion of the video you have already watched.
-        
+
         var partTime = ParseTime(part);
         var totalTime = ParseTime(total);
         var partSeconds = partTime[0] * 3600 + partTime[1] * 60 + partTime[2];
         var totalSeconds = totalTime[0] * 3600 + totalTime[1] * 60 + totalTime[2];
         var gcd = Gcd(partSeconds, totalSeconds);
-        return new int[] { partSeconds / gcd, totalSeconds / gcd };
+        return new int[]{partSeconds / gcd, totalSeconds / gcd};
     }
 
-    static int[] ParseTime(string timeString)
-    {
+    static int[] ParseTime(string timeString){
         var parts = timeString.Split(':');
         var result = new int[3];
-        for (var i = 0; i < 3; i++)
-        {
+        for (var i = 0; i < 3; i++){
             result[i] = int.Parse(parts[i]);
         }
+
         return result;
     }
 
@@ -2578,24 +2551,21 @@ public static class Class1
             b = a1 % b;
         }
     }
-    
-    public static string[] DirReduc(string[] arr)
-    {
+
+    public static string[] DirReduc(string[] arr){
         //Task
         //Write a function dirReduc which will take an array of strings and returns an array of strings with the needless directions removed (W<->E or S<->N side by side).
-        
+
         var stack = new Stack<string>();
-        foreach (var direction in arr)
-        {
-            if (stack.Count > 0 && AreOpposite(stack.Peek(), direction))
-            {
+        foreach (var direction in arr){
+            if (stack.Count > 0 && AreOpposite(stack.Peek(), direction)){
                 stack.Pop();
             }
-            else
-            {
+            else{
                 stack.Push(direction);
             }
         }
+
         var result = stack.ToArray();
         Array.Reverse(result);
         return result;
@@ -2607,202 +2577,178 @@ public static class Class1
                peek == "EAST" && direction == "WEST" ||
                peek == "WEST" && direction == "EAST";
     }
-    
-    public static int[] Snail(int[][] array)
-    {
+
+    public static int[] Snail(int[][] array){
         //Task
         //Given an n x n array, return the array elements arranged from outermost elements to the middle element, traveling clockwise.
-        
+
         var n = array.Length;
         var result = new int[n * n];
         var index = 0;
-        for (var i = 0; i < n / 2; i++)
-        {
+        for (var i = 0; i < n / 2; i++){
             // Top row
-            for (var j = i; j < n - i; j++)
-            {
+            for (var j = i; j < n - i; j++){
                 result[index++] = array[i][j];
             }
 
             // Right column
-            for (var j = i + 1; j < n - i; j++)
-            {
+            for (var j = i + 1; j < n - i; j++){
                 result[index++] = array[j][n - i - 1];
             }
 
             // Bottom row
-            for (var j = i + 1; j < n - i; j++)
-            {
+            for (var j = i + 1; j < n - i; j++){
                 result[index++] = array[n - i - 1][n - j - 1];
             }
 
             // Left column
-            for (var j = i + 1; j < n - i - 1; j++)
-            {
+            for (var j = i + 1; j < n - i - 1; j++){
                 result[index++] = array[n - j - 1][i];
             }
         }
 
-        if (n % 2 == 1)
-        {
+        if (n % 2 == 1){
             result[index] = array[n / 2][n / 2];
         }
 
         return result;
     }
-    
-    public static string[][] Partlist(string[] arr)
-    {
+
+    public static string[][] Partlist(string[] arr){
         //Task
         //Write a function partlist that gives all the ways to divide a list (an array) of at least two elements into two non-empty parts.
-        
+
         var result = new string[arr.Length - 1][];
-        for (var i = 0; i < arr.Length - 1; i++)
-        {
+        for (var i = 0; i < arr.Length - 1; i++){
             result[i] = new string[2];
             result[i][0] = string.Join(" ", arr.Take(i + 1));
             result[i][1] = string.Join(" ", arr.Skip(i + 1));
         }
+
         return result;
     }
-    
-    public static int[] ArrayDiff(int[] a, int[] b)
-    {
+
+    public static int[] ArrayDiff(int[] a, int[] b){
         //Task
         //Your goal in this kata is to implement a difference function, which subtracts one list from another and returns the result.
-        
+
         var set = new HashSet<int>(b);
         return a.Where(x => !set.Contains(x)).ToArray();
     }
-    
-    public static int HashCracker(string[][] hashes, string[] dictionary)
-    {
+
+    public static int HashCracker(string[][] hashes, string[] dictionary){
         //Task
         //Given a list of hashes and a dictionary, find the password.
-        
+
         var dictionarySet = new HashSet<string>(dictionary);
-        foreach (var hash in hashes)
-        {
+        foreach (var hash in hashes){
             var password = string.Join("", hash.Select(word => dictionarySet.Contains(word) ? word[0].ToString() : ""));
-            if (password.Length == hash.Length)
-            {
+            if (password.Length == hash.Length){
                 return int.Parse(password);
             }
         }
+
         return -1;
     }
-    
-    public static int UserConnections(string[][] users, string[][] connections, string user)
-    {
+
+    public static int UserConnections(string[][] users, string[][] connections, string user){
         //Task
         //Given a list of users and a list of connections, find the number of connections of the given user.
-        
+
         var userIndex = Array.IndexOf(users, user);
         return connections.Count(connection => connection[0] == user || connection[1] == user);
     }
-    
-    public static int CountSmileys(string[] smileys)
-    {
+
+    public static int CountSmileys(string[] smileys){
         //Task
         //Given an array (arr) as an argument complete the function countSmileys that should return the total number of smiling faces.
-        
+
         return smileys.Count(smiley => Regex.IsMatch(smiley, @"^[:;][-~]?[)D]$"));
     }
-    
-    public static string ChangeCurseWorldWithThreeStars(string text)
-    {
+
+    public static string ChangeCurseWorldWithThreeStars(string text){
         //Task
         //Write a function that takes in a string and replaces all curse words with three asterisks.
-        
+
         return Regex.Replace(text, @"(shit|crap|damn)", "***", RegexOptions.IgnoreCase);
     }
-    
-    public static string AnswerToGreetings(string name)
-    {
+
+    public static string AnswerToGreetings(string name){
         //Task
         //Write a function that takes in a string and replaces all curse words with three asterisks.
-        
+
         return Regex.Replace(name, @"(hello|ciao|salut|hallo|hola|ahoj|czesc)", "Hi!", RegexOptions.IgnoreCase);
     }
-    
-    public static string RemoveExclamationMarks(string s)
-    {
+
+    public static string RemoveExclamationMarks(string s){
         //Task
         //Write function RemoveExclamationMarks which removes all exclamation marks from a given string.
-        
+
         return Regex.Replace(s, @"!", "");
     }
-    
-    public static string[] EmailSorter(string[] emails)
-    {
+
+    public static string[] EmailSorter(string[] emails){
         //Task
         //Given an array of email addresses, return an array of only the email addresses that are considered "valid".
-        
-        return emails.Where(email => Regex.IsMatch(email, @"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$")).ToArray();
+
+        return emails.Where(email => Regex.IsMatch(email, @"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"))
+            .ToArray();
     }
-    
-    public static string RemoveUrlAnchor(string url)
-    {
+
+    public static string RemoveUrlAnchor(string url){
         //Task
         //Complete the function/method so that it returns the url with anything after the anchor (#) removed.
-        
+
         return Regex.Replace(url, @"#.*$", "");
     }
-    
-    public static int ArchiveNumberOfFiles(string[] files)
-    {
+
+    public static int ArchiveNumberOfFiles(string[] files){
         //Task
         //Given an array of file names, return the number of files that are archives.
-        
+
         return files.Count(file => Regex.IsMatch(file, @"\.zip$"));
     }
-    
-    public static int[] StringLetterCount(string str)
-    {
+
+    public static int[] StringLetterCount(string str){
         //Task
         //Take a string str and return an array of length 26 with the count of each letter in str.
-        
+
         var result = new int[26];
-        foreach (var c in str)
-        {
+        foreach (var c in str){
             result[c - 'a']++;
         }
+
         return result;
     }
-    
-    public static int DepthFirstSearch(int[][] graph, int[] values, int node)
-    {
+
+    public static int DepthFirstSearch(int[][] graph, int[] values, int node){
         //Task
         //Given a graph (represented as an adjacency matrix) and an array of values, return the index of the deepest value in the graph.
-        
+
         var max = values[node];
         var maxIndex = node;
-        for (var i = 0; i < graph.Length; i++)
-        {
-            if (graph[node][i] == 1)
-            {
+        for (var i = 0; i < graph.Length; i++){
+            if (graph[node][i] == 1){
                 var index = DepthFirstSearch(graph, values, i);
-                if (values[index] > max)
-                {
+                if (values[index] > max){
                     max = values[index];
                     maxIndex = index;
                 }
             }
         }
+
         return maxIndex;
     }
-    
-    public static int BreadthFirstSearch(int[][] graph, int[] values, int node)
-    {
+
+    public static int BreadthFirstSearch(int[][] graph, int[] values, int node){
         //Task
         //Given a graph (represented as an adjacency matrix) and an array of values, return the index of the deepest value in the graph.
-        
+
         var queue = new Queue<int>();
         queue.Enqueue(node);
         var max = values[node];
         var maxIndex = node;
-        while (queue.Count > 0)
-        {
+        while (queue.Count > 0){
             var current = queue.Dequeue();
             for (var i = 0; i < graph.Length; i++){
                 if (graph[current][i] != 1) continue;
@@ -2812,570 +2758,558 @@ public static class Class1
                 maxIndex = i;
             }
         }
+
         return maxIndex;
     }
-    
-    public static int[] FindTheOddInt(int[] seq)
-    {
+
+    public static int[] FindTheOddInt(int[] seq){
         //Task
         //Given an array, find the int that appears an odd number of times.
-        
+
         return seq.GroupBy(x => x).Single(g => g.Count() % 2 == 1).ToArray();
     }
-    
-    public static int[] BucketSort(int[] arr)
-    {
+
+    public static int[] BucketSort(int[] arr){
         //Task
         //Given an array of integers, sort the array in ascending order using the Bucket Sort algorithm.
-        
+
         var buckets = new List<int>[arr.Length];
         foreach (var t in arr){
             var index = t / 10;
             buckets[index] ??= new List<int>();
             buckets[index].Add(t);
         }
+
         var result = new List<int>();
-        foreach (var bucket in buckets)
-        {
+        foreach (var bucket in buckets){
             if (bucket == null) continue;
             bucket.Sort();
             result.AddRange(bucket);
         }
+
         return result.ToArray();
     }
-    
-    public static int[] InsertionSort(int[] arr)
-    {
+
+    public static int[] InsertionSort(int[] arr){
         //Task
         //Given an array of integers, sort the array in ascending order using the Insertion Sort algorithm.
-        
-        for (var i = 1; i < arr.Length; i++)
-        {
+
+        for (var i = 1; i < arr.Length; i++){
             var j = i;
-            while (j > 0 && arr[j - 1] > arr[j])
-            {
+            while (j > 0 && arr[j - 1] > arr[j]){
                 (arr[j], arr[j - 1]) = (arr[j - 1], arr[j]);
                 j--;
             }
         }
+
         return arr;
     }
-    
-    public static int[] SelectionSort(int[] arr)
-    {
+
+    public static int[] SelectionSort(int[] arr){
         //Task
         //Given an array of integers, sort the array in ascending order using the Selection Sort algorithm.
-        
-        for (var i = 0; i < arr.Length - 1; i++)
-        {
+
+        for (var i = 0; i < arr.Length - 1; i++){
             var minIndex = i;
-            for (var j = i + 1; j < arr.Length; j++)
-            {
+            for (var j = i + 1; j < arr.Length; j++){
                 if (arr[j] >= arr[minIndex]) continue;
                 minIndex = j;
             }
+
             if (minIndex == i) continue;
             (arr[i], arr[minIndex]) = (arr[minIndex], arr[i]);
         }
+
         return arr;
     }
-    
-    public static int[] BubbleSort(int[] arr)
-    {
+
+    public static int[] BubbleSort(int[] arr){
         //Task
         //Given an array of integers, sort the array in ascending order using the Bubble Sort algorithm.
-        
-        for (var i = 0; i < arr.Length - 1; i++)
-        {
-            for (var j = 0; j < arr.Length - i - 1; j++)
-            {
+
+        for (var i = 0; i < arr.Length - 1; i++){
+            for (var j = 0; j < arr.Length - i - 1; j++){
                 if (arr[j] <= arr[j + 1]) continue;
                 (arr[j], arr[j + 1]) = (arr[j + 1], arr[j]);
             }
         }
+
         return arr;
     }
-    
-    public static int[] SearchInRotatedSortedArray(int[] nums, int target)
-    {
+
+    public static int[] SearchInRotatedSortedArray(int[] nums, int target){
         //Task
         //Given an array of integers nums sorted in ascending order, find the starting and ending position of a given target value.
-        
+
         var result = new int[2];
         var left = 0;
         var right = nums.Length - 1;
-        while (left <= right)
-        {
+        while (left <= right){
             var mid = (left + right) / 2;
-            if (nums[mid] == target)
-            {
+            if (nums[mid] == target){
                 result[0] = mid;
                 result[1] = mid;
-                while (result[0] > 0 && nums[result[0] - 1] == target)
-                {
+                while (result[0] > 0 && nums[result[0] - 1] == target){
                     result[0]--;
                 }
-                while (result[1] < nums.Length - 1 && nums[result[1] + 1] == target)
-                {
+
+                while (result[1] < nums.Length - 1 && nums[result[1] + 1] == target){
                     result[1]++;
                 }
+
                 return result;
             }
-            if (nums[mid] < target)
-            {
+
+            if (nums[mid] < target){
                 left = mid + 1;
             }
-            else
-            {
+            else{
                 right = mid - 1;
             }
         }
+
         result[0] = -1;
         result[1] = -1;
         return result;
     }
-    
-    public static int[] SearchInSortedArray(int[] nums, int target)
-    {
+
+    public static int[] SearchInSortedArray(int[] nums, int target){
         //Task
         //Given an array of integers nums sorted in ascending order, find the starting and ending position of a given target value.
-        
+
         var result = new int[2];
         var left = 0;
         var right = nums.Length - 1;
-        while (left <= right)
-        {
+        while (left <= right){
             var mid = (left + right) / 2;
-            if (nums[mid] == target)
-            {
+            if (nums[mid] == target){
                 result[0] = mid;
                 result[1] = mid;
-                while (result[0] > 0 && nums[result[0] - 1] == target)
-                {
+                while (result[0] > 0 && nums[result[0] - 1] == target){
                     result[0]--;
                 }
-                while (result[1] < nums.Length - 1 && nums[result[1] + 1] == target)
-                {
+
+                while (result[1] < nums.Length - 1 && nums[result[1] + 1] == target){
                     result[1]++;
                 }
+
                 return result;
             }
-            if (nums[mid] < target)
-            {
+
+            if (nums[mid] < target){
                 left = mid + 1;
             }
-            else
-            {
+            else{
                 right = mid - 1;
             }
         }
+
         result[0] = -1;
         result[1] = -1;
         return result;
     }
-    
-    public static int[] LinearSearch(int[] nums, int target)
-    {
+
+    public static int[] LinearSearch(int[] nums, int target){
         //Task
         //Given an array of integers nums sorted in ascending order, find the starting and ending position of a given target value.
-        
+
         var result = new int[2];
-        for (var i = 0; i < nums.Length; i++)
-        {
+        for (var i = 0; i < nums.Length; i++){
             if (nums[i] != target) continue;
             result[0] = i;
             result[1] = i;
-            while (result[0] > 0 && nums[result[0] - 1] == target)
-            {
+            while (result[0] > 0 && nums[result[0] - 1] == target){
                 result[0]--;
             }
-            while (result[1] < nums.Length - 1 && nums[result[1] + 1] == target)
-            {
+
+            while (result[1] < nums.Length - 1 && nums[result[1] + 1] == target){
                 result[1]++;
             }
+
             return result;
         }
+
         result[0] = -1;
         result[1] = -1;
         return result;
     }
-    
-    public static int[] DijkstraAlgorithm(int[,] graph, int source)
-    {
+
+    public static int[] DijkstraAlgorithm(int[,] graph, int source){
         //Task
         //Given an array of integers nums sorted in ascending order, find the starting and ending position of a given target value.
-        
+
         var result = new int[graph.GetLength(0)];
         var visited = new bool[graph.GetLength(0)];
-        for (var i = 0; i < result.Length; i++)
-        {
+        for (var i = 0; i < result.Length; i++){
             result[i] = int.MaxValue;
         }
+
         result[source] = 0;
-        for (var i = 0; i < result.Length; i++)
-        {
+        for (var i = 0; i < result.Length; i++){
             var minIndex = -1;
-            for (var j = 0; j < result.Length; j++)
-            {
+            for (var j = 0; j < result.Length; j++){
                 if (visited[j] || (minIndex != -1 && result[j] >= result[minIndex])) continue;
                 minIndex = j;
             }
+
             visited[minIndex] = true;
-            for (var j = 0; j < result.Length; j++)
-            {
-                if (graph[minIndex, j] == 0 || visited[j] || result[j] <= result[minIndex] + graph[minIndex, j]) continue;
+            for (var j = 0; j < result.Length; j++){
+                if (graph[minIndex, j] == 0 || visited[j] ||
+                    result[j] <= result[minIndex] + graph[minIndex, j]) continue;
                 result[j] = result[minIndex] + graph[minIndex, j];
             }
         }
+
         return result;
     }
-    
-    public static int[] BellmanFordAlgorithm(int[,] graph, int source)
-    {
+
+    public static int[] BellmanFordAlgorithm(int[,] graph, int source){
         //Task
         //Given an array of integers nums sorted in ascending order, find the starting and ending position of a given target value.
-        
+
         var result = new int[graph.GetLength(0)];
-        for (var i = 0; i < result.Length; i++)
-        {
+        for (var i = 0; i < result.Length; i++){
             result[i] = int.MaxValue;
         }
+
         result[source] = 0;
-        for (var i = 0; i < result.Length - 1; i++)
-        {
-            for (var j = 0; j < graph.GetLength(0); j++)
-            {
-                for (var k = 0; k < graph.GetLength(0); k++)
-                {
+        for (var i = 0; i < result.Length - 1; i++){
+            for (var j = 0; j < graph.GetLength(0); j++){
+                for (var k = 0; k < graph.GetLength(0); k++){
                     if (graph[j, k] == 0 || result[j] == int.MaxValue || result[j] + graph[j, k] >= result[k]) continue;
                     result[k] = result[j] + graph[j, k];
                 }
             }
         }
+
         return result;
     }
-    
-    public static int[] FloydWarshallAlgorithm(int[,] graph)
-    {
+
+    public static int[] FloydWarshallAlgorithm(int[,] graph){
         //Task
         //Given an array of integers nums sorted in ascending order, find the starting and ending position of a given target value.
-        
+
         var result = new int[graph.GetLength(0), graph.GetLength(0)];
-        for (var i = 0; i < result.GetLength(0); i++)
-        {
-            for (var j = 0; j < result.GetLength(0); j++)
-            {
+        for (var i = 0; i < result.GetLength(0); i++){
+            for (var j = 0; j < result.GetLength(0); j++){
                 result[i, j] = graph[i, j];
             }
         }
-        for (var i = 0; i < result.GetLength(0); i++)
-        {
-            for (var j = 0; j < result.GetLength(0); j++)
-            {
-                for (var k = 0; k < result.GetLength(0); k++)
-                {
-                    if (result[j, i] == int.MaxValue || result[i, k] == int.MaxValue || result[j, i] + result[i, k] >= result[j, k]) continue;
+
+        for (var i = 0; i < result.GetLength(0); i++){
+            for (var j = 0; j < result.GetLength(0); j++){
+                for (var k = 0; k < result.GetLength(0); k++){
+                    if (result[j, i] == int.MaxValue || result[i, k] == int.MaxValue ||
+                        result[j, i] + result[i, k] >= result[j, k]) continue;
                     result[j, k] = result[j, i] + result[i, k];
                 }
             }
         }
+
         return result.Cast<int>().ToArray();
     }
-    
-    public static int[] KruskalAlgorithm(int[,] graph)
-    {
+
+    public static int[] KruskalAlgorithm(int[,] graph){
         //Task
         //Given an array of integers nums sorted in ascending order, find the starting and ending position of a given target value.
-        
+
         var result = new int[graph.GetLength(0)];
         var visited = new bool[graph.GetLength(0)];
-        for (var i = 0; i < result.Length; i++)
-        {
+        for (var i = 0; i < result.Length; i++){
             result[i] = int.MaxValue;
         }
+
         result[0] = 0;
-        for (var i = 0; i < result.Length; i++)
-        {
+        for (var i = 0; i < result.Length; i++){
             var minIndex = -1;
-            for (var j = 0; j < result.Length; j++)
-            {
+            for (var j = 0; j < result.Length; j++){
                 if (visited[j] || (minIndex != -1 && result[j] >= result[minIndex])) continue;
                 minIndex = j;
             }
+
             visited[minIndex] = true;
-            for (var j = 0; j < result.Length; j++)
-            {
+            for (var j = 0; j < result.Length; j++){
                 if (graph[minIndex, j] == 0 || visited[j] || result[j] <= graph[minIndex, j]) continue;
                 result[j] = graph[minIndex, j];
             }
         }
+
         return result;
     }
-    
-    public static int[] PrimAlgorithm(int[,] graph)
-    {
+
+    public static int[] PrimAlgorithm(int[,] graph){
         //Task
         //Given an array of integers nums sorted in ascending order, find the starting and ending position of a given target value.
-        
+
         var result = new int[graph.GetLength(0)];
         var visited = new bool[graph.GetLength(0)];
-        for (var i = 0; i < result.Length; i++)
-        {
+        for (var i = 0; i < result.Length; i++){
             result[i] = int.MaxValue;
         }
+
         result[0] = 0;
-        for (var i = 0; i < result.Length; i++)
-        {
+        for (var i = 0; i < result.Length; i++){
             var minIndex = -1;
-            for (var j = 0; j < result.Length; j++)
-            {
+            for (var j = 0; j < result.Length; j++){
                 if (visited[j] || (minIndex != -1 && result[j] >= result[minIndex])) continue;
                 minIndex = j;
             }
+
             visited[minIndex] = true;
-            for (var j = 0; j < result.Length; j++)
-            {
+            for (var j = 0; j < result.Length; j++){
                 if (graph[minIndex, j] == 0 || visited[j] || result[j] <= graph[minIndex, j]) continue;
                 result[j] = graph[minIndex, j];
             }
         }
+
         return result;
     }
-    
-    public static int[] TopologicalSorting(int[,] graph)
-    {
+
+    public static int[] TopologicalSorting(int[,] graph){
         //Task
         //Given an array of integers nums sorted in ascending order, find the starting and ending position of a given target value.
-        
+
         var result = new int[graph.GetLength(0)];
         var visited = new bool[graph.GetLength(0)];
-        for (var i = 0; i < result.Length; i++)
-        {
+        for (var i = 0; i < result.Length; i++){
             result[i] = int.MaxValue;
         }
+
         result[0] = 0;
-        for (var i = 0; i < result.Length; i++)
-        {
+        for (var i = 0; i < result.Length; i++){
             var minIndex = -1;
-            for (var j = 0; j < result.Length; j++)
-            {
+            for (var j = 0; j < result.Length; j++){
                 if (visited[j] || (minIndex != -1 && result[j] >= result[minIndex])) continue;
                 minIndex = j;
             }
+
             visited[minIndex] = true;
-            for (var j = 0; j < result.Length; j++)
-            {
+            for (var j = 0; j < result.Length; j++){
                 if (graph[minIndex, j] == 0 || visited[j] || result[j] <= graph[minIndex, j]) continue;
                 result[j] = graph[minIndex, j];
             }
         }
+
         return result;
     }
-    
-    public static int[] HuffmanCoding(int[,] graph)
-    {
+
+    public static int[] HuffmanCoding(int[,] graph){
         //Task
         //Given an array of integers nums sorted in ascending order, find the starting and ending position of a given target value.
-        
+
         var result = new int[graph.GetLength(0)];
         var visited = new bool[graph.GetLength(0)];
-        for (var i = 0; i < result.Length; i++)
-        {
+        for (var i = 0; i < result.Length; i++){
             result[i] = int.MaxValue;
         }
+
         result[0] = 0;
-        for (var i = 0; i < result.Length; i++)
-        {
+        for (var i = 0; i < result.Length; i++){
             var minIndex = -1;
-            for (var j = 0; j < result.Length; j++)
-            {
+            for (var j = 0; j < result.Length; j++){
                 if (visited[j] || (minIndex != -1 && result[j] >= result[minIndex])) continue;
                 minIndex = j;
             }
+
             visited[minIndex] = true;
-            for (var j = 0; j < result.Length; j++)
-            {
+            for (var j = 0; j < result.Length; j++){
                 if (graph[minIndex, j] == 0 || visited[j] || result[j] <= graph[minIndex, j]) continue;
                 result[j] = graph[minIndex, j];
             }
         }
+
         return result;
     }
-    
-    public static int[] FloydWarshallAlgorithm(int[,] graph)
-    {
+
+    public static int[] FloydWarshallAlgorithm(int[,] graph){
         //Task
         //Given an array of integers nums sorted in ascending order, find the starting and ending position of a given target value.
-        
+
         var result = new int[graph.GetLength(0), graph.GetLength(0)];
-        for (var i = 0; i < result.GetLength(0); i++)
-        {
-            for (var j = 0; j < result.GetLength(0); j++)
-            {
+        for (var i = 0; i < result.GetLength(0); i++){
+            for (var j = 0; j < result.GetLength(0); j++){
                 result[i, j] = graph[i, j];
             }
         }
-        for (var i = 0; i < result.GetLength(0); i++)
-        {
-            for (var j = 0; j < result.GetLength(0); j++)
-            {
-                for (var k = 0; k < result.GetLength(0); k++)
-                {
-                    if (result[j, i] == int.MaxValue || result[i, k] == int.MaxValue || result[j, i] + result[i, k] >= result[j, k]) continue;
+
+        for (var i = 0; i < result.GetLength(0); i++){
+            for (var j = 0; j < result.GetLength(0); j++){
+                for (var k = 0; k < result.GetLength(0); k++){
+                    if (result[j, i] == int.MaxValue || result[i, k] == int.MaxValue ||
+                        result[j, i] + result[i, k] >= result[j, k]) continue;
                     result[j, k] = result[j, i] + result[i, k];
                 }
             }
         }
+
         return result.Cast<int>().ToArray();
     }
-    
-    public static int[] BackTracking(int[,] graph)
-    {
+
+    public static int[] BackTracking(int[,] graph){
         //Task
         //Given an array of integers nums sorted in ascending order, find the starting and ending position of a given target value.
-        
+
         var result = new int[graph.GetLength(0)];
         var visited = new bool[graph.GetLength(0)];
-        for (var i = 0; i < result.Length; i++)
-        {
+        for (var i = 0; i < result.Length; i++){
             result[i] = int.MaxValue;
         }
+
         result[0] = 0;
-        for (var i = 0; i < result.Length; i++)
-        {
+        for (var i = 0; i < result.Length; i++){
             var minIndex = -1;
-            for (var j = 0; j < result.Length; j++)
-            {
+            for (var j = 0; j < result.Length; j++){
                 if (visited[j] || (minIndex != -1 && result[j] >= result[minIndex])) continue;
                 minIndex = j;
             }
+
             visited[minIndex] = true;
-            for (var j = 0; j < result.Length; j++)
-            {
+            for (var j = 0; j < result.Length; j++){
                 if (graph[minIndex, j] == 0 || visited[j] || result[j] <= graph[minIndex, j]) continue;
                 result[j] = graph[minIndex, j];
             }
         }
+
         return result;
     }
-    
-    public static int[] RobinsonKarpAlgorithm(int[,] graph)
-    {
+
+    public static int[] RobinsonKarpAlgorithm(int[,] graph){
         //Task
         //Given an array of integers nums sorted in ascending order, find the starting and ending position of a given target value.
-        
+
         var result = new int[graph.GetLength(0)];
         var visited = new bool[graph.GetLength(0)];
-        for (var i = 0; i < result.Length; i++)
-        {
+        for (var i = 0; i < result.Length; i++){
             result[i] = int.MaxValue;
         }
+
         result[0] = 0;
-        for (var i = 0; i < result.Length; i++)
-        {
+        for (var i = 0; i < result.Length; i++){
             var minIndex = -1;
-            for (var j = 0; j < result.Length; j++)
-            {
+            for (var j = 0; j < result.Length; j++){
                 if (visited[j] || (minIndex != -1 && result[j] >= result[minIndex])) continue;
                 minIndex = j;
             }
+
             visited[minIndex] = true;
-            for (var j = 0; j < result.Length; j++)
-            {
+            for (var j = 0; j < result.Length; j++){
                 if (graph[minIndex, j] == 0 || visited[j] || result[j] <= graph[minIndex, j]) continue;
                 result[j] = graph[minIndex, j];
             }
         }
+
         return result;
     }
-    
-    public static int[] LeakyBucketAlgorithm(int[,] graph)
-    {
+
+    public static int[] LeakyBucketAlgorithm(int[,] graph){
         //Task
         //Given an array of integers nums sorted in ascending order, find the starting and ending position of a given target value.
-        
+
         var result = new int[graph.GetLength(0)];
         var visited = new bool[graph.GetLength(0)];
-        for (var i = 0; i < result.Length; i++)
-        {
+        for (var i = 0; i < result.Length; i++){
             result[i] = int.MaxValue;
         }
+
         result[0] = 0;
-        for (var i = 0; i < result.Length; i++)
-        {
+        for (var i = 0; i < result.Length; i++){
             var minIndex = -1;
-            for (var j = 0; j < result.Length; j++)
-            {
+            for (var j = 0; j < result.Length; j++){
                 if (visited[j] || (minIndex != -1 && result[j] >= result[minIndex])) continue;
                 minIndex = j;
             }
+
             visited[minIndex] = true;
-            for (var j = 0; j < result.Length; j++)
-            {
+            for (var j = 0; j < result.Length; j++){
                 if (graph[minIndex, j] == 0 || visited[j] || result[j] <= graph[minIndex, j]) continue;
                 result[j] = graph[minIndex, j];
             }
         }
+
         return result;
     }
-    
-    public static int[] LevelOrderTraversal(int[,] graph)
-    {
+
+    public static int[] LevelOrderTraversal(int[,] graph){
         //Task
         //Given an array of integers nums sorted in ascending order, find the starting and ending position of a given target value.
-        
+
         var result = new int[graph.GetLength(0)];
         var visited = new bool[graph.GetLength(0)];
-        for (var i = 0; i < result.Length; i++)
-        {
+        for (var i = 0; i < result.Length; i++){
             result[i] = int.MaxValue;
         }
+
         result[0] = 0;
-        for (var i = 0; i < result.Length; i++)
-        {
+        for (var i = 0; i < result.Length; i++){
             var minIndex = -1;
-            for (var j = 0; j < result.Length; j++)
-            {
+            for (var j = 0; j < result.Length; j++){
                 if (visited[j] || (minIndex != -1 && result[j] >= result[minIndex])) continue;
                 minIndex = j;
             }
+
             visited[minIndex] = true;
-            for (var j = 0; j < result.Length; j++)
-            {
+            for (var j = 0; j < result.Length; j++){
                 if (graph[minIndex, j] == 0 || visited[j] || result[j] <= graph[minIndex, j]) continue;
                 result[j] = graph[minIndex, j];
             }
         }
+
         return result;
     }
-    
-    public static int FindCheapestPrice(int[,] graph)
-    {
+
+    public static int FindCheapestPrice(int[,] graph){
         //Task
         //Given an array of integers nums sorted in ascending order, find the starting and ending position of a given target value.
-        
+
         var result = new int[graph.GetLength(0)];
         var visited = new bool[graph.GetLength(0)];
-        for (var i = 0; i < result.Length; i++)
-        {
+        for (var i = 0; i < result.Length; i++){
             result[i] = int.MaxValue;
         }
+
         result[0] = 0;
-        for (var i = 0; i < result.Length; i++)
-        {
+        for (var i = 0; i < result.Length; i++){
             var minIndex = -1;
-            for (var j = 0; j < result.Length; j++)
-            {
+            for (var j = 0; j < result.Length; j++){
                 if (visited[j] || (minIndex != -1 && result[j] >= result[minIndex])) continue;
                 minIndex = j;
             }
+
             visited[minIndex] = true;
-            for (var j = 0; j < result.Length; j++)
-            {
+            for (var j = 0; j < result.Length; j++){
                 if (graph[minIndex, j] == 0 || visited[j] || result[j] <= graph[minIndex, j]) continue;
                 result[j] = graph[minIndex, j];
             }
         }
+
+        return result[^1];
+    }
+
+    public static int DeleteOperationForTwoStrings(string word1, string word2){
+        //Task
+        //Given an array of integers nums sorted in ascending order, find the starting and ending position of a given target value.
+        var graph = new int[word1.Length + 1, word2.Length + 1];
+        var result = new int[graph.GetLength(0)];
+        var visited = new bool[graph.GetLength(0)];
+        for (var i = 0; i < result.Length; i++){
+            result[i] = int.MaxValue;
+        }
+
+        result[0] = 0;
+        for (var i = 0; i < result.Length; i++){
+            var minIndex = -1;
+            for (var j = 0; j < result.Length; j++){
+                if (visited[j] || (minIndex != -1 && result[j] >= result[minIndex])) continue;
+                minIndex = j;
+            }
+
+            visited[minIndex] = true;
+            for (var j = 0; j < result.Length; j++){
+                if (graph[minIndex, j] == 0 || visited[j] || result[j] <= graph[minIndex, j]) continue;
+                result[j] = graph[minIndex, j];
+            }
+        }
+
         return result[^1];
     }
 }

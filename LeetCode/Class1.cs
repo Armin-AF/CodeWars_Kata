@@ -3287,30 +3287,12 @@ public static class Class1
 
     public static int DeleteOperationForTwoStrings(string word1, string word2){
         //Task
-        //Given an array of integers nums sorted in ascending order, find the starting and ending position of a given target value.
-        var graph = new int[word1.Length + 1, word2.Length + 1];
-        var result = new int[graph.GetLength(0)];
-        var visited = new bool[graph.GetLength(0)];
-        for (var i = 0; i < result.Length; i++){
-            result[i] = int.MaxValue;
-        }
+        //Delete Operation for Two Strings - LeetCode
+        //Given two strings word1 and word2 return the operartion that delete the minimum number of characters from word1 and word2 to make them equal.
 
-        result[0] = 0;
-        for (var i = 0; i < result.Length; i++){
-            var minIndex = -1;
-            for (var j = 0; j < result.Length; j++){
-                if (visited[j] || (minIndex != -1 && result[j] >= result[minIndex])) continue;
-                minIndex = j;
-            }
+        var result = new int[word1.Length + 1, word2.Length + 1];
 
-            visited[minIndex] = true;
-            for (var j = 0; j < result.Length; j++){
-                if (graph[minIndex, j] == 0 || visited[j] || result[j] <= graph[minIndex, j]) continue;
-                result[j] = graph[minIndex, j];
-            }
-        }
-
-        return result[^1];
+        return result[word1.Length, word2.Length];
     }
 }
 

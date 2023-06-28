@@ -3294,6 +3294,20 @@ public static class Class1
 
         return result[word1.Length, word2.Length];
     }
+
+    public static int[] RemoveNegativeNumbers(int[] nums){
+        //Task
+        //Given an array of integers nums remove the negative numbers and return the array.
+
+        var result = new int[nums.Length];
+        var index = 0;
+        foreach (var num in nums){
+            if (num < 0) continue;
+            result[index++] = num;
+        }
+
+        return result;
+    }
 }
 
 

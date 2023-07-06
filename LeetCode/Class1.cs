@@ -3308,6 +3308,31 @@ public static class Class1
 
         return result;
     }
+    
+    
+    public static string ConvertCobolToPascal(string cobol){
+        //Task
+        //Given a string in cobol convert it to pascal case.
+
+        var result = new StringBuilder();
+        var isSpace = false;
+        foreach (var ch in cobol){
+            if (ch == ' '){
+                isSpace = true;
+                continue;
+            }
+
+            if (isSpace){
+                result.Append(char.ToUpper(ch));
+                isSpace = false;
+            }
+            else{
+                result.Append(char.ToLower(ch));
+            }
+        }
+
+        return result.ToString();
+    }
 }
 
 

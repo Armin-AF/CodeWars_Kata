@@ -3333,6 +3333,36 @@ public static class Class1
 
         return result.ToString();
     }
+
+    public static int HexToBinary(string hex){
+        //Task
+        //Given a string in hex convert it to binary.
+
+        var result = 0;
+        var index = 0;
+
+        for (var i = hex.Length - 1; i >= 0; i--){
+            var ch = hex[i];
+            var num = 0;
+            if (ch >= '0' && ch <= '9'){
+                num = ch - '0';
+            }
+            else if (ch >= 'A' && ch <= 'F'){
+                num = ch - 'A' + 10;
+            }
+            else if (ch >= 'a' && ch <= 'f'){
+                num = ch - 'a' + 10;
+            }
+            else{
+                throw new ArgumentException("Invalid hex string");
+            }
+
+            result += num * (int) Math.Pow(16, index++);
+        }
+
+        return result;
+
+    }
 }
 
 

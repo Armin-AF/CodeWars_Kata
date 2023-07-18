@@ -3363,6 +3363,26 @@ public static class Class1
         return result;
 
     }
+    
+    public static string ConvertToHex(int num){
+        //Task
+        //Given a string in hex convert it to binary.
+
+        var result = new StringBuilder();
+        while (num > 0){
+            var rem = num % 16;
+            if (rem < 10){
+                result.Append(rem);
+            }
+            else{
+                result.Append((char) ('A' + rem - 10));
+            }
+
+            num /= 16;
+        }
+
+        return result.ToString();
+    }
 }
 
 

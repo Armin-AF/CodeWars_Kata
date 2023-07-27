@@ -3383,6 +3383,54 @@ public static class Class1
 
         return result.ToString();
     }
+    
+    public static int[] FindAllAnagrams(string s, string p){
+        //Task
+        //Given a string s and a non-empty string p, find all the start indices of p's anagrams in s.
+
+        var result = new List<int>();
+        var map = new Dictionary<char, int>();
+        foreach (var ch in p){
+            if (map.ContainsKey(ch)){
+                map[ch]++;
+            }
+            else{
+                map[ch] = 1;
+            }
+        }
+
+        var start = 0;
+        var end = 0;
+        var count = map.Count;
+        while (end < s.Length){
+            var ch = s[end];
+            if (map.ContainsKey(ch)){
+                map[ch]--;
+                if (map[ch] == 0){
+                    count--;
+                }
+            }
+
+            end++;
+            while (count == 0){
+                if (end - start == p.Length){
+                    result.Add(start);
+                }
+
+                var ch2 = s[start];
+                if (map.ContainsKey(ch2)){
+                    map[ch2]++;
+                    if (map[ch2] > 0){
+                        count++;
+                    }
+                }
+
+                start++;
+            }
+        }
+
+        return result.ToArray();
+    }
 }
 
 

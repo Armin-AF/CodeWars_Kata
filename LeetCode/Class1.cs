@@ -3431,6 +3431,30 @@ public static class Class1
 
         return isNegative ? -result : result;
     }
+    
+    public static string IntegerToAscii(int num){
+        //Task
+        //Given an integer num convert it to ascii.
+
+        var result = new StringBuilder();
+        var isNegative = false;
+        if (num < 0){
+            isNegative = true;
+            num = -num;
+        }
+
+        while (num > 0){
+            var rem = num % 10;
+            result.Append((char) ('0' + rem));
+            num /= 10;
+        }
+
+        if (isNegative){
+            result.Append('-');
+        }
+
+        return result.ToString();
+    }
 }
 
 

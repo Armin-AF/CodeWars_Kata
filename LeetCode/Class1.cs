@@ -3431,6 +3431,30 @@ public static class Class1
 
         return result.ToArray();
     }
+    
+    public static int AsciiToInteger(string str){
+        //Task
+        //Given a string str convert it to integer.
+
+        var result = 0;
+        var isNegative = false;
+        var index = 0;
+        if (str[0] == '-'){
+            isNegative = true;
+            index++;
+        }
+
+        for (var i = index; i < str.Length; i++){
+            var ch = str[i];
+            if (ch < '0' || ch > '9'){
+                throw new ArgumentException("Invalid string");
+            }
+
+            result = result * 10 + (ch - '0');
+        }
+
+        return isNegative ? -result : result;
+    }
 }
 
 

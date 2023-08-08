@@ -3455,6 +3455,27 @@ public static class Class1
 
         return result.ToString();
     }
+    
+    public static string[] AsciCodeToChar(string str){
+        //Task
+        //Given a string str convert it to ascii.
+
+        var result = new List<string>();
+        var index = 0;
+        while (index < str.Length){
+            var ch = str[index];
+            if (ch == '1'){
+                result.Add(str.Substring(index, 3));
+                index += 3;
+            }
+            else{
+                result.Add(str.Substring(index, 2));
+                index += 2;
+            }
+        }
+
+        return result.ToArray();
+    }
 }
 
 
